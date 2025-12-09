@@ -1,0 +1,67 @@
+.fadein-root {
+  --fadein-length: var(--animation-length-m);
+  --fadein-delay-root: var(--animation-length-xxs);
+  --fadein-delay: var(--fadein-delay-root);
+
+  &:has(.fadein-8) {
+    --fadein-delay: calc(var(--fadein-delay-root) / 2);
+  }
+
+  &:has(.fadein-16) {
+    --fadein-delay: calc(var(--fadein-delay-root) / 4);
+  }
+
+  &:has(.fadein-48) {
+    --fadein-delay: calc(var(--fadein-delay-root) / 6);
+  }
+
+  &:has(.fadein-64) {
+    --fadein-delay: calc(var(--fadein-delay-root) / 8);
+  }
+
+  &:has(.fadein-96) {
+    --fadein-delay: calc(var(--fadein-delay-root) / 10);
+  }
+
+  .fadein {
+    animation: fadein var(--fadein-length) var(--better-ease-out);
+    animation-fill-mode: backwards;
+
+    @for $i from 0 through 99 {
+      &.fadein-#{$i} {
+        animation-delay: calc($i * var(--fadein-delay));
+      }
+    }
+
+    &.long-fadein {
+      animation: long-fadein var(--animation-length-xl) cubic-bezier(0.09, 0.47, 0, 0.94);
+      animation-fill-mode: backwards;
+    }
+
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+        transform: translateY(0.2rem);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes long-fadein {
+      0% {
+        opacity: 0;
+        transform: translateY(-6rem);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+  }
+}
