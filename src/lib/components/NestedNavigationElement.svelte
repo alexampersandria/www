@@ -1,19 +1,20 @@
 <script lang="ts">
 import { active } from '$lib/actions/active.svelte'
-import TableOfContentsItem from './TableOfContentsItem.svelte'
+import NestedNavigationElement from './NestedNavigationElement.svelte'
+import type { NestedNavigationElementItemProps } from '$lib/types/navigation'
 
-let { item } = $props()
+let { item }: NestedNavigationElementItemProps = $props()
 </script>
 
 <a
-  class="table-of-contents-item level-{item.level}"
-  href="#{item.id}"
-  use:active>
-  {item.title}
+  class="table-of-contents-item level-{item.level ?? 2}"
+  href={item.href}
+  use:active={{ exact: true }}>
+  {item.label}
 </a>
 
 {#each item.children as child}
-  <TableOfContentsItem item={child} />
+  <NestedNavigationElement item={child} />
 {/each}
 
 <style lang="scss">

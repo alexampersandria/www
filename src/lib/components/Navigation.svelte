@@ -1,47 +1,41 @@
 <script lang="ts">
-import { afterNavigate } from '$app/navigation'
 import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
-import type { Link } from '$lib/types/link'
+import { navigation } from '$lib/data/navigation'
+import type { NestedNavigationItem } from '$lib/types/navigation'
 import {
-  generateTableOfContents,
+  type TableOfContentsItem,
   type TableOfContents as TableOfContentsType,
 } from '$lib/utils/toc'
 import Logo from './Logo.svelte'
-import TableOfContents from './TableOfContents.svelte'
+import TableOfContents from './NestedNavigation.svelte'
 
-let { main }: { main?: HTMLElement } = $props()
+let { tableofcontents }: { tableofcontents?: TableOfContentsType } = $props()
 
-let toc: TableOfContentsType | null = $state(null)
-afterNavigate(() => {
-  let timeout = 0
-  if (open) timeout = 500
+const tableOfContentsItemToNavigationItem = (
+  item: TableOfContentsItem,
+): NestedNavigationItem => {
+  return {
+    label: item.title,
+    href: `#${item.id}`,
+    level: item.level,
+    children: item.children.map(child =>
+      tableOfContentsItemToNavigationItem(child),
+    ),
+  }
+}
 
-  open = false
-
-  setTimeout(() => {
-    toc = null
-    if (main) {
-      toc = generateTableOfContents(main)
-    } else {
-      toc = null
-    }
-  }, timeout)
+let tocnav: NestedNavigationItem[] = $derived.by(() => {
+  return (
+    tableofcontents?.items.map(item => {
+      return tableOfContentsItemToNavigationItem(item)
+    }) ?? []
+  )
 })
-
-let links: Link[] = [
-  { label: 'Root', href: '/' },
-  { label: 'Resume', href: '/resume' },
-  { label: 'Photography', href: '/photography' },
-  { label: 'Music', href: '/music' },
-]
 
 let open = $state(false)
 let toggleMenu = () => {
   open = !open
-  if (open && toc === null && main) {
-    toc = generateTableOfContents(main)
-  }
 }
 </script>
 
@@ -62,17 +56,22 @@ let toggleMenu = () => {
 
   <div class="navigation-content" class:open>
     <div class="links">
-      {#each links as link}
+      {#each navigation as link}
         {#key link.href}
           {@const active = isActiveRoute(link.href)}
           <a href={link.href} class="nav-link" class:active>
             {link.label}
           </a>
-          {#if active && toc && toc.items.length > 0}
-            <div class="nav-link-toc" use:fadein>
-              <TableOfContents items={toc.items} />
-            </div>
-          {/if}
+          {#if active}
+            {#if link.children && link.children.length > 0}
+              <div class="nav-link-sub children" use:fadein>
+                <TableOfContents items={link.children} />
+              </div>
+            {:else if tocnav && tocnav.length > 0}
+              <div class="nav-link-sub toc" use:fadein>
+                <TableOfContents items={tocnav} />
+              </div>
+            {/if}{/if}
         {/key}
       {/each}
     </div>
@@ -190,7 +189,7 @@ let toggleMenu = () => {
         white-space: nowrap;
       }
 
-      .nav-link-toc {
+      .nav-link-sub {
         :global(.table-of-contents) {
           padding-left: var(--padding-m);
         }

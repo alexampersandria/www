@@ -3,7 +3,9 @@ import { page } from '$app/state'
 import { fade } from 'svelte/transition'
 
 let route = $derived.by(() => {
-  switch (page.route.id) {
+  const firstRouteSegment = page.url.pathname.split('/')[1]
+
+  switch ('/' + firstRouteSegment) {
     case '/':
       return 'root'
     case '/resume':
@@ -12,6 +14,8 @@ let route = $derived.by(() => {
       return 'photography'
     case '/music':
       return 'music'
+    case '/projects':
+      return 'projects'
     default:
       return 'unknown'
   }
@@ -64,6 +68,22 @@ let route = $derived.by(() => {
       to bottom,
       var(--color-orange-10),
       var(--color-orange-30)
+    );
+  }
+
+  &.projects {
+    background: linear-gradient(
+      to bottom,
+      var(--color-base-00),
+      var(--color-base-10)
+    );
+  }
+
+  &.unknown {
+    background: linear-gradient(
+      to bottom,
+      var(--color-base-10),
+      var(--color-base-20)
     );
   }
 }

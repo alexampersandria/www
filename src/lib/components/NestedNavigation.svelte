@@ -1,7 +1,8 @@
 <script lang="ts">
-import TableOfContentsItem from './TableOfContentsItem.svelte'
+import TableOfContentsItem from './NestedNavigationElement.svelte'
+import type { NestedNavigationElementProps } from '$lib/types/navigation'
 
-let { items } = $props()
+let { items }: NestedNavigationElementProps = $props()
 </script>
 
 <div class="table-of-contents">

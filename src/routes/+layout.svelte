@@ -7,9 +7,14 @@ import { page } from '$app/state'
 import { fade } from 'svelte/transition'
 import { fadein } from '$lib/actions/fadein.svelte'
 import Backdrop from '$lib/components/Backdrop.svelte'
+import { generateTableOfContents, type TableOfContents } from '$lib/utils/toc'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
+
+let tableofcontents = $derived.by(() => {
+  return main ? generateTableOfContents(main) : undefined
+})
 
 let routeClass = $derived.by(() => {
   if (page.route.id) {
@@ -54,7 +59,7 @@ let animationDuration = () => {
 
 <div class="root">
   <div class="navigation-wrapper">
-    <Navigation {main} />
+    <Navigation {tableofcontents} />
   </div>
 
   <div class="viewport">
