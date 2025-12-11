@@ -8,6 +8,8 @@ import { fade } from 'svelte/transition'
 import { fadein } from '$lib/actions/fadein.svelte'
 import Backdrop from '$lib/components/Backdrop.svelte'
 import { generateTableOfContents } from '$lib/utils/toc'
+import { afterNavigate, goto } from '$app/navigation'
+import { redirectTo } from '$lib/utils/redirect'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
@@ -42,6 +44,13 @@ let animationDuration = () => {
     return 100
   }
 }
+
+afterNavigate(() => {
+  const redirect = redirectTo(page.url.pathname)
+  if (redirect) {
+    goto(redirect)
+  }
+})
 </script>
 
 <svelte:head>

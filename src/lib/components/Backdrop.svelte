@@ -69,7 +69,7 @@ let routeSegments = $derived.by(() => {
   &.music {
     background: linear-gradient(
       to bottom,
-      var(--color-red-10),
+      var(--color-orange-10),
       var(--color-orange-30)
     );
   }

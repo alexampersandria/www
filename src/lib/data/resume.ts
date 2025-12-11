@@ -1,8 +1,9 @@
+import { age } from '$lib/utils/age'
+import { experience } from '$lib/utils/experience'
 import type { Resume } from '../types/resume'
 
 export const resume: Resume = {
-  background:
-    '27 year old full stack developer from Copenhagen with more than 6 years of experience, both as a developer and in a lead role.',
+  background: `${age} year old full stack developer from Copenhagen with more than ${experience} years of experience, both as a developer and in a lead role`,
   positions: [
     {
       company: 'Udviklings- og Forenklingsstyrelsen',
