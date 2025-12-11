@@ -30,18 +30,20 @@ let routeClass = $derived.by(() => {
 })
 
 let animationDuration = () => {
+  const long = 300
+  const short = 100
   try {
     let minWidth = window
       .getComputedStyle(document.documentElement)
       .getPropertyValue('--navigation-min-width')
 
     if (minWidth.trim() === '0px') {
-      return 300
+      return long
     } else {
-      return 100
+      return short
     }
   } catch {
-    return 100
+    return short
   }
 }
 
@@ -86,6 +88,11 @@ afterNavigate(() => {
     height: 100dvh;
     width: 100dvw;
     overflow: auto;
+
+    // don't show scrollbars when navigating
+    &:not(:has(.route:only-child)) {
+      overflow: hidden;
+    }
   }
 
   .content-wrapper {
