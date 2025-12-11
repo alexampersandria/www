@@ -26,3 +26,5 @@ www
 **/.svelte-kit
 target
 **/target
+build
+**/build
