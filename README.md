@@ -2,7 +2,7 @@
 
 ## Building
 
-Build images for production
+Build images for production with docker
 
 ```sh
 sh ./build.sh
