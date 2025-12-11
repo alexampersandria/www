@@ -87,6 +87,7 @@ afterNavigate(() => {
   .viewport {
     // don't show scrollbars when navigating
     &:not(:has(.route:only-child)) {
+      height: 100vh;
       overflow: hidden;
     }
   }
