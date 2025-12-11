@@ -21,7 +21,7 @@ import { formatId } from '$lib/utils/id'
           {@const multirole = position.roles.length > 1}
           {@const positionId = formatId(position.company)}
           <div class="position" class:multirole>
-            <div class="flex-between">
+            <div class="flex space-between">
               <div id={positionId} class="company">
                 {position.company}
               </div>
@@ -72,7 +72,7 @@ import { formatId } from '$lib/utils/id'
         {#each resume.education as school}
           {@const schoolId = formatId(school.institution)}
           <div class="school">
-            <div class="flex-between">
+            <div class="flex space-between">
               <div id={schoolId} class="institution">
                 {school.institution}
               </div>
@@ -81,7 +81,7 @@ import { formatId } from '$lib/utils/id'
                 <div class="to">{school.period.to}</div>
               </div>
             </div>
-            <div class="flex-between">
+            <div class="flex space-between">
               <div class="degree">{school.degree}</div>
               {#if !school.completed}
                 <div class="incomplete">*Incomplete</div>
@@ -108,6 +108,15 @@ import { formatId } from '$lib/utils/id'
   .section {
     display: grid;
     grid-template-columns: 10rem 1fr;
+
+    @media screen and (max-width: 919px) {
+      grid-template-columns: 1fr;
+      gap: var(--padding-m);
+
+      .section-title {
+        font-size: var(--font-size-l);
+      }
+    }
 
     .section-title {
       font-weight: 600;
@@ -137,17 +146,6 @@ import { formatId } from '$lib/utils/id'
           border-left: 2px solid var(--text-accent);
         }
       }
-    }
-  }
-
-  .period {
-    display: flex;
-    gap: var(--padding-s);
-    color: var(--text-secondary);
-
-    .from::after {
-      content: '→';
-      margin-left: var(--padding-s);
     }
   }
 

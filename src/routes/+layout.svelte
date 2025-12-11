@@ -7,7 +7,7 @@ import { page } from '$app/state'
 import { fade } from 'svelte/transition'
 import { fadein } from '$lib/actions/fadein.svelte'
 import Backdrop from '$lib/components/Backdrop.svelte'
-import { generateTableOfContents, type TableOfContents } from '$lib/utils/toc'
+import { generateTableOfContents } from '$lib/utils/toc'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
@@ -25,13 +25,6 @@ let routeClass = $derived.by(() => {
     return `route-${routeString}`
   }
   return ''
-})
-
-let urlWithoutIdAndQuery = $derived.by(() => {
-  let url = new URL(page.url.href)
-  url.search = ''
-  url.hash = ''
-  return url.href
 })
 
 let animationDuration = () => {
@@ -63,7 +56,7 @@ let animationDuration = () => {
   </div>
 
   <div class="viewport">
-    {#key urlWithoutIdAndQuery}
+    {#key page.route.id}
       <div
         class="route {routeClass}"
         in:fade={{ duration: animationDuration(), delay: animationDuration() }}
@@ -80,8 +73,6 @@ let animationDuration = () => {
 
 <style lang="scss">
 .root {
-  --content-max-width: var(--container-width);
-
   .viewport {
     height: 100dvh;
     width: 100dvw;
@@ -89,16 +80,8 @@ let animationDuration = () => {
   }
 
   .content-wrapper {
-    padding-inline: var(--padding-l);
     white-space: normal;
-    max-width: var(--content-max-width);
-
     padding-top: var(--navigation-top-clearance);
-
-    margin-left: max(
-      calc(50vw - var(--content-max-width) / 2),
-      var(--navigation-min-width)
-    );
 
     main {
       padding-block: var(--padding-l);

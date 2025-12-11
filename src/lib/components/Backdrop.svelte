@@ -2,31 +2,33 @@
 import { page } from '$app/state'
 import { fade } from 'svelte/transition'
 
-let route = $derived.by(() => {
-  const firstRouteSegment = page.url.pathname.split('/')[1]
+let urlWithoutIdAndQuery = $derived.by(() => {
+  let url = new URL(page.url.href)
+  url.search = ''
+  url.hash = ''
+  return url.href
+})
 
-  switch ('/' + firstRouteSegment) {
-    case '/':
-      return 'root'
-    case '/resume':
-      return 'resume'
-    case '/photography':
-      return 'photography'
-    case '/music':
-      return 'music'
-    case '/projects':
-      return 'projects'
-    default:
-      return 'unknown'
+let routeSegments = $derived.by(() => {
+  let segments = page.url.pathname.split('/').filter(Boolean)
+
+  if (segments.length === 0) {
+    segments.push('root')
   }
+  if (page.url.hash) {
+    segments.push(page.url.hash.replace('#', ''))
+  }
+  return segments.map(seg => {
+    return seg.replaceAll(/[^a-zA-Z0-9 -]/g, '').toLowerCase()
+  })
 })
 </script>
 
-{#key route}
+{#key urlWithoutIdAndQuery}
   <div
     in:fade={{ duration: 250 }}
-    out:fade={{ duration: 250, delay: 500 }}
-    class="backdrop {route}">
+    out:fade={{ duration: 250, delay: 250 }}
+    class="backdrop {routeSegments.join(' ')}">
   </div>
 {/key}
 
@@ -42,8 +44,8 @@ let route = $derived.by(() => {
   &.root {
     background: linear-gradient(
       to bottom,
-      var(--color-blue-10),
-      var(--color-blue-30)
+      var(--color-base-20),
+      var(--color-base-40)
     );
   }
 
@@ -58,15 +60,15 @@ let route = $derived.by(() => {
   &.photography {
     background: linear-gradient(
       to bottom,
-      var(--color-purple-10),
-      var(--color-purple-30)
+      var(--color-blue-10),
+      var(--color-blue-30)
     );
   }
 
   &.music {
     background: linear-gradient(
       to bottom,
-      var(--color-orange-10),
+      var(--color-red-10),
       var(--color-orange-30)
     );
   }
@@ -74,9 +76,25 @@ let route = $derived.by(() => {
   &.projects {
     background: linear-gradient(
       to bottom,
-      var(--color-base-00),
-      var(--color-base-10)
+      var(--color-pink-10),
+      var(--color-pink-20)
     );
+
+    &.diarycomputer {
+      background: linear-gradient(
+        to bottom,
+        var(--color-base-05),
+        var(--color-base-10)
+      );
+    }
+
+    &.mitmediano {
+      background: linear-gradient(
+        to bottom,
+        var(--color-green-00),
+        var(--color-green-10)
+      );
+    }
   }
 
   &.unknown {

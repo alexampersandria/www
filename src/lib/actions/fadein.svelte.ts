@@ -20,7 +20,7 @@ export const fadein = (
   elements.forEach(el => {
     if (
       !el.classList.contains('fadein') &&
-      !el.classList.contains('no-fadein')
+      !el.classList.contains('fadein-root')
     ) {
       if (!parentHasFadeinClass(el.parentNode)) {
         const hasDirectText = Array.from(el.childNodes).some(
@@ -66,8 +66,15 @@ export const fadein = (
 }
 
 const parentHasFadeinClass = (node: Node | null): boolean => {
-  if (!node) return false
-  if (node instanceof HTMLElement && node.classList.contains('fadein'))
+  if (!node || !(node instanceof HTMLElement)) return false
+
+  if (node.classList.contains('fadein')) {
     return true
+  }
+
+  if (node.classList.contains('fadein-root')) {
+    return false
+  }
+
   return parentHasFadeinClass(node.parentNode)
 }

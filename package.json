@@ -43,6 +43,7 @@
     "jiti": "^2.6.1",
     "modern-normalize": "^3.0.1",
     "rehype-slug": "^6.0.0",
+    "runed": "^0.37.0",
     "sass-embedded": "^1.93.3",
     "typescript-eslint": "^8.49.0"
   }

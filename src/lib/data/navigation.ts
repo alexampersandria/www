@@ -2,7 +2,10 @@ import type { Link } from '$lib/types/link'
 import { projectsAsNavigationElements } from './projects'
 
 export const navigation: NavigationElement[] = [
-  { label: 'Root', href: '/' },
+  {
+    label: 'Root',
+    href: '/',
+  },
   {
     label: 'Projects',
     href: '/projects',
@@ -10,9 +13,10 @@ export const navigation: NavigationElement[] = [
   },
   { label: 'Resume', href: '/resume' },
   { label: 'Photography', href: '/photography' },
-  { label: 'Music', href: '/music' },
+  { label: 'Music', href: '/music', showTableOfContents: true },
 ]
 
 export type NavigationElement = Link & {
   children?: NavigationElement[]
+  showTableOfContents?: boolean
 }

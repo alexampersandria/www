@@ -3,9 +3,20 @@ import { projects } from '$lib/data/projects'
 </script>
 
 <div class="projects">
+  <h2 class="nostyle projects-title">Projects</h2>
+
   {#each projects as project}
     <div class="project">
-      <div class="title">{project.title}</div>
+      <div class="flex space-between">
+        <div class="title">{project.title}</div>
+        {#if project.period}
+          <div class="period">
+            <div class="from">{project.period.from}</div>
+            <div class="to">{project.period.to}</div>
+          </div>
+        {/if}
+      </div>
+
       <div class="description">{project.description}</div>
       <div class="links">
         <a class="view-project" href={`/projects/${project.id}`}>
@@ -27,13 +38,22 @@ import { projects } from '$lib/data/projects'
 
 <style lang="scss">
 .projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-l);
+
+  .projects-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+  }
+
   .project {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-xs);
+    gap: var(--padding-xxs);
 
     .title {
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-l);
       font-weight: 600;
     }
 

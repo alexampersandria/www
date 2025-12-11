@@ -14,11 +14,11 @@ let { pronouns = false } = $props()
           alt="Photo of {me.name}" />
       </div>
     {/if}
-    <div class="name">{me.name}</div>
+    <h2 class="nostyle name">{me.name}</h2>
   </div>
 
   {#if me.pronouns || me.email}
-    <div class="details">
+    <div class="details flex center gap-x-l">
       {#if me.pronouns && pronouns}
         <div class="pronouns">{me.pronouns.join('/')}</div>
       {/if}
@@ -47,6 +47,7 @@ let { pronouns = false } = $props()
     flex-direction: column;
     align-items: center;
     gap: var(--padding-m);
+    text-align: center;
 
     .me-photo {
       --size: 8rem;
@@ -59,12 +60,6 @@ let { pronouns = false } = $props()
     .name {
       font-size: var(--font-size-l);
     }
-  }
-
-  .details {
-    display: flex;
-    flex-direction: row;
-    gap: var(--padding-l);
   }
 }
 </style>

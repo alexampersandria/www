@@ -26,7 +26,7 @@ let showTracklist = $derived.by(() => {
 
 <div class="release">
   <div class="release-info">
-    <div class="flex-between">
+    <div class="flex space-between">
       <h3 id={formatId(release.title)} class="nostyle release-title">
         {release.title}
       </h3>

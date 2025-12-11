@@ -3,16 +3,18 @@ import Me from '$lib/components/Me.svelte'
 import Resume from '$lib/components/Resume.svelte'
 </script>
 
-<div class="app-page resume-page">
-  <div class="resume-head">
-    <Me />
-  </div>
+<div class="app-page">
+  <div class="container resume">
+    <div class="resume-head">
+      <Me />
+    </div>
 
-  <Resume />
+    <Resume />
+  </div>
 </div>
 
 <style lang="scss">
-.resume-page {
+.resume {
   display: flex;
   flex-direction: column;
   gap: var(--padding-l);

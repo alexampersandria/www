@@ -1,4 +1,6 @@
 <script lang="ts">
+import { afterNavigate } from '$app/navigation'
+import { page } from '$app/state'
 import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
@@ -37,11 +39,15 @@ let open = $state(false)
 let toggleMenu = () => {
   open = !open
 }
+
+afterNavigate(() => {
+  open = false
+})
 </script>
 
-<div class="navigation">
+<div class="navigation" use:fadein>
   <div class="menu">
-    <div class="flex-between">
+    <div class="flex space-between">
       <a href="/">
         <Logo />
       </a>
@@ -67,11 +73,14 @@ let toggleMenu = () => {
               <div class="nav-link-sub children" use:fadein>
                 <TableOfContents items={link.children} />
               </div>
-            {:else if tocnav && tocnav.length > 0}
-              <div class="nav-link-sub toc" use:fadein>
-                <TableOfContents items={tocnav} />
-              </div>
-            {/if}{/if}
+            {:else if link.showTableOfContents && tocnav && tocnav.length > 0}
+              {#key tocnav}
+                <div class="nav-link-sub toc" use:fadein>
+                  <TableOfContents items={tocnav} />
+                </div>
+              {/key}
+            {/if}
+          {/if}
         {/key}
       {/each}
     </div>
@@ -85,6 +94,7 @@ let toggleMenu = () => {
 <style lang="scss">
 .navigation {
   --transition-duration: var(--animation-length-m);
+  overflow-y: auto;
 
   transition:
     background-color var(--transition-duration) var(--better-ease-out),
@@ -105,10 +115,13 @@ let toggleMenu = () => {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
 
   @media screen and (min-width: 920px) {
-    max-width: calc(50vw - var(--content-max-width) / 2);
+    max-width: calc((50vw - var(--container-width) / 2) - var(--padding-l));
     min-width: var(--navigation-min-width);
+    padding-inline: 0;
+    left: var(--padding-l);
 
     .menu {
       .toggle-content {
@@ -179,7 +192,6 @@ let toggleMenu = () => {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    overflow-y: auto;
 
     .links {
       display: flex;
