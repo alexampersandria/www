@@ -1,9 +1,10 @@
 <script lang="ts">
 import { page } from '$app/state'
+import { SvelteURL } from 'svelte/reactivity'
 import { fade } from 'svelte/transition'
 
 let urlWithoutIdAndQuery = $derived.by(() => {
-  let url = new URL(page.url.href)
+  let url = new SvelteURL(page.url.href)
   url.search = ''
   url.hash = ''
   return url.href

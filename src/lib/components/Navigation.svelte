@@ -1,6 +1,5 @@
 <script lang="ts">
 import { afterNavigate } from '$app/navigation'
-import { page } from '$app/state'
 import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
