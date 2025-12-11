@@ -15,6 +15,10 @@ export const discography: Release[] = [
         label: 'Apple Music',
         href: 'https://music.apple.com/dk/album/the-moth/1831753500',
       },
+      {
+        label: 'SoundCloud',
+        href: 'https://soundcloud.com/bruchumlaut/sets/the-moth',
+      },
     ],
     tracks: [
       { title: "Apathema (The Moth's Theme)", artist: 'Brüch', duration: 211 },
@@ -44,6 +48,10 @@ export const discography: Release[] = [
       {
         label: 'Apple Music',
         href: 'https://music.apple.com/dk/album/apart-ep/1763053836',
+      },
+      {
+        label: 'SoundCloud',
+        href: 'https://soundcloud.com/bruchumlaut/sets/apart',
       },
     ],
     tracks: [

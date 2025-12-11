@@ -125,7 +125,7 @@ $click-transform: scale(0.97);
   --animation-length-l: 400ms;
   --animation-length-xl: 600ms;
   --animation-length-xxl: 1200ms;
-  --interactive-transition: color var(--animation-length-s) var(--better-ease-out), background-color var(--animation-length-s) var(--better-ease-out), border-color var(--animation-length-s) var(--better-ease-out), box-shadow var(--animation-length-s) var(--better-ease-out), transform var(--animation-length-s) var(--better-ease-out);
+  --interactive-transition: color var(--animation-length-s) var(--better-ease-out), background-color var(--animation-length-s) var(--better-ease-out), border-color var(--animation-length-s) var(--better-ease-out), box-shadow var(--animation-length-s) var(--better-ease-out), transform var(--animation-length-s) var(--better-ease-out), font-weight var(--animation-length-s) var(--better-ease-out), opacity var(--animation-length-s) var(--better-ease-out);
 }
 
 @media screen and (max-width: 919px) {

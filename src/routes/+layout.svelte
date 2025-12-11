@@ -1,8 +1,8 @@
 <script lang="ts">
+import 'modern-normalize/modern-normalize.css'
 import '$lib/assets/scss/main.scss'
 import favicon from '$lib/assets/favicon.svg'
 import Navigation from '$lib/components/Navigation.svelte'
-import 'modern-normalize/modern-normalize.css'
 import { page } from '$app/state'
 import { fade } from 'svelte/transition'
 import { fadein } from '$lib/actions/fadein.svelte'
