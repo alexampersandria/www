@@ -93,7 +93,6 @@ afterNavigate(() => {
 <style lang="scss">
 .navigation {
   --transition-duration: var(--animation-length-m);
-  overflow-y: auto;
 
   transition:
     background-color var(--transition-duration) var(--better-ease-out),
@@ -121,6 +120,12 @@ afterNavigate(() => {
     min-width: var(--navigation-min-width);
     padding-inline: 0;
     left: var(--padding-l);
+    pointer-events: none;
+
+    .menu,
+    .links {
+      pointer-events: initial;
+    }
 
     .menu {
       .toggle-content {
@@ -190,14 +195,23 @@ afterNavigate(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    overflow: hidden;
+    flex: 1 1 auto;
+    gap: var(--padding-m);
 
     .links {
+      flex-shrink: 1;
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
+      padding-bottom: var(--padding-l);
 
       :global(a) {
         white-space: nowrap;
+      }
+
+      .nav-link {
+        flex-shrink: 0;
       }
 
       .nav-link-sub {
@@ -208,16 +222,18 @@ afterNavigate(() => {
     }
 
     .copy {
+      flex-shrink: 0;
       color: var(--text-accent);
       font-size: var(--font-size-xs);
-      margin-top: var(--padding-l);
     }
 
+    :global(a),
     a,
     .copy {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      pointer-events: all;
     }
   }
 }
