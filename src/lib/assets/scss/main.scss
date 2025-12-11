@@ -62,7 +62,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--padding-m);
-  padding-block: var(--padding-l);
+  padding-block: var(--padding-xl);
+
+  &.center {
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .container {
@@ -399,5 +405,30 @@ $spacing-directions: (
     .p#{$dir-abbr}-#{$size-name} {
       padding-#{$dir-name}: #{$size-value};
     }
+  }
+}
+
+// Lucide
+
+.lucide-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.1em;
+  flex-shrink: 0;
+}
+
+/* lucide icon alignment fix, use wrapper for default 1.5rem lucide icon size */
+.lucide-icon-wrapper {
+  position: relative;
+  top: 1px;
+  font-size: inherit;
+
+  height: 0;
+
+  .lucide-icon {
+    font-size: inherit;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: -0.15em;
   }
 }

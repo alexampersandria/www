@@ -1,7 +1,7 @@
 <script lang="ts">
 import { me } from '$lib/data/me'
 
-let { pronouns = false } = $props()
+let { pronouns = false, 'all-links': allLinks = false } = $props()
 </script>
 
 <div class="me">
@@ -18,6 +18,7 @@ let { pronouns = false } = $props()
   </div>
 
   {#if me.pronouns || me.email}
+    {@const shownLinks = allLinks ? me.links : me.resumeLinks}
     <div class="details flex center gap-x-l">
       {#if me.pronouns && pronouns}
         <div class="pronouns">{me.pronouns.join('/')}</div>
@@ -28,7 +29,8 @@ let { pronouns = false } = $props()
       {#if me.phone}
         <a class="phone" href="tel:{me.phone}">{me.phone}</a>
       {/if}
-      {#each me.links as link}
+
+      {#each shownLinks as link}
         <a class="link" href={link.href} target={link.target}>{link.label}</a>
       {/each}
     </div>

@@ -6,6 +6,7 @@
       "name": "www",
       "dependencies": {
         "jiti": "^2.6.1",
+        "lucide-svelte": "^0.560.0",
         "modern-normalize": "^3.0.1",
         "rehype-slug": "^6.0.0",
         "runed": "^0.37.0",
@@ -441,6 +442,8 @@
     "locate-path": ["locate-path@6.0.0", "", { "dependencies": { "p-locate": "^5.0.0" } }, "sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw=="],
 
     "lodash.merge": ["lodash.merge@4.6.2", "", {}, "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="],
+
+    "lucide-svelte": ["lucide-svelte@0.560.0", "", { "peerDependencies": { "svelte": "^3 || ^4 || ^5.0.0-next.42" } }, "sha512-TsQV0pQp3wl++PHCYTRWiJPBZbJ+kVDxXASEF+r4FDw1dn5zSq1aDqxXjqkZ/1Ks6K7ND8xYmy8W6m3kVaoaMw=="],
 
     "lz-string": ["lz-string@1.5.0", "", { "bin": { "lz-string": "bin/bin.js" } }, "sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ=="],
 

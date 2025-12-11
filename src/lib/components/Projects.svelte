@@ -1,5 +1,6 @@
 <script lang="ts">
 import { projects } from '$lib/data/projects'
+import Link from './Link.svelte'
 </script>
 
 <div class="projects">
@@ -23,13 +24,7 @@ import { projects } from '$lib/data/projects'
           View Project
         </a>
         {#each project.links as link}
-          <a
-            class="external-link"
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer">
-            {link.label}
-          </a>
+          <Link {...link} />
         {/each}
       </div>
     </div>

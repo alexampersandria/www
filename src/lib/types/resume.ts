@@ -4,6 +4,11 @@ export type Resume = {
   education: Education[]
 }
 
+export type CurrentPosition = {
+  company?: string
+  role?: Role
+}
+
 export type Period = {
   from: string
   to: string | 'Present'

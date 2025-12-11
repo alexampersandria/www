@@ -25,16 +25,18 @@ let routeSegments = $derived.by(() => {
 })
 </script>
 
-{#key urlWithoutIdAndQuery}
-  <div
-    in:fade={{ duration: 250 }}
-    out:fade={{ duration: 250, delay: 250 }}
-    class="backdrop {routeSegments.join(' ')}">
-  </div>
-{/key}
+<div class="backdrop-wrapper">
+  {#key urlWithoutIdAndQuery}
+    <div
+      in:fade={{ duration: 250 }}
+      out:fade={{ duration: 250, delay: 250 }}
+      class="backdrop {routeSegments.join(' ')}">
+    </div>
+  {/key}
+</div>
 
 <style lang="scss">
-.backdrop {
+.backdrop-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -42,68 +44,131 @@ let routeSegments = $derived.by(() => {
   height: 100vh;
   z-index: -1;
 
-  &.root {
-    background: linear-gradient(
-      to bottom,
-      var(--color-base-20),
-      var(--color-base-40)
-    );
-  }
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-  &.resume {
-    background: linear-gradient(
-      to bottom,
-      var(--color-base-10),
-      var(--color-base-00)
-    );
-  }
+    &.root {
+      --pulse-length: 10s;
 
-  &.photography {
-    background: linear-gradient(
-      to bottom,
-      var(--color-blue-10),
-      var(--color-blue-30)
-    );
-  }
-
-  &.music {
-    background: linear-gradient(
-      to bottom,
-      var(--color-orange-10),
-      var(--color-orange-30)
-    );
-  }
-
-  &.projects {
-    background: linear-gradient(
-      to bottom,
-      var(--color-pink-10),
-      var(--color-pink-20)
-    );
-
-    &.diarycomputer {
       background: linear-gradient(
         to bottom,
-        var(--color-base-05),
-        var(--color-base-10)
+        var(--color-base-20),
+        var(--color-base-40)
+      );
+
+      &:after,
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: repeat;
+        background-size: contain;
+      }
+
+      &:after {
+        background: linear-gradient(
+          to bottom,
+          var(--color-pink-40),
+          var(--color-purple-80)
+        );
+        mask-image: linear-gradient(
+          to left,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        opacity: 0.2;
+        animation: opacityPulse var(--pulse-length) infinite;
+      }
+
+      &:before {
+        background: linear-gradient(
+          to bottom,
+          var(--color-blue-40),
+          var(--color-base-70)
+        );
+        mask-image: linear-gradient(
+          to top right,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        opacity: 0.2;
+        animation: opacityPulse var(--pulse-length)
+          calc(var(--pulse-length) / -2) infinite;
+      }
+
+      @keyframes opacityPulse {
+        0%,
+        100% {
+          opacity: 0.05;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+    }
+
+    &.resume {
+      background: linear-gradient(
+        to bottom,
+        var(--color-base-10),
+        var(--color-base-00)
       );
     }
 
-    &.mitmediano {
+    &.photography {
       background: linear-gradient(
         to bottom,
-        var(--color-green-00),
-        var(--color-green-10)
+        var(--color-blue-10),
+        var(--color-blue-30)
       );
     }
-  }
 
-  &.unknown {
-    background: linear-gradient(
-      to bottom,
-      var(--color-base-10),
-      var(--color-base-20)
-    );
+    &.music {
+      background: linear-gradient(
+        to bottom,
+        var(--color-orange-10),
+        var(--color-orange-30)
+      );
+    }
+
+    &.projects {
+      background: linear-gradient(
+        to bottom,
+        var(--color-pink-10),
+        var(--color-pink-20)
+      );
+
+      &.diarycomputer {
+        background: linear-gradient(
+          to bottom,
+          var(--color-base-05),
+          var(--color-base-10)
+        );
+      }
+
+      &.mitmediano {
+        background: linear-gradient(
+          to bottom,
+          var(--color-green-00),
+          var(--color-green-10)
+        );
+      }
+    }
+
+    &.unknown {
+      background: linear-gradient(
+        to bottom,
+        var(--color-base-10),
+        var(--color-base-20)
+      );
+    }
   }
 }
 </style>

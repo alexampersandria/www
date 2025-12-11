@@ -1,4 +1,5 @@
 <script lang="ts">
+import Link from '$lib/components/Link.svelte'
 import { projects } from '$lib/data/projects'
 
 let project = projects.find(project => project.id === 'diary.computer')
@@ -13,7 +14,7 @@ let project = projects.find(project => project.id === 'diary.computer')
 
   <div class="links flex center gap-s">
     {#each project?.links as link}
-      <a href={link.href} target={link.target}>{link.label}</a>
+      <Link {...link} />
     {/each}
   </div>
 </div>

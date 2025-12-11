@@ -98,11 +98,6 @@ afterNavigate(() => {
   .content-wrapper {
     white-space: normal;
     padding-top: var(--navigation-top-clearance);
-
-    main {
-      padding-block: var(--padding-l);
-      padding-bottom: min(25vh, var(--block-size-xxs));
-    }
   }
 }
 </style>

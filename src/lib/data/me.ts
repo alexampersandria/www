@@ -1,4 +1,10 @@
 import type { Me } from '$lib/types/me'
+import { links } from './links'
+
+const allowedLinks = ['GitHub', 'LinkedIn']
+export const resumeLinks = links.filter(link =>
+  allowedLinks.includes(link.label),
+)
 
 export const me: Me = {
   photo: 'me.webp',
@@ -6,8 +12,6 @@ export const me: Me = {
   birthday: '1998-07-22',
   pronouns: ['she', 'it'],
   email: 'liarabruchmann@gmail.com',
-  links: [
-    { label: 'GitHub', href: 'https://github.com/alexampersandria' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/liaraio' },
-  ],
+  resumeLinks: resumeLinks,
+  links: links,
 }

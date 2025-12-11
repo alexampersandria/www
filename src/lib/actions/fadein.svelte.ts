@@ -57,7 +57,13 @@ export const fadein = (
     let parent = el.parentElement
     while (parent) {
       if (!parent.classList.contains('fadein')) {
-        parent.classList.add('fadein', `fadein-${fadeinIndex}`)
+        if (
+          !parent.classList.contains('app-page') &&
+          !parent.classList.contains('navigation') &&
+          !parent.classList.contains('navigation-content')
+        ) {
+          parent.classList.add('fadein', `fadein-${fadeinIndex}`)
+        }
       }
       if (parent === node) break
       parent = parent.parentElement

@@ -3,6 +3,7 @@ import type { Release } from '$lib/types/music'
 import { formatId } from '$lib/utils/id'
 import { formatReleaseType } from '$lib/utils/music'
 import { formatDate, formatSeconds } from '$lib/utils/time'
+import Link from '../Link.svelte'
 
 let {
   release,
@@ -61,9 +62,7 @@ let showTracklist = $derived.by(() => {
       Buy / Listen
       <div class="links">
         {#each release.links as link}
-          <a href={link.href} target="_blank" rel="noopener noreferrer">
-            {link.label}
-          </a>
+          <Link {...link} />
         {/each}
       </div>
     </div>

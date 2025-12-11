@@ -30,8 +30,28 @@ export const projects: Project[] = [
   },
   {
     title: 'Mit Mediano',
-    description: 'podcast platform',
+    description: 'Podcast platform',
     id: 'mit.mediano',
+    period: {
+      from: 'October 2022',
+      to: 'February 2025',
+    },
+  },
+  {
+    title: 'liara.io (old)',
+    description: 'Old personal website written in Vue',
+    id: 'old.liara.io',
+    links: [
+      { label: 'Archived Website', href: 'https://old.liara.io' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/alexampersandria/old.liara.io',
+      },
+    ],
+    period: {
+      from: 'July 2022',
+      to: 'Present',
+    },
   },
 ]
 

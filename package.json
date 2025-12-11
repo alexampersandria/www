@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "jiti": "^2.6.1",
+    "lucide-svelte": "^0.560.0",
     "modern-normalize": "^3.0.1",
     "rehype-slug": "^6.0.0",
     "runed": "^0.37.0",
