@@ -115,6 +115,21 @@ afterNavigate(() => {
   left: 0;
   width: 100%;
 
+  .copy {
+    flex-shrink: 0;
+    color: var(--text-accent);
+    font-size: var(--font-size-xs);
+  }
+
+  a,
+  :global(a),
+  .copy {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: initial;
+  }
+
   @media screen and (min-width: 920px) {
     max-width: calc((50vw - var(--container-width) / 2) - var(--padding-l));
     min-width: var(--navigation-min-width);
@@ -135,13 +150,14 @@ afterNavigate(() => {
   }
 
   @media screen and (max-width: 919px) {
-    pointer-events: none;
     width: 100%;
 
     .menu,
-    .navigation-content {
-      pointer-events: all;
+    .navigation-content.open {
+      pointer-events: initial;
     }
+
+    pointer-events: none;
 
     &:after {
       content: '';
@@ -176,11 +192,24 @@ afterNavigate(() => {
       height: 100%;
       width: 100%;
 
+      font-size: var(--font-size-l);
+      padding-top: var(--padding-m);
+
+      :global(.table-of-contents) {
+        font-size: var(--font-size-l);
+      }
+
       &:not(.open) {
         opacity: 0;
-        pointer-events: none;
         transform: translateY(1rem);
         filter: blur(4px);
+
+        &,
+        a,
+        :global(a),
+        .copy {
+          pointer-events: none;
+        }
       }
 
       &.open {
@@ -219,21 +248,6 @@ afterNavigate(() => {
           padding-left: var(--padding-m);
         }
       }
-    }
-
-    .copy {
-      flex-shrink: 0;
-      color: var(--text-accent);
-      font-size: var(--font-size-xs);
-    }
-
-    :global(a),
-    a,
-    .copy {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      pointer-events: all;
     }
   }
 }
