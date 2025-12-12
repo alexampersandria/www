@@ -36,10 +36,6 @@ let status: 'loading' | 'not-found' | 'loaded' = $derived.by(() => {
 </script>
 
 <div class="app-page">
-  <div class="container mobile-only">
-    <a href="/projects" class="back"> ← Projects </a>
-  </div>
-
   {#key `${data.id}-${status}`}
     <div class="project" use:fadein>
       {#if status === 'loaded'}
