@@ -7,7 +7,7 @@ let { item }: NestedNavigationElementItemProps = $props()
 </script>
 
 <a
-  class="table-of-contents-item level-{item.level ?? 2}"
+  class="nested-navigation-item level-{item.level ?? 2}"
   href={item.href}
   use:active={{ exact: true }}>
   {item.label}
@@ -18,7 +18,7 @@ let { item }: NestedNavigationElementItemProps = $props()
 {/each}
 
 <style lang="scss">
-.table-of-contents-item {
+.nested-navigation-item {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

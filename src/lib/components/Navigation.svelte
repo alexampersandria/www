@@ -196,10 +196,6 @@ afterNavigate(() => {
       font-size: var(--font-size-l);
       padding-top: var(--padding-m);
 
-      :global(.table-of-contents) {
-        font-size: var(--font-size-l);
-      }
-
       &:not(.open) {
         opacity: 0;
         transform: translateY(1rem);
@@ -245,7 +241,7 @@ afterNavigate(() => {
       }
 
       .nav-link-sub {
-        :global(.table-of-contents) {
+        :global(.nested-navigation) {
           padding-left: var(--padding-m);
         }
       }

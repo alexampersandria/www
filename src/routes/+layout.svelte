@@ -59,10 +59,33 @@ let mounted = $state(false)
 onMount(() => {
   mounted = true
 })
+
+let pagetitle = $derived.by(() => {
+  let root = 'liara.io'
+  let path = page.url.pathname
+  let firstSegment = path.split('/').filter(Boolean)[0]
+  let lastSegment = path.split('/').filter(Boolean).pop()
+  let segmentCount = path.split('/').filter(Boolean).length
+
+  if (segmentCount === 1 && firstSegment) {
+    let formattedSegment = firstSegment
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase())
+    return `${formattedSegment} - ${root}`
+  } else if (tableofcontents?.title) {
+    return `${tableofcontents.title} - ${root}`
+  } else if (lastSegment) {
+    let formattedSegment = lastSegment.replace(/-/g, ' ')
+    return `${formattedSegment} - ${root}`
+  } else {
+    return root
+  }
+})
 </script>
 
 <svelte:head>
   <link rel="icon" href={favicon} />
+  <title>{pagetitle}</title>
 </svelte:head>
 
 <Backdrop />
