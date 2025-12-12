@@ -80,17 +80,19 @@
 
 .container {
   max-width: var(--container-width);
-  margin-left: max(calc(50vw - var(--container-width) / 2), var(--navigation-min-width) + var(--padding-l));
+  margin-left: var(--navigation-max-width);
   margin-right: var(--padding-l);
 
+  /**
+   * Might overflow if navigation min width is too large
+   * only use max if not super important information, e.g. images (NO TEXT)
+   */
   &.max {
     max-width: max(calc(100% - var(--navigation-min-width) * 2), var(--container-width));
-    margin-left: var(--navigation-min-width);
-    margin-right: 0;
+    margin-inline: var(--navigation-min-width);
 
     &.shrink {
-      margin-left: max(var(--navigation-min-width), var(--padding-l));
-      margin-right: var(--padding-l);
+      margin-inline: max(var(--navigation-minwidth), var(--padding-l));
     }
   }
 }

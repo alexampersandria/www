@@ -52,6 +52,7 @@ $click-transform: scale(0.97);
   }
 
   --container-width: #{$container-width};
+  --navigation-max-width: max(calc(50vw - var(--container-width) / 2), var(--navigation-min-width) + var(--padding-l));
 
   --radius-xxs: #{$radius-xxs};
   --radius-xs: #{$radius-xs};
