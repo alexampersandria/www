@@ -92,7 +92,7 @@
     margin-inline: var(--navigation-min-width);
 
     &.shrink {
-      margin-inline: max(var(--navigation-minwidth), var(--padding-l));
+      margin-inline: max(var(--navigation-min-width), var(--padding-l));
     }
   }
 }
