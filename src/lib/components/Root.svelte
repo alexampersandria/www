@@ -25,13 +25,13 @@ import Logo from './Logo.svelte'
 
   <div class="contact-info dimmed">
     {#if me.email}
-      <div class="contact flex gap-s">
+      <div class="contact flex gapx-s">
         get in touch via <a href={`mailto:${me.email}`}>{me.email}</a>
       </div>
     {/if}
 
     {#if me.links && me.links.length}
-      <div class="links flex gap-s">
+      <div class="links flex gapx-s">
         <div class="pre-link">find me @</div>
         {#each me.links as link, index}
           {#if me.links.length > 1 && index === me.links.length - 1}
@@ -42,7 +42,7 @@ import Logo from './Logo.svelte'
       </div>
     {/if}
 
-    <div class="more-links flex gap-s">
+    <div class="more-links flex gapx-s">
       <div class="pre-link">...or checkout my</div>
       <a href="/projects">Projects</a>
       <a href="/resume">Resume</a>

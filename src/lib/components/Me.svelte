@@ -19,7 +19,7 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
 
   {#if me.pronouns || me.email}
     {@const shownLinks = allLinks ? me.links : me.resumeLinks}
-    <div class="details flex center gap-x-l">
+    <div class="details flex center gapx-l">
       {#if me.pronouns && pronouns}
         <div class="pronouns">{me.pronouns.join('/')}</div>
       {/if}
