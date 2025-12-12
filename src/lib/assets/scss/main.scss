@@ -64,9 +64,13 @@
   padding-block: var(--padding-xl);
 
   &.center {
-    height: 100dvh;
+    height: 100svh;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 919px) {
+      height: auto;
+    }
   }
 }
 

@@ -7,11 +7,11 @@ import Logo from './Logo.svelte'
 </script>
 
 <div class="root">
-  <div class="logo extra-extra-large">
+  <div class="logo extra-extra-large flex center">
     <Logo />
   </div>
 
-  <div class="about-me muted flex center column">
+  <div class="about-me muted">
     <div class="background">
       {age} year old full stack developer from Copenhagen, Denmark<br />
     </div>
@@ -23,7 +23,7 @@ import Logo from './Logo.svelte'
     {/if}
   </div>
 
-  <div class="contact-info dimmed flex center column">
+  <div class="contact-info dimmed">
     {#if me.email}
       <div class="contact flex gap-s">
         get in touch via <a href={`mailto:${me.email}`}>{me.email}</a>
@@ -56,8 +56,6 @@ import Logo from './Logo.svelte'
 .root {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: var(--padding-m);
 }
 </style>
