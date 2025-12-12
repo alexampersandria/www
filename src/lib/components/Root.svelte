@@ -57,5 +57,6 @@ import Logo from './Logo.svelte'
   display: flex;
   flex-direction: column;
   gap: var(--padding-m);
+  padding-bottom: var(--padding-l);
 }
 </style>
