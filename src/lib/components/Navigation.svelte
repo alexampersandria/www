@@ -134,6 +134,7 @@ afterNavigate(() => {
     max-width: calc((50vw - var(--container-width) / 2) - var(--padding-l));
     min-width: var(--navigation-min-width);
     padding-inline: 0;
+    padding-right: var(--padding-m);
     left: var(--padding-l);
     pointer-events: none;
 
