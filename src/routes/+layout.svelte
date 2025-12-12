@@ -10,6 +10,7 @@ import Backdrop from '$lib/components/Backdrop.svelte'
 import { generateTableOfContents } from '$lib/utils/toc'
 import { afterNavigate, goto } from '$app/navigation'
 import { redirectTo } from '$lib/utils/redirect'
+import { onMount } from 'svelte'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
@@ -53,6 +54,11 @@ afterNavigate(() => {
     goto(redirect)
   }
 })
+
+let mounted = $state(false)
+onMount(() => {
+  mounted = true
+})
 </script>
 
 <svelte:head>
@@ -61,26 +67,31 @@ afterNavigate(() => {
 
 <Backdrop />
 
-<div class="root">
-  <div class="navigation-wrapper">
-    <Navigation {tableofcontents} />
-  </div>
+{#if mounted}
+  <div class="root" in:fade={{ duration: 50 }}>
+    <div class="navigation-wrapper">
+      <Navigation {tableofcontents} />
+    </div>
 
-  <div class="viewport">
-    {#key page.route.id}
-      <div
-        class="route {routeClass}"
-        in:fade={{ duration: animationDuration(), delay: animationDuration() }}
-        out:fade={{ duration: animationDuration() }}>
-        <div class="content-wrapper">
-          <main use:fadein bind:this={main}>
-            {@render children()}
-          </main>
+    <div class="viewport">
+      {#key page.route.id}
+        <div
+          class="route {routeClass}"
+          in:fade={{
+            duration: animationDuration(),
+            delay: animationDuration(),
+          }}
+          out:fade={{ duration: animationDuration() }}>
+          <div class="content-wrapper">
+            <main use:fadein bind:this={main}>
+              {@render children()}
+            </main>
+          </div>
         </div>
-      </div>
-    {/key}
+      {/key}
+    </div>
   </div>
-</div>
+{/if}
 
 <style lang="scss">
 .root {
