@@ -1,6 +1,7 @@
 <script lang="ts">
 import { resume } from '$lib/data/resume'
 import { formatId } from '$lib/utils/id'
+import TimePeriod from './TimePeriod.svelte'
 </script>
 
 <div class="resume">
@@ -25,18 +26,18 @@ import { formatId } from '$lib/utils/id'
               <div id={positionId} class="company">
                 {position.company}
               </div>
-              <div class="period">
-                {#if !multirole}
-                  <div class="from">{position.roles[0].period.from}</div>
-                  <div class="to">{position.roles[0].period.to}</div>
-                {:else}
-                  {@const startingRole =
-                    position.roles[position.roles.length - 1]}
-                  {@const latestRole = position.roles[0]}
-                  <div class="from">{startingRole.period.from}</div>
-                  <div class="to">{latestRole.period.to}</div>
-                {/if}
-              </div>
+              {#if !multirole}
+                <TimePeriod
+                  from={position.roles[0].period.from}
+                  to={position.roles[0].period.to} />
+              {:else}
+                {@const startingRole =
+                  position.roles[position.roles.length - 1]}
+                {@const latestRole = position.roles[0]}
+                <TimePeriod
+                  from={startingRole.period.from}
+                  to={latestRole.period.to} />
+              {/if}
             </div>
             <div class="roles">
               {#each position.roles as role}
@@ -46,10 +47,7 @@ import { formatId } from '$lib/utils/id'
                     {role.title}
                   </div>
                   {#if multirole}
-                    <div class="period">
-                      <div class="from">{role.period.from}</div>
-                      <div class="to">{role.period.to}</div>
-                    </div>
+                    <TimePeriod from={role.period.from} to={role.period.to} />
                   {/if}
                   {#if role.description}
                     <div class="description">
@@ -76,10 +74,7 @@ import { formatId } from '$lib/utils/id'
               <div id={schoolId} class="institution">
                 {school.institution}
               </div>
-              <div class="period">
-                <div class="from">{school.period.from}</div>
-                <div class="to">{school.period.to}</div>
-              </div>
+              <TimePeriod from={school.period.from} to={school.period.to} />
             </div>
             <div class="flex space-between">
               <div class="degree">{school.degree}</div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { projects } from '$lib/data/projects'
 import Link from './Link.svelte'
+import TimePeriod from './TimePeriod.svelte'
 </script>
 
 <div class="projects">
@@ -11,10 +12,7 @@ import Link from './Link.svelte'
       <div class="flex space-between">
         <div class="title">{project.title}</div>
         {#if project.period}
-          <div class="period">
-            <div class="from">{project.period.from}</div>
-            <div class="to">{project.period.to}</div>
-          </div>
+          <TimePeriod from={project.period.from} to={project.period.to} />
         {/if}
       </div>
 

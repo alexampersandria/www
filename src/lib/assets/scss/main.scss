@@ -97,17 +97,6 @@
   }
 }
 
-.period {
-  display: flex;
-  gap: var(--padding-s);
-  color: var(--text-secondary);
-
-  .from::after {
-    content: '→';
-    margin-left: var(--padding-s);
-  }
-}
-
 // Typography
 
 @for $i from 1 through 6 {
