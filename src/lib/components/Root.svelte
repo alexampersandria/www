@@ -2,61 +2,87 @@
 import { me } from '$lib/data/me'
 import { age } from '$lib/utils/age'
 import { currentJob } from '$lib/utils/currentjob'
+import { experience } from '$lib/utils/experience'
+import Company from './Company.svelte'
 import Link from './Link.svelte'
 import Logo from './Logo.svelte'
 </script>
 
-<div class="root">
-  <div class="logo extra-extra-large flex center">
-    <Logo />
-  </div>
-
-  <div class="about-me muted">
-    <div class="background">
-      {age} year old full stack developer from Copenhagen, Denmark<br />
+<div class="container min">
+  <div class="app-page root-page gap-xl">
+    <div class="header flex gap-l align-center">
+      <div class="logo">
+        <Logo small />
+      </div>
+      <div class="info">
+        <div class="name highlight">
+          {me.name}
+        </div>
+        {#if currentJob}
+          <div class="current-job">
+            {currentJob.role.title} @ <Company {...currentJob.company} />
+          </div>
+        {/if}
+      </div>
     </div>
 
-    {#if currentJob.company}
-      <div class="position">
-        Working as {currentJob.role?.title} @ {currentJob.company}
+    <div class="about">
+      <div class="background">
+        <span class="section-1">
+          {age} year old full stack developer from Copenhagen, Denmark, with more
+          than
+          {experience} years of experience as both a developer and in a lead role.
+        </span>
+        <span class="section-2">
+          I strive to create beautiful software that feels as good to use as it
+          looks,
+        </span>
+        <span class="section-3">
+          obsessing over the tiniest details that really make the difference.
+        </span>
       </div>
-    {/if}
-  </div>
+    </div>
 
-  <div class="contact-info dimmed">
-    {#if me.email}
-      <div class="contact flex gapx-s">
-        get in touch via <a href={`mailto:${me.email}`}>{me.email}</a>
+    <div class="contact">
+      {#if me.email}
+        <div class="email flex gapx-m space-between">
+          <div class="pre-link">Get in touch via</div>
+
+          <div class="links flex gapx-m">
+            <Link href={`mailto:${me.email}`} label={me.email} />
+          </div>
+        </div>
+      {/if}
+
+      <div class="resume-links flex gapx-m space-between">
+        <div class="pre-link">Or find me at</div>
+
+        <div class="links flex gapx-m">
+          {#each me.resumeLinks as link}
+            <Link {...link} />
+          {/each}
+        </div>
       </div>
-    {/if}
-
-    {#if me.links && me.links.length}
-      <div class="links flex gapx-s">
-        <div class="pre-link">find me @</div>
-        {#each me.links as link, index}
-          {#if me.links.length > 1 && index === me.links.length - 1}
-            <div class="pre-link">or</div>
-          {/if}
-          <Link {...link} />
-        {/each}
-      </div>
-    {/if}
-
-    <div class="more-links flex gapx-s">
-      <div class="pre-link">...or checkout my</div>
-      <a href="/projects">Projects</a>
-      <a href="/resume">Resume</a>
-      <div class="pre-link">or</div>
-      <a href="/music">Music</a>
     </div>
   </div>
 </div>
 
-<style lang="scss">
-.root {
-  display: flex;
-  flex-direction: column;
-  gap: var(--padding-m);
-  padding-bottom: var(--padding-l);
+<style>
+.root-page {
+  .header {
+    .logo {
+      background-color: var(--color-background-secondary);
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-s);
+      padding: var(--padding-xs);
+
+      :global(img) {
+        transform: translateY(-1px);
+      }
+    }
+  }
 }
 </style>

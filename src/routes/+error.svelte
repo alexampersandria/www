@@ -19,7 +19,7 @@ onMount(() => {
         <div class="status large">
           Error {page.status}
         </div>
-        <div class="message small muted">
+        <div class="message small">
           {#if page.error}
             {page.error.message}
           {:else}

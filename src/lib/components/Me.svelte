@@ -1,5 +1,6 @@
 <script lang="ts">
 import { me } from '$lib/data/me'
+import Link from './Link.svelte'
 
 let { pronouns = false, 'all-links': allLinks = false } = $props()
 </script>
@@ -31,7 +32,7 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
       {/if}
 
       {#each shownLinks as link}
-        <a class="link" href={link.href} target={link.target}>{link.label}</a>
+        <Link {...link} />
       {/each}
     </div>
   {/if}

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { resume } from '$lib/data/resume'
 import { formatId } from '$lib/utils/id'
+import Company from './Company.svelte'
 import TimePeriod from './TimePeriod.svelte'
 </script>
 
@@ -20,11 +21,11 @@ import TimePeriod from './TimePeriod.svelte'
       <div class="section-content">
         {#each resume.positions as position}
           {@const multirole = position.roles.length > 1}
-          {@const positionId = formatId(position.company)}
+          {@const positionId = formatId(position.company.name)}
           <div class="position" class:multirole>
             <div class="flex space-between">
               <div id={positionId} class="company">
-                {position.company}
+                <Company {...position.company} />
               </div>
               {#if !multirole}
                 <TimePeriod
@@ -93,7 +94,7 @@ import TimePeriod from './TimePeriod.svelte'
 .resume {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-l);
+  gap: var(--padding-xl);
 
   .background,
   .description {
@@ -114,7 +115,8 @@ import TimePeriod from './TimePeriod.svelte'
     }
 
     .section-title {
-      font-weight: 600;
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-highlight);
     }
 
     .section-content {
@@ -124,7 +126,8 @@ import TimePeriod from './TimePeriod.svelte'
 
       .company,
       .institution {
-        font-weight: 600;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text-highlight);
       }
 
       .position.multirole {
@@ -138,14 +141,14 @@ import TimePeriod from './TimePeriod.svelte'
           gap: var(--padding-s);
 
           padding-left: var(--padding-m);
-          border-left: 2px solid var(--text-accent);
+          border-left: 2px solid var(--color-text-muted);
+
+          .role .title {
+            color: var(--color-text-highlight);
+          }
         }
       }
     }
-  }
-
-  .incomplete {
-    color: var(--text-secondary);
   }
 }
 </style>

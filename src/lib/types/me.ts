@@ -7,6 +7,7 @@ export type Me = {
   birthday?: string
   links?: Link[]
   resumeLinks?: Link[]
+  otherLinks?: Link[]
   phone?: string
   email?: string
 }

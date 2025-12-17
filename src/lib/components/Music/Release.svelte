@@ -27,7 +27,7 @@ let showTracklist = $derived.by(() => {
 
 <div class="release">
   <div class="release-info">
-    <div class="flex space-between">
+    <div class="flex space-between gapx-l">
       <h3 id={formatId(release.title)} class="nostyle release-title">
         {release.title}
       </h3>
@@ -55,18 +55,18 @@ let showTracklist = $derived.by(() => {
         </div>
       {/if}
     </div>
-  </div>
 
-  {#if release.links && release.links.length > 0}
-    <div class="release-links">
-      Buy / Listen
-      <div class="links">
-        {#each release.links as link}
-          <Link {...link} />
-        {/each}
+    {#if release.links && release.links.length > 0}
+      <div class="release-links flex space-between gapx-l">
+        Buy / Listen
+        <div class="links">
+          {#each release.links as link}
+            <Link {...link} />
+          {/each}
+        </div>
       </div>
-    </div>
-  {/if}
+    {/if}
+  </div>
 
   {#if showTracklist}
     <div class="tracklist">
@@ -90,7 +90,7 @@ let showTracklist = $derived.by(() => {
   display: flex;
   flex-direction: column;
   gap: var(--padding-xs);
-  color: var(--text-primary);
+  color: var(--color-text-normal);
 
   &:has(*:target) {
     position: relative;
@@ -108,17 +108,17 @@ let showTracklist = $derived.by(() => {
       z-index: -1;
       border-radius: var(--radius-s);
 
-      box-shadow: 0 0 0 var(--focus-shadow-offset) var(--text-accent);
+      box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
 
       @keyframes pulse {
         0% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--text-accent);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
         }
         20% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--text-secondary);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-normal);
         }
         60% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--text-accent);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
         }
       }
 
@@ -126,38 +126,46 @@ let showTracklist = $derived.by(() => {
     }
   }
 
-  .release-date {
-    color: var(--text-secondary);
-  }
-
-  .release-duration {
-    color: var(--text-secondary);
-  }
-
   .release-meta {
     display: flex;
-    gap: var(--padding-m);
-    color: var(--text-secondary);
+    flex-wrap: wrap;
+    column-gap: var(--padding-m);
   }
 
   .links {
     display: flex;
-    gap: var(--padding-s);
+    flex-wrap: wrap;
+    column-gap: var(--padding-s);
   }
 
   .tracklist {
     .track {
       display: flex;
-      gap: var(--padding-s);
+      column-gap: var(--padding-s);
 
       .track-number {
         width: 2ch;
-        color: var(--text-secondary);
+      }
+
+      .track-title {
+        color: var(--color-text-highlight);
       }
 
       .track-duration {
         margin-left: auto;
-        color: var(--text-secondary);
+      }
+
+      .track-number,
+      .track-duration,
+      .track-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .track-number,
+      .track-duration {
+        flex-shrink: 0;
       }
     }
   }

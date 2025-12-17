@@ -39,9 +39,7 @@ const defaultTarget = $derived.by(() => {
 
 <style lang="scss">
 .link {
-  display: flex;
-  align-items: center;
-  gap: var(--padding-xxs);
+  display: inline-block;
 
   .link-icon {
     flex-shrink: 0;

@@ -3,7 +3,7 @@ import { projectsAsNavigationElements } from './projects'
 
 export const navigation: NavigationElement[] = [
   {
-    label: 'Root',
+    label: 'Me',
     href: '/',
   },
   {

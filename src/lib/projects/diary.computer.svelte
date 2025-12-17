@@ -6,7 +6,7 @@ let project = projects.find(project => project.id === 'diary.computer')
 </script>
 
 <div class="container centered pb-l">
-  <h2 class="mb-xxs">diary.computer</h2>
+  <h1 class="mb-xxs">diary.computer</h1>
 
   <div class="subtitle">
     mood tracker & micro-journaling — written in Rust & Svelte

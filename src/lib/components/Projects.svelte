@@ -5,8 +5,6 @@ import TimePeriod from './TimePeriod.svelte'
 </script>
 
 <div class="projects">
-  <h2 class="nostyle projects-title">Projects</h2>
-
   {#each projects as project}
     <div class="project">
       <div class="flex space-between">
@@ -33,12 +31,7 @@ import TimePeriod from './TimePeriod.svelte'
 .projects {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-l);
-
-  .projects-title {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-  }
+  gap: var(--padding-xl);
 
   .project {
     display: flex;
@@ -47,7 +40,8 @@ import TimePeriod from './TimePeriod.svelte'
 
     .title {
       font-size: var(--font-size-l);
-      font-weight: 600;
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-highlight);
     }
 
     .links {

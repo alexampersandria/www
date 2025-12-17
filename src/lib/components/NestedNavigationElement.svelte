@@ -6,30 +6,37 @@ import type { NestedNavigationElementItemProps } from '$lib/types/navigation'
 let { item }: NestedNavigationElementItemProps = $props()
 </script>
 
-<a
-  class="nested-navigation-item level-{item.level ?? 2}"
-  href={item.href}
-  use:active={{ exact: true }}>
-  {item.label}
-</a>
+<div class="nested-navigation-item-wrapper">
+  <a
+    class="nested-navigation-item level-{item.level ?? 2}"
+    href={item.href}
+    use:active={{ exact: true }}>
+    {item.label}
+  </a>
+</div>
 
 {#each item.children as child}
   <NestedNavigationElement item={child} />
 {/each}
 
 <style lang="scss">
-.nested-navigation-item {
+.nested-navigation-item-wrapper {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 
-  &.level-1 {
-    display: none;
-  }
+  .nested-navigation-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-  @for $i from 1 through 6 {
-    &.level-#{$i} {
-      padding-left: #{$i - 2}ch;
+    &.level-1 {
+      display: none;
+    }
+
+    @for $i from 1 through 6 {
+      &.level-#{$i} {
+        padding-left: calc(#{$i - 2} * 2ch);
+      }
     }
   }
 }

@@ -21,6 +21,5 @@ let { from, to }: Period = $props()
 .time-period {
   display: flex;
   gap: var(--padding-s);
-  color: var(--text-secondary);
 }
 </style>

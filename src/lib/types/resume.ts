@@ -5,8 +5,8 @@ export type Resume = {
 }
 
 export type CurrentPosition = {
-  company?: string
-  role?: Role
+  company: Company
+  role: Role
 }
 
 export type Period = {
@@ -15,8 +15,13 @@ export type Period = {
 }
 
 export type Position = {
-  company: string
+  company: Company
   roles: Role[]
+}
+
+export type Company = {
+  name: string
+  href?: string
 }
 
 export type Role = {

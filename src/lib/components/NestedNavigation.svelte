@@ -1,5 +1,5 @@
 <script lang="ts">
-import TableOfContentsItem from './NestedNavigationElement.svelte'
+import NestedNavigationElement from './NestedNavigationElement.svelte'
 import type { NestedNavigationElementProps } from '$lib/types/navigation'
 
 let { items }: NestedNavigationElementProps = $props()
@@ -7,7 +7,7 @@ let { items }: NestedNavigationElementProps = $props()
 
 <div class="nested-navigation">
   {#each items as item}
-    <TableOfContentsItem {item} />
+    <NestedNavigationElement {item} />
   {/each}
 </div>
 

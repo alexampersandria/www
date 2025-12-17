@@ -5,6 +5,9 @@ const allowedLinks = ['GitHub', 'LinkedIn']
 export const resumeLinks = links.filter(link =>
   allowedLinks.includes(link.label),
 )
+export const otherLinks = links.filter(
+  link => !allowedLinks.includes(link.label),
+)
 
 export const me: Me = {
   photo: 'me.webp',
@@ -13,5 +16,6 @@ export const me: Me = {
   pronouns: ['she', 'it'],
   email: 'liarabruchmann@gmail.com',
   resumeLinks: resumeLinks,
+  otherLinks: otherLinks,
   links: links,
 }

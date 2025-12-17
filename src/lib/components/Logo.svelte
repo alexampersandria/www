@@ -1,15 +1,22 @@
 <script lang="ts">
 import logo from '$lib/assets/img/liara.svg'
+import smalllogo from '$lib/assets/img/lia.svg'
+
+let {
+  small = false,
+}: {
+  small?: boolean
+} = $props()
+
+let logoToUse = $derived.by(() => {
+  return small ? smalllogo : logo
+})
 </script>
 
-<div class="logo">
-  <img src={logo} alt="Logo" />
-</div>
+<img class="logo" src={logoToUse} alt="Logo" />
 
 <style lang="scss">
-.logo {
-  img {
-    height: 1em;
-  }
+img.logo {
+  height: 1em;
 }
 </style>

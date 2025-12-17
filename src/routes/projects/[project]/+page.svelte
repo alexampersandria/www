@@ -45,7 +45,7 @@ let status: 'loading' | 'not-found' | 'loaded' = $derived.by(() => {
       {:else if status === 'not-found'}
         <div class="container">
           <div class="large">Error</div>
-          <div class="small muted">
+          <div class="small">
             View for project <code>{data.id}</code> not found
             <br />
             If you believe this to be an error <NewIssue /> on GitHub

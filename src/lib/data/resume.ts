@@ -3,10 +3,13 @@ import { experience } from '$lib/utils/experience'
 import type { Resume } from '../types/resume'
 
 export const resume: Resume = {
-  background: `${age} year old full stack developer from Copenhagen with more than ${experience} years of experience, both as a developer and in a lead role`,
+  background: `${age} year old full stack developer from Copenhagen with more than ${experience} years of experience, both as a developer and in a lead role.`,
   positions: [
     {
-      company: 'Udviklings- og Forenklingsstyrelsen',
+      company: {
+        name: 'Udviklings- og Forenklingsstyrelsen',
+        href: 'https://ufst.dk/',
+      },
       roles: [
         {
           title: 'Frontend Lead',
@@ -19,7 +22,10 @@ export const resume: Resume = {
       ],
     },
     {
-      company: 'Mediano',
+      company: {
+        name: 'Mediano',
+        href: 'https://mediano.nu/',
+      },
       roles: [
         {
           title: 'Full Stack Developer + Creative Lead',
@@ -31,7 +37,10 @@ export const resume: Resume = {
       ],
     },
     {
-      company: 'SimCorp',
+      company: {
+        name: 'SimCorp',
+        href: 'https://simcorp.com/',
+      },
       roles: [
         {
           title: 'Software Developer',

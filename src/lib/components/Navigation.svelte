@@ -64,22 +64,24 @@ afterNavigate(() => {
       {#each navigation as link}
         {#key link.href}
           {@const active = isActiveRoute(link.href)}
-          <a href={link.href} class="nav-link" class:active>
-            {link.label}
-          </a>
-          {#if active}
-            {#if link.children && link.children.length > 0}
-              <div class="nav-link-sub children" use:fadein>
-                <TableOfContents items={link.children} />
-              </div>
-            {:else if link.showTableOfContents && tocnav && tocnav.length > 0}
-              {#key tocnav}
-                <div class="nav-link-sub toc" use:fadein>
-                  <TableOfContents items={tocnav} />
+          <div class="link-wrapper">
+            <a href={link.href} class="nav-link" class:active>
+              {link.label}
+            </a>
+            {#if active}
+              {#if link.children && link.children.length > 0}
+                <div class="nav-link-sub children" use:fadein>
+                  <TableOfContents items={link.children} />
                 </div>
-              {/key}
+              {:else if link.showTableOfContents && tocnav && tocnav.length > 0}
+                {#key tocnav}
+                  <div class="nav-link-sub toc" use:fadein>
+                    <TableOfContents items={tocnav} />
+                  </div>
+                {/key}
+              {/if}
             {/if}
-          {/if}
+          </div>
         {/key}
       {/each}
     </div>
@@ -111,7 +113,7 @@ afterNavigate(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--padding-l);
+  padding: var(--padding-xl);
   gap: var(--padding-m);
   position: fixed;
   z-index: 1998;
@@ -121,7 +123,7 @@ afterNavigate(() => {
 
   .copy {
     flex-shrink: 0;
-    color: var(--text-accent);
+    color: var(--color-text-muted);
     font-size: var(--font-size-xs);
   }
 
@@ -134,12 +136,27 @@ afterNavigate(() => {
     pointer-events: initial;
   }
 
+  .link-wrapper {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+  }
+
+  a,
+  :global(a) {
+    text-decoration: none;
+
+    &:not(.active, :hover) {
+      color: var(--color-text-normal);
+    }
+  }
+
   @media screen and (min-width: 920px) {
-    max-width: var(--navigation-max-width);
+    max-width: calc(var(--navigation-max-width) - var(--padding-xl));
     min-width: var(--navigation-min-width);
     padding-inline: 0;
     padding-right: var(--padding-m);
-    left: var(--padding-l);
+    left: var(--padding-xl);
     pointer-events: none;
 
     .menu,
@@ -240,7 +257,7 @@ afterNavigate(() => {
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding-bottom: var(--padding-l);
+      padding-bottom: var(--padding-xl);
 
       :global(a) {
         white-space: nowrap;
@@ -252,7 +269,7 @@ afterNavigate(() => {
 
       .nav-link-sub {
         :global(.nested-navigation) {
-          padding-left: var(--padding-m);
+          padding-left: 2ch;
         }
       }
     }

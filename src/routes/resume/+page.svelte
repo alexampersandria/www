@@ -17,6 +17,6 @@ import Resume from '$lib/components/Resume.svelte'
 .resume {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-l);
+  gap: var(--padding-xl);
 }
 </style>

@@ -1,4 +1,5 @@
 $container-width: calc(8ch * 10);
+$container-width-small: calc(8ch * 8);
 
 $font-size-xs: 0.75rem;
 $font-size-s: 0.875rem;
@@ -18,8 +19,9 @@ $padding-xxs: 0.25rem;
 $padding-xs: 0.5rem;
 $padding-s: 0.75rem;
 $padding-m: 1rem;
-$padding-l: 2rem;
-$padding-xl: 4rem;
+$padding-l: 1.5rem;
+$padding-xl: 2rem;
+$padding-xxl: 4rem;
 
 $block-size-xxs: 16rem;
 $block-size-xs: 24rem;
@@ -52,7 +54,10 @@ $click-transform: scale(0.97);
   }
 
   --container-width: #{$container-width};
-  --navigation-max-width: max(calc(50vw - var(--container-width) / 2), var(--navigation-min-width) + var(--padding-l));
+  --container-width-small: #{$container-width-small};
+
+  --navigation-max-width: max(calc(50vw - var(--container-width) / 2), var(--navigation-min-width) + var(--padding-xl));
+  --navigation-max-width-small-container: max(calc(50vw - var(--container-width-small) / 2), var(--navigation-min-width) + var(--padding-xl));
 
   --radius-xxs: #{$radius-xxs};
   --radius-xs: #{$radius-xs};
@@ -67,6 +72,7 @@ $click-transform: scale(0.97);
   --padding-m: #{$padding-m};
   --padding-l: #{$padding-l};
   --padding-xl: #{$padding-xl};
+  --padding-xxl: #{$padding-xxl};
 
   --font-size-xs: #{$font-size-xs};
   --font-size-s: #{$font-size-s};
@@ -82,18 +88,24 @@ $click-transform: scale(0.97);
   --block-size-l: #{$block-size-l};
   --block-size-xl: #{$block-size-xl};
 
-  --input-padding: var(--padding-s) var(--padding-m);
+  --input-padding: var(--padding-xs) var(--padding-m);
   --input-radius: var(--radius-xs);
 
   --button-padding: var(--input-padding);
   --button-content-gap: var(--padding-xs);
-  --button-radius: var(--input-radius);
-  --button-height: 2.5rem;
+  --button-radius: calc(infinity * 1px);
 
   --border-width: #{$border-width};
   --focus-shadow-width: #{$focus-shadow-width};
   --focus-shadow-offset: var(--focus-shadow-width);
   --state-shadow-width: var(--focus-shadow-width);
+
+  --underline-height: 1px;
+  --underline-offset: 3px;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 500;
+  --font-weight-bold: 700;
 
   --blockquote-border-width: #{$blockquote-border-width};
 
@@ -106,6 +118,11 @@ $click-transform: scale(0.97);
   --h4-size: var(--font-size-l);
   --h5-size: var(--font-size-m);
   --h6-size: var(--font-size-s);
+
+  --h1-size: var(--font-size-xl);
+  --h2-size: var(--font-size-l);
+  --h3-size: var(--font-size-l);
+  --h4-size: var(--font-size-m);
 
   --code-size: var(--font-size-s);
 
@@ -126,7 +143,7 @@ $click-transform: scale(0.97);
   --animation-length-l: 400ms;
   --animation-length-xl: 600ms;
   --animation-length-xxl: 1200ms;
-  --interactive-transition: color var(--animation-length-s) var(--better-ease-out), background-color var(--animation-length-s) var(--better-ease-out), border-color var(--animation-length-s) var(--better-ease-out), box-shadow var(--animation-length-s) var(--better-ease-out), transform var(--animation-length-s) var(--better-ease-out), font-weight var(--animation-length-s) var(--better-ease-out), opacity var(--animation-length-s) var(--better-ease-out);
+  --interactive-transition: color var(--animation-length-s) var(--better-ease-out), background-color var(--animation-length-s) var(--better-ease-out), border-color var(--animation-length-s) var(--better-ease-out), box-shadow var(--animation-length-s) var(--better-ease-out), transform var(--animation-length-s) var(--better-ease-out), font-weight var(--animation-length-s) var(--better-ease-out), opacity var(--animation-length-s) var(--better-ease-out), text-decoration-color var(--animation-length-s) var(--better-ease-out);
 }
 
 @media screen and (max-width: 919px) {

@@ -13,6 +13,6 @@ import Release from './Release.svelte'
 .discography {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-l);
+  gap: var(--padding-xl);
 }
 </style>

@@ -246,16 +246,25 @@ $color-pink-100: oklch($oklch-l-100 $oklch-c-100 347.15 / 1);
   --color-pink-90: #{$color-pink-90};
   --color-pink-100: #{$color-pink-100};
 
-  --text-primary: #ffffff;
-  --text-secondary: #ffffffbb;
-  --text-accent: #ffffff74;
+  --color-text-normal: #ffffffbb;
+  --color-text-highlight: #ffffff;
+  --color-text-muted: #ffffff74;
 
-  --background-primary: #000000;
-  --background-secondary: #00000088;
-  --background-accent: #00000044;
+  --color-underline: #ffffff33;
 
-  --selection-color: #ffffff33;
-  --selection-text-color: var(--text-primary);
+  --color-background-primary: #000000;
+  --color-background-secondary: #00000088;
+  --color-background-accent: #00000044;
+
+  --color-selection: #ffffff33;
+  --color-selection-text: var(--color-text-highlight);
   --color-focus: var(--color-pink-50);
-  --color-focus-text: var(--text-primary);
+  --color-focus-text: var(--color-text-normal);
+
+  --button-background: var(--color-background-accent);
+  --button-background-hover: var(--color-background-secondary);
+  --button-background-active: var(--color-background-primary);
+  --button-text: var(--color-text-normal);
+  --button-text-hover: var(--color-text-highlight);
+  --button-text-active: var(--color-text-muted);
 }
