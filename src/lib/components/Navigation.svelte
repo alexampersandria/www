@@ -53,7 +53,11 @@ afterNavigate(() => {
 
       <div class="toggle-content">
         <button onclick={toggleMenu} class="plain" aria-label="Toggle menu">
-          menu
+          {#if open}
+            close
+          {:else}
+            menu
+          {/if}
         </button>
       </div>
     </div>

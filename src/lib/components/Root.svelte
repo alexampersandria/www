@@ -11,7 +11,7 @@ import Logo from './Logo.svelte'
 <div class="container min">
   <div class="app-page root-page gap-xl">
     <div class="header flex gap-l align-center">
-      <div class="logo">
+      <div class="logo desktop-only">
         <Logo small />
       </div>
       <div class="info">
@@ -81,6 +81,13 @@ import Logo from './Logo.svelte'
 
       :global(img) {
         transform: translateY(-1px);
+      }
+    }
+
+    .name {
+      @media screen and (max-width: 919px) {
+        font-size: var(--font-size-l);
+        font-weight: var(--font-weight-bold);
       }
     }
   }
