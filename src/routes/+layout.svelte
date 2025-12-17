@@ -30,24 +30,6 @@ let routeClass = $derived.by(() => {
   return ''
 })
 
-let animationDuration = () => {
-  const long = 300
-  const short = 100
-  try {
-    let minWidth = window
-      .getComputedStyle(document.documentElement)
-      .getPropertyValue('--navigation-min-width')
-
-    if (minWidth.trim() === '0px') {
-      return long
-    } else {
-      return short
-    }
-  } catch {
-    return short
-  }
-}
-
 afterNavigate(() => {
   const redirect = redirectTo(page.url.pathname)
   if (redirect) {
@@ -98,13 +80,14 @@ let pagetitle = $derived.by(() => {
 
     <div class="viewport">
       {#key page.route.id}
+        {@const animationDuration = 100}
         <div
           class="route {routeClass}"
           in:fade={{
-            duration: animationDuration(),
-            delay: animationDuration(),
+            duration: animationDuration,
+            delay: animationDuration,
           }}
-          out:fade={{ duration: animationDuration() }}>
+          out:fade={{ duration: animationDuration }}>
           <div class="content-wrapper">
             <main use:fadein bind:this={main}>
               {@render children()}

@@ -92,17 +92,20 @@ afterNavigate(() => {
 
 <style lang="scss">
 .navigation {
+  --transition-delay: 0ms;
   --transition-duration: var(--animation-length-m);
 
   transition:
     background-color var(--transition-duration) var(--better-ease-out),
     backdrop-filter var(--transition-duration) var(--better-ease-out);
+  transition-delay: var(--transition-delay);
 
   .navigation-content {
     transition:
       opacity var(--transition-duration) var(--better-ease-out),
       transform var(--transition-duration) var(--better-ease-out),
       filter var(--transition-duration) var(--better-ease-out);
+    transition-delay: var(--transition-delay);
   }
 
   display: flex;
@@ -111,6 +114,7 @@ afterNavigate(() => {
   padding: var(--padding-l);
   gap: var(--padding-m);
   position: fixed;
+  z-index: 1998;
   top: 0;
   left: 0;
   width: 100%;
@@ -151,6 +155,11 @@ afterNavigate(() => {
   }
 
   @media screen and (max-width: 919px) {
+    &:not(:has(.open)) {
+      // wait for root out:fade duration
+      --transition-delay: 100ms;
+    }
+
     width: 100%;
 
     .menu,
@@ -177,6 +186,7 @@ afterNavigate(() => {
       transition:
         opacity var(--transition-duration) var(--better-ease-out),
         backdrop-filter var(--transition-duration) var(--better-ease-out);
+      transition-delay: var(--transition-delay);
       z-index: -1;
     }
 
