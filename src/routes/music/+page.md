@@ -20,9 +20,11 @@ My song The Bruises On My Skin was featured on Kavaris [CULT TAPE 001 — SELECT
 
 CULT TAPE 001 was featured in [Swine Daily's "Best Music Of 2024 – Special Mentions (60x)"](https://swinedaily.com/best-music-of-2024-special-mentions/) at #20.
 
+---
+
 ## Creator Safe
 
-> **Last Updated:** December 17 2025
+> **Last Updated:** December 18 2025
 >
 > [See edit history on GitHub](https://github.com/alexampersandria/www/commits/main/src/routes/music/%2Bpage.md)
 
@@ -49,15 +51,21 @@ No projects promoting, generating revenue from, or wherein a participant is reci
 - NFTs
 - Generative AI
 
+This list is not exhaustive, and I reserve the right to deny use of my music in any project I find objectionable, and it may be updated at any time without notice.
+
 If you are in any way in doubt about whether you violate these limitations, it means you probabaly do and should refrain from using my music.
 
 ### Credit
 
 When using this music, you must credit the artist as follows in some form as well as provide a link to this page, formatting is flexible depending on format, but should be clear and legible, as an example:
 
-**Song:** Bruises Reprise
-**Artist:** Brüch
-Courtesy of Brüch — [liara.io/music](https://liara.io/music)
+> **Song:** Bruises Reprise
+>
+> **Artist:** Brüch
+>
+> Courtesy of Brüch [liara.io/music](https://liara.io/music)
+
+---
 
 ## Spotify Disclaimer
 
