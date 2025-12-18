@@ -17,7 +17,7 @@ import TimePeriod from '../TimePeriod.svelte'
       <div class="description">{project.description}</div>
       <div class="links">
         <a class="view-project" href={`/projects/${project.id}`}>
-          View Project
+          Project details
         </a>
         {#each project.links as link}
           <Link {...link} />
