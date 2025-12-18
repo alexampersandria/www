@@ -12,7 +12,7 @@ import { afterNavigate, goto } from '$app/navigation'
 import { redirectTo } from '$lib/utils/redirect'
 import { onMount } from 'svelte'
 import TableOfContents from '$lib/components/navigtation/TableOfContents.svelte'
-import { ScrollState } from 'runed'
+import { ScrollState, watch } from 'runed'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
@@ -70,6 +70,23 @@ let pagetitle = $derived.by(() => {
     return root
   }
 })
+
+const debugtoc = () => {
+  let toc = generateTableOfContents(main)
+  console.log('debug', toc)
+  console.log('derived', tableofcontents)
+}
+
+watch(
+  () => main,
+  () => {
+    console.log('main changed', main)
+    setTimeout(() => {
+      let toc = generateTableOfContents(main)
+      console.log('regenerated toc', toc)
+    })
+  },
+)
 </script>
 
 <svelte:head>
@@ -84,6 +101,13 @@ let pagetitle = $derived.by(() => {
     <div class="navigation-wrapper">
       <Navigation />
     </div>
+
+    <button
+      onclick={debugtoc}
+      class="plain"
+      style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1000;">
+      Debug TOC
+    </button>
 
     <div class="viewport" bind:this={viewport}>
       {#key page.route.id}
