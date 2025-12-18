@@ -12,7 +12,7 @@ export const navigation: NavigationElement[] = [
     children: projectsAsNavigationElements,
   },
   { label: 'Resume', href: '/resume' },
-  { label: 'Photography', href: '/photography' },
+  // { label: 'Photography', href: '/photography' },
   { label: 'Music', href: '/music', showTableOfContents: true },
 ]
 

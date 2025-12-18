@@ -28,6 +28,12 @@ export const projects: Project[] = [
       },
     ],
   },
+]
+
+/**
+ * #TODO: fill these out and add them to the main `projects` array above
+ */
+const _projectsMissingData: Project[] = [
   {
     title: 'Mit Mediano',
     description: 'Podcast platform',

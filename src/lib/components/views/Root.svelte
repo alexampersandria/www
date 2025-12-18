@@ -6,6 +6,10 @@ import { experience } from '$lib/utils/experience'
 import Company from '../Company.svelte'
 import Link from '../Link.svelte'
 import Logo from '../Logo.svelte'
+
+let links = $derived.by(() => {
+  return me.links
+})
 </script>
 
 <div class="container min">
@@ -48,21 +52,24 @@ import Logo from '../Logo.svelte'
         <div class="email flex gapx-m space-between">
           <div class="pre-link">Get in touch via</div>
 
-          <div class="links flex gapx-m">
-            <Link href={`mailto:${me.email}`} label={me.email} />
-          </div>
+          <Link href={`mailto:${me.email}`} label={me.email} />
         </div>
       {/if}
 
-      <div class="resume-links flex gapx-m space-between">
-        <div class="pre-link">Or find me at</div>
+      {#if links}
+        <div class="resume-links flex gapx-m space-between">
+          <div class="pre-link">Or find me at</div>
 
-        <div class="links flex gapx-m">
-          {#each me.resumeLinks as link}
-            <Link {...link} />
-          {/each}
+          <div class="links flex gapx-s">
+            {#each links as link, index}
+              {#if links.length > 1 && index === links.length - 1}
+                <div class="or">or</div>
+              {/if}
+              <Link {...link} />
+            {/each}
+          </div>
         </div>
-      </div>
+      {/if}
     </div>
   </div>
 </div>
