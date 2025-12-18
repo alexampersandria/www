@@ -71,12 +71,6 @@ let pagetitle = $derived.by(() => {
   }
 })
 
-const debugtoc = () => {
-  let toc = generateTableOfContents(main)
-  console.log('debug', toc)
-  console.log('derived', tableofcontents)
-}
-
 watch(
   () => main,
   () => {
@@ -101,13 +95,6 @@ watch(
     <div class="navigation-wrapper">
       <Navigation />
     </div>
-
-    <button
-      onclick={debugtoc}
-      class="plain"
-      style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1000;">
-      Debug TOC
-    </button>
 
     <div class="viewport" bind:this={viewport}>
       {#key page.route.id}
