@@ -158,7 +158,6 @@ let cursorPosition = $derived.by(() => {
     display: none;
   }
 
-  a,
   :global(a) {
     text-decoration: none;
 
@@ -187,7 +186,7 @@ let cursorPosition = $derived.by(() => {
       left: calc(-1 * var(--cursor-width));
       width: var(--cursor-width);
       height: var(--cursor-height);
-      background-color: var(--color-base-80);
+      background-color: var(--color-text-normal);
       border-radius: calc(1px * infinity);
       transition: top var(--animation-length-s) var(--better-ease-out);
     }
