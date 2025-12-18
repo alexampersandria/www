@@ -23,18 +23,26 @@ let tocnav: NestedNavigationItem[] = $derived.by(() => {
   )
 })
 
-let totalElements = $derived.by(() => {
-  let count = 0
-  let countItems = (items: NestedNavigationItem[]) => {
-    for (let item of items) {
-      count++
+let flatItems = $derived.by(() => {
+  let items: TableOfContentsItem[] = []
+  const flatten = (tocItems: TableOfContentsItem[]) => {
+    for (let item of tocItems) {
+      items.push(item)
       if (item.children) {
-        countItems(item.children)
+        flatten(item.children)
       }
     }
   }
-  countItems(tocnav)
-  return count
+  if (tableofcontents) {
+    flatten(tableofcontents.items)
+  }
+  // remove level 1 items
+  items = items.filter(item => item.level > 1)
+  return items
+})
+
+let totalElements = $derived.by(() => {
+  return flatItems.length
 })
 
 let active = $derived.by<TableOfContentsItem | null>(() => {
@@ -100,6 +108,17 @@ let activeItem = $derived.by<NestedNavigationItem | null>(() => {
   if (!active) return null
   return tableOfContentsItemToNavigationItem(active)
 })
+
+let activeIndex = $derived.by(() => {
+  if (!activeItem) return -1
+  return flatItems.findIndex(item => item.id === active!.id)
+})
+
+// return percentage position of active index
+let cursorPosition = $derived.by(() => {
+  if (activeIndex === -1) return '0%'
+  return `${(activeIndex / totalElements) * 100}%`
+})
 </script>
 
 {#if tocnav && totalElements > 1}
@@ -111,6 +130,7 @@ let activeItem = $derived.by<NestedNavigationItem | null>(() => {
       <div class="text">On this page</div>
     </div>
     <div class="items">
+      <div class="cursor" style="top: {cursorPosition}"></div>
       <NestedNavigation items={tocnav} {activeItem} />
     </div>
   </div>
@@ -157,8 +177,20 @@ let activeItem = $derived.by<NestedNavigationItem | null>(() => {
   .items {
     border-left: 2px solid var(--color-background-accent);
     padding-left: var(--padding-m);
-
     font-size: var(--font-size-s);
+    position: relative;
+
+    .cursor {
+      --cursor-height: 1.477rem;
+      --cursor-width: 2px;
+      position: absolute;
+      left: calc(-1 * var(--cursor-width));
+      width: var(--cursor-width);
+      height: var(--cursor-height);
+      background-color: var(--color-base-80);
+      border-radius: calc(1px * infinity);
+      transition: top var(--animation-length-s) var(--better-ease-out);
+    }
   }
 }
 </style>
