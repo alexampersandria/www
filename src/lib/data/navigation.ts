@@ -13,10 +13,9 @@ export const navigation: NavigationElement[] = [
   },
   { label: 'Resume', href: '/resume' },
   // { label: 'Photography', href: '/photography' },
-  { label: 'Music', href: '/music', showTableOfContents: true },
+  { label: 'Music', href: '/music' },
 ]
 
 export type NavigationElement = Link & {
   children?: NavigationElement[]
-  showTableOfContents?: boolean
 }

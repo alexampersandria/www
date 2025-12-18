@@ -3,23 +3,8 @@ import { afterNavigate } from '$app/navigation'
 import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
-import type { NestedNavigationItem } from '$lib/types/navigation'
-import {
-  tableOfContentsItemToNavigationItem,
-  type TableOfContents as TableOfContentsType,
-} from '$lib/utils/toc'
 import Logo from '../Logo.svelte'
 import NestedNavigation from './NestedNavigation.svelte'
-
-let { tableofcontents }: { tableofcontents?: TableOfContentsType } = $props()
-
-let tocnav: NestedNavigationItem[] = $derived.by(() => {
-  return (
-    tableofcontents?.items.map(item => {
-      return tableOfContentsItemToNavigationItem(item)
-    }) ?? []
-  )
-})
 
 let open = $state(false)
 let toggleMenu = () => {
@@ -59,18 +44,10 @@ afterNavigate(() => {
             <a href={link.href} class="nav-link" class:active>
               {link.label}
             </a>
-            {#if active}
-              {#if link.children && link.children.length > 0}
-                <div class="nav-link-sub children" use:fadein>
-                  <NestedNavigation items={link.children} />
-                </div>
-              {:else if link.showTableOfContents && tocnav && tocnav.length > 0}
-                {#key tocnav}
-                  <div class="nav-link-sub toc" use:fadein>
-                    <NestedNavigation items={tocnav} />
-                  </div>
-                {/key}
-              {/if}
+            {#if link.children && link.children.length > 0}
+              <div class="nav-link-sub children" use:fadein>
+                <NestedNavigation items={link.children} />
+              </div>
             {/if}
           </div>
         {/key}
@@ -131,6 +108,12 @@ afterNavigate(() => {
     overflow: hidden;
     text-overflow: ellipsis;
     flex-shrink: 0;
+
+    &:not(:has(.active)) {
+      .children {
+        display: none;
+      }
+    }
   }
 
   a,
