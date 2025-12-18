@@ -1,8 +1,14 @@
+import type { NestedNavigationItem } from '$lib/types/navigation'
+
 export type TableOfContentsItem = {
   id: string
   title: string
   level: number
   children: TableOfContentsItem[]
+  position: {
+    top: number
+    left: number
+  }
 }
 
 export type TableOfContents = {
@@ -20,6 +26,11 @@ export const generateTableOfContents = (
     return { title: undefined, items: [] }
   }
 
+  const rootPosition = {
+    top: root.getBoundingClientRect().top,
+    left: root.getBoundingClientRect().left,
+  }
+
   const toc: TableOfContentsItem[] = []
   const stack: TableOfContentsItem[] = []
   let title: string | undefined = undefined
@@ -34,6 +45,10 @@ export const generateTableOfContents = (
       title: el.textContent || '',
       level,
       children: [],
+      position: {
+        top: el.getBoundingClientRect().top - rootPosition.top,
+        left: el.getBoundingClientRect().left - rootPosition.left,
+      },
     }
 
     if (highestLevel === undefined || level < highestLevel) {
@@ -55,4 +70,17 @@ export const generateTableOfContents = (
   })
 
   return { title, items: toc }
+}
+
+export const tableOfContentsItemToNavigationItem = (
+  item: TableOfContentsItem,
+): NestedNavigationItem => {
+  return {
+    label: item.title,
+    href: `#${item.id}`,
+    level: item.level,
+    children: item.children.map(child =>
+      tableOfContentsItemToNavigationItem(child),
+    ),
+  }
 }

@@ -2,12 +2,12 @@
 import NestedNavigationElement from './NestedNavigationElement.svelte'
 import type { NestedNavigationElementProps } from '$lib/types/navigation'
 
-let { items }: NestedNavigationElementProps = $props()
+let { items, activeItem }: NestedNavigationElementProps = $props()
 </script>
 
 <div class="nested-navigation">
   {#each items as item}
-    <NestedNavigationElement {item} />
+    <NestedNavigationElement {item} {activeItem} />
   {/each}
 </div>
 

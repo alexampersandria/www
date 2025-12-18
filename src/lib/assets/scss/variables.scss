@@ -74,6 +74,8 @@ $click-transform: scale(0.97);
   --padding-xl: #{$padding-xl};
   --padding-xxl: #{$padding-xxl};
 
+  --scroll-margin-top: var(--padding-l);
+
   --font-size-xs: #{$font-size-xs};
   --font-size-s: #{$font-size-s};
   --font-size-m: #{$font-size-m};

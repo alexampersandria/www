@@ -1,22 +1,26 @@
 <script lang="ts">
-import { active } from '$lib/actions/active.svelte'
 import NestedNavigationElement from './NestedNavigationElement.svelte'
 import type { NestedNavigationElementItemProps } from '$lib/types/navigation'
 
-let { item }: NestedNavigationElementItemProps = $props()
+let { item, activeItem }: NestedNavigationElementItemProps = $props()
+
+let active = $derived.by(() => {
+  if (!activeItem) return false
+  return item.href === activeItem.href
+})
 </script>
 
 <div class="nested-navigation-item-wrapper">
   <a
     class="nested-navigation-item level-{item.level ?? 2}"
     href={item.href}
-    use:active={{ exact: true }}>
+    class:active>
     {item.label}
   </a>
 </div>
 
 {#each item.children as child}
-  <NestedNavigationElement item={child} />
+  <NestedNavigationElement item={child} {activeItem} />
 {/each}
 
 <style lang="scss">

@@ -11,9 +11,12 @@ import { generateTableOfContents } from '$lib/utils/toc'
 import { afterNavigate, goto } from '$app/navigation'
 import { redirectTo } from '$lib/utils/redirect'
 import { onMount } from 'svelte'
+import TableOfContents from '$lib/components/navigtation/TableOfContents.svelte'
+import { ScrollState } from 'runed'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
+let viewport = $state<HTMLElement>()
 
 let tableofcontents = $derived.by(() => {
   return main ? generateTableOfContents(main) : undefined
@@ -40,6 +43,10 @@ afterNavigate(() => {
 let mounted = $state(false)
 onMount(() => {
   mounted = true
+})
+
+const scroll = new ScrollState({
+  element: () => viewport,
 })
 
 let pagetitle = $derived.by(() => {
@@ -75,10 +82,10 @@ let pagetitle = $derived.by(() => {
 {#if mounted}
   <div class="root" in:fade={{ duration: 50 }}>
     <div class="navigation-wrapper">
-      <Navigation {tableofcontents} />
+      <Navigation />
     </div>
 
-    <div class="viewport">
+    <div class="viewport" bind:this={viewport}>
       {#key page.route.id}
         {@const animationDuration = 100}
         <div
@@ -96,22 +103,28 @@ let pagetitle = $derived.by(() => {
         </div>
       {/key}
     </div>
+
+    <div class="toc-wrapper">
+      <TableOfContents {tableofcontents} {scroll} />
+    </div>
   </div>
 {/if}
 
 <style lang="scss">
 .root {
   .viewport {
+    max-height: 100vh;
+    overflow: auto;
+
     // don't show scrollbars when navigating
     &:not(:has(.route:only-child)) {
-      max-height: 100vh;
       overflow: hidden;
     }
-  }
 
-  .content-wrapper {
-    white-space: normal;
-    padding-top: var(--navigation-top-clearance);
+    .content-wrapper {
+      white-space: normal;
+      padding-top: var(--navigation-top-clearance);
+    }
   }
 }
 </style>

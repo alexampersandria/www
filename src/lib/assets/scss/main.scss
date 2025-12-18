@@ -35,7 +35,7 @@
 }
 
 *:target {
-  scroll-margin-top: var(--padding-m);
+  scroll-margin-top: var(--scroll-margin-top);
 }
 
 ::selection {

@@ -5,26 +5,13 @@ import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
 import type { NestedNavigationItem } from '$lib/types/navigation'
 import {
-  type TableOfContentsItem,
+  tableOfContentsItemToNavigationItem,
   type TableOfContents as TableOfContentsType,
 } from '$lib/utils/toc'
 import Logo from '../Logo.svelte'
-import TableOfContents from './NestedNavigation.svelte'
+import NestedNavigation from './NestedNavigation.svelte'
 
 let { tableofcontents }: { tableofcontents?: TableOfContentsType } = $props()
-
-const tableOfContentsItemToNavigationItem = (
-  item: TableOfContentsItem,
-): NestedNavigationItem => {
-  return {
-    label: item.title,
-    href: `#${item.id}`,
-    level: item.level,
-    children: item.children.map(child =>
-      tableOfContentsItemToNavigationItem(child),
-    ),
-  }
-}
 
 let tocnav: NestedNavigationItem[] = $derived.by(() => {
   return (
@@ -75,12 +62,12 @@ afterNavigate(() => {
             {#if active}
               {#if link.children && link.children.length > 0}
                 <div class="nav-link-sub children" use:fadein>
-                  <TableOfContents items={link.children} />
+                  <NestedNavigation items={link.children} />
                 </div>
               {:else if link.showTableOfContents && tocnav && tocnav.length > 0}
                 {#key tocnav}
                   <div class="nav-link-sub toc" use:fadein>
-                    <TableOfContents items={tocnav} />
+                    <NestedNavigation items={tocnav} />
                   </div>
                 {/key}
               {/if}
