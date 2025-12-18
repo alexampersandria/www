@@ -4,7 +4,6 @@ import type { NestedNavigationElementItemProps } from '$lib/types/navigation'
 import { active as activeAction } from '$lib/actions/active.svelte'
 
 let { item, activeItem }: NestedNavigationElementItemProps = $props()
-let self = $state<HTMLElement>()
 
 let active = $derived.by(() => {
   if (!activeItem) return false
@@ -14,7 +13,6 @@ let active = $derived.by(() => {
 
 <div class="nested-navigation-item-wrapper">
   <a
-    bind:this={self}
     class="nested-navigation-item level-{item.level ?? 2}"
     href={item.href}
     use:activeAction={{ exact: true }}
