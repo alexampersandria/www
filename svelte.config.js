@@ -22,7 +22,7 @@ const config = {
       extension: '.md',
       rehypePlugins: [rehypeSlug],
       layout: {
-        _: __dirname + '/src/lib/components/MarkdownLayout.svelte',
+        _: __dirname + '/src/lib/components/layout/MarkdownLayout.svelte',
       },
     }),
     vitePreprocess(),

@@ -1,6 +1,6 @@
 <script lang="ts">
 import Me from '$lib/components/Me.svelte'
-import Resume from '$lib/components/Resume.svelte'
+import Resume from '$lib/components/views/Resume.svelte'
 </script>
 
 <div class="app-page">

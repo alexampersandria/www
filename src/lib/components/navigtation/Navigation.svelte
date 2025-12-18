@@ -8,7 +8,7 @@ import {
   type TableOfContentsItem,
   type TableOfContents as TableOfContentsType,
 } from '$lib/utils/toc'
-import Logo from './Logo.svelte'
+import Logo from '../Logo.svelte'
 import TableOfContents from './NestedNavigation.svelte'
 
 let { tableofcontents }: { tableofcontents?: TableOfContentsType } = $props()

@@ -1,8 +1,8 @@
 <script lang="ts">
 import { resume } from '$lib/data/resume'
 import { formatId } from '$lib/utils/id'
-import Company from './Company.svelte'
-import TimePeriod from './TimePeriod.svelte'
+import Company from '../Company.svelte'
+import TimePeriod from '../TimePeriod.svelte'
 </script>
 
 <div class="resume">

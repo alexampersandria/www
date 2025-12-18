@@ -3,9 +3,9 @@ import { me } from '$lib/data/me'
 import { age } from '$lib/utils/age'
 import { currentJob } from '$lib/utils/currentjob'
 import { experience } from '$lib/utils/experience'
-import Company from './Company.svelte'
-import Link from './Link.svelte'
-import Logo from './Logo.svelte'
+import Company from '../Company.svelte'
+import Link from '../Link.svelte'
+import Logo from '../Logo.svelte'
 </script>
 
 <div class="container min">

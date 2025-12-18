@@ -1,7 +1,7 @@
 <script lang="ts">
 import { projects } from '$lib/data/projects'
-import Link from './Link.svelte'
-import TimePeriod from './TimePeriod.svelte'
+import Link from '../Link.svelte'
+import TimePeriod from '../TimePeriod.svelte'
 </script>
 
 <div class="projects">

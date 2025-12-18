@@ -1,7 +1,7 @@
 <script lang="ts">
 import { BookDashed } from 'lucide-svelte'
 import type { Snippet } from 'svelte'
-import NewIssue from './NewIssue.svelte'
+import NewIssue from '../NewIssue.svelte'
 
 let { children }: { children?: Snippet } = $props()
 </script>
