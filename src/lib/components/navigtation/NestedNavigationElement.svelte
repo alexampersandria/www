@@ -6,7 +6,7 @@ import { active as activeAction } from '$lib/actions/active.svelte'
 let { item, activeItem }: NestedNavigationElementItemProps = $props()
 
 let active = $derived.by(() => {
-  if (!activeItem) return false
+  if (!activeItem) return undefined
   return item.href === activeItem.href
 })
 </script>
@@ -16,7 +16,8 @@ let active = $derived.by(() => {
     class="nested-navigation-item level-{item.level ?? 2}"
     href={item.href}
     use:activeAction={{ exact: true }}
-    class:active>
+    class:active
+    class:noactive={active !== undefined}>
     {item.label}
   </a>
 </div>

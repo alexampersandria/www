@@ -38,6 +38,9 @@ export const isActiveRoute = (route: string, options?: ActiveOptions) => {
 export const active = (node: HTMLElement, options?: ActiveOptions) => {
   $effect(() => {
     const route = node.getAttribute('href')
+    if (node.classList.contains('noactive')) {
+      return
+    }
     if (route) {
       if (isActiveRoute(route, options)) {
         node.classList.add('active')
