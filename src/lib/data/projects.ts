@@ -28,6 +28,21 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    title: 'sv-store',
+    description:
+      'A Svelte library for creating and managing persistent stores using localStorage or sessionStorage',
+    id: 'sv-store',
+    period: {
+      from: 'January 2026',
+      to: 'Present',
+    },
+    links: [
+      { label: 'Website', href: 'https://sv-store.liara.io' },
+      { label: 'GitHub', href: 'https://github.com/alexampersandria/sv-store' },
+      { label: 'NPM', href: 'https://www.npmjs.com/package/sv-store' },
+    ],
+  },
 ]
 
 /**
