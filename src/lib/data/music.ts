@@ -20,6 +20,7 @@ export const discography: Release[] = [
         href: 'https://soundcloud.com/bruchumlaut/nonconform',
       },
     ],
+    tracks: [{ title: '(non)conform', artist: 'Brüch', duration: 301 }],
   },
   {
     type: 'album',
