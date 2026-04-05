@@ -2,6 +2,26 @@ import type { Release } from '$lib/types/music'
 
 export const discography: Release[] = [
   {
+    type: 'single',
+    title: '(non)conform',
+    artist: 'Brüch',
+    releaseDate: '2026-02-12',
+    links: [
+      {
+        label: 'Bandcamp',
+        href: 'https://bruchumlaut.bandcamp.com/track/non-conform',
+      },
+      {
+        label: 'Apple Music',
+        href: 'https://music.apple.com/ug/album/non-conform-single/1867517128',
+      },
+      {
+        label: 'SoundCloud',
+        href: 'https://soundcloud.com/bruchumlaut/nonconform',
+      },
+    ],
+  },
+  {
     type: 'album',
     title: 'The Moth',
     artist: 'Brüch',
