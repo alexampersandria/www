@@ -7,13 +7,25 @@ export const resume: Resume = {
   positions: [
     {
       company: {
+        name: 'Clever',
+        href: 'https://clever.dk/',
+      },
+      roles: [
+        {
+          title: 'Frontend Developer',
+          period: { from: 'March 2026', to: 'Present' },
+        },
+      ],
+    },
+    {
+      company: {
         name: 'Udviklings- og Forenklingsstyrelsen',
         href: 'https://ufst.dk/',
       },
       roles: [
         {
           title: 'Frontend Lead',
-          period: { from: 'December 2024', to: 'Present' },
+          period: { from: 'December 2024', to: 'February 2026' },
         },
         {
           title: 'Frontend Developer',
