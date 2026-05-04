@@ -20,6 +20,6 @@ import Me from '$lib/components/views/Me.svelte'
 .home {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--padding-xl) * 2);
+  gap: calc(var(--padding-xxl));
 }
 </style>

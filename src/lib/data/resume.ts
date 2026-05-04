@@ -12,7 +12,7 @@ export const resume: Resume = {
       },
       roles: [
         {
-          title: 'Frontend Developer',
+          title: 'Responsible for Frontend Development',
           period: { from: 'March 2026', to: 'Present' },
         },
       ],
@@ -40,7 +40,7 @@ export const resume: Resume = {
       },
       roles: [
         {
-          title: 'Full Stack Developer + Creative Lead',
+          title: 'Creative Lead + Full Stack Developer',
           period: {
             from: 'January 2021',
             to: 'February 2023',

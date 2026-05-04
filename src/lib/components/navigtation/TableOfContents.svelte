@@ -69,10 +69,10 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
     scrollMarginTopValue = parseFloat(scrollMarginTop.replace('px', '').trim())
   }
 
-  let scrollY = scroll.y
   let closest: TableOfContentsItem | null = null
   let closestDistance = Infinity
   let first: TableOfContentsItem | null = null
+  let last: TableOfContentsItem | null = null
 
   const checkItems = (items: TableOfContentsItem[]) => {
     if (items.length === 0) return
@@ -88,7 +88,7 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
       }
 
       let distance = Math.abs(
-        item.position.top - scrollY - scrollMarginTopValue,
+        item.position.top - scroll.y - scrollMarginTopValue,
       )
       if (distance < closestDistance) {
         closestDistance = distance
@@ -97,10 +97,16 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
       if (item.children) {
         checkItems(item.children)
       }
+
+      last = item
     }
   }
 
   checkItems(tableofcontents.items)
+
+  const scrolledToBottom = scroll.arrived.bottom
+  if (scrolledToBottom && last) return last
+
   return closest || first
 })
 
@@ -174,7 +180,7 @@ let cursorPosition = $derived.by(() => {
   }
 
   .items {
-    border-left: 2px solid var(--color-background-tertiary);
+    border-left: 2px solid var(--color-background-secondary);
     padding-left: var(--padding-m);
     font-size: var(--font-size-s);
     position: relative;

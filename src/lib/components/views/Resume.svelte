@@ -18,7 +18,9 @@ let {
 <div class="resume">
   {#if resume.background && background}
     <div class="section background">
-      <div id="background" class="section-title">Background</div>
+      <div id="background" class="section-title">
+        <div class="highlight">Background</div>
+      </div>
       <div class="section-content">
         {resume.background}
       </div>
@@ -27,7 +29,9 @@ let {
 
   {#if currentPosition && positions}
     <div class="section positions">
-      <div id="positions" class="section-title">Current</div>
+      <div id="positions" class="section-title">
+        <div class="highlight">Present</div>
+      </div>
       <div class="section-content">
         <Position position={currentPosition} />
       </div>
@@ -36,7 +40,9 @@ let {
 
   {#if resume.positions.length > 0 && positions}
     <div class="section positions">
-      <div id="positions" class="section-title">Past</div>
+      <div id="positions" class="section-title">
+        <div class="highlight">Past</div>
+      </div>
       <div class="section-content">
         {#each resume.positions as position}
           {@const isCurrent =
@@ -68,18 +74,12 @@ let {
   .section {
     display: flex;
     flex-direction: column;
-  }
-
-  & {
-    gap: var(--padding-l);
+    gap: var(--padding-m);
   }
 
   .section {
-    gap: var(--padding-m);
-
     .section-title {
-      font-weight: var(--font-weight-bold);
-      color: var(--color-text-strong);
+      display: flex;
     }
 
     .section-content {

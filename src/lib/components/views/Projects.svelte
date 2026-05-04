@@ -5,6 +5,9 @@ import TimePeriod from '../TimePeriod.svelte'
 </script>
 
 <div class="projects">
+  <div class="title flex">
+    <div class="highlight">Projects</div>
+  </div>
   {#each projects as project}
     <div class="project">
       <div class="flex space-between">
@@ -16,9 +19,6 @@ import TimePeriod from '../TimePeriod.svelte'
 
       <div class="description">{project.description}</div>
       <div class="links">
-        <a class="view-project" href={`/projects/${project.id}`}>
-          Project details
-        </a>
         {#each project.links as link}
           <Link {...link} />
         {/each}
@@ -31,7 +31,7 @@ import TimePeriod from '../TimePeriod.svelte'
 .projects {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xl);
+  gap: var(--padding-m);
 
   .project {
     display: flex;

@@ -12,6 +12,7 @@ export const otherLinks = links.filter(
 export const me: Me = {
   photo: 'me.webp',
   name: 'Liara Alexandria Brüchmann',
+  tagline: 'Developer, musician, photographer',
   birthday: '1998-07-22',
   pronouns: ['she', 'it'],
   email: 'liarabruchmann@gmail.com',

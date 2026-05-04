@@ -7,8 +7,10 @@ import Link from '../Link.svelte'
 
 let {
   release,
+  tracklist = true,
 }: {
   release: Release
+  tracklist?: boolean
 } = $props()
 
 let totalDuration = $derived.by(() => {
@@ -19,6 +21,7 @@ let totalDuration = $derived.by(() => {
 })
 
 let showTracklist = $derived.by(() => {
+  if (!tracklist) return false
   return (
     release.type !== 'single' && release.tracks && release.tracks.length > 1
   )
@@ -32,19 +35,19 @@ let showTracklist = $derived.by(() => {
         {release.title}
       </h3>
 
-      <div class="release-date">
-        {formatDate(release.releaseDate)}
+      <div class="release-type highlight">
+        {formatReleaseType(release.type)}
       </div>
     </div>
 
     <div class="release-meta">
-      <div class="release-type">
-        {formatReleaseType(release.type)}
+      <div class="release-date">
+        {formatDate(release.releaseDate)}
       </div>
 
       {#if showTracklist && release.tracks}
         <div class="release-trackcount">
-          {release.tracks.length} items
+          {release.tracks.length} tracks
         </div>
       {/if}
 

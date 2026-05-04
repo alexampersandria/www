@@ -7,27 +7,33 @@ let links = $derived.by(() => {
 })
 </script>
 
-<div class="contact">
-  {#if me.email}
-    <div class="email flex gapx-m space-between">
-      <div class="pre-link">Get in touch via</div>
+<div class="contact flex column gapy-m">
+  <div class="title flex">
+    <div class="highlight">Contact</div>
+  </div>
 
-      <Link href={`mailto:${me.email}`} label={me.email} />
-    </div>
-  {/if}
+  <div class="info">
+    {#if me.email}
+      <div class="email flex gapx-m space-between">
+        <div class="pre-link">Get in touch via</div>
 
-  {#if links}
-    <div class="resume-links flex gapx-m space-between">
-      <div class="pre-link">Or find me at</div>
-
-      <div class="links flex gapx-s">
-        {#each links as link, index}
-          {#if links.length > 1 && index === links.length - 1}
-            <div class="or">or</div>
-          {/if}
-          <Link {...link} />
-        {/each}
+        <Link href={`mailto:${me.email}`} label={me.email} />
       </div>
-    </div>
-  {/if}
+    {/if}
+
+    {#if links}
+      <div class="resume-links flex gapx-m space-between">
+        <div class="pre-link">Or find me at</div>
+
+        <div class="links flex gapx-s">
+          {#each links as link, index}
+            {#if links.length > 1 && index === links.length - 1}
+              <div class="or">or</div>
+            {/if}
+            <Link {...link} />
+          {/each}
+        </div>
+      </div>
+    {/if}
+  </div>
 </div>

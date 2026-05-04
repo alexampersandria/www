@@ -3,6 +3,7 @@ import type { Link } from './link'
 export type Me = {
   photo?: string
   name: string
+  tagline?: string
   pronouns?: string[]
   birthday?: string
   links?: Link[]

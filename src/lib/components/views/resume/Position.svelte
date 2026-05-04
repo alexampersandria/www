@@ -67,7 +67,7 @@ const positionId = $derived(formatId(position.company.name))
       gap: var(--padding-s);
 
       padding-left: var(--padding-m);
-      border-left: 2px solid var(--color-text-dimmed);
+      border-left: 2px dashed var(--color-background-tertiary);
 
       .role .title {
         color: var(--color-text-strong);

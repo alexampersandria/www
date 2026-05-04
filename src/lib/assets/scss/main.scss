@@ -202,24 +202,6 @@ code {
   white-space: nowrap;
 }
 
-// Color Utilities
-.highlight {
-  color: var(--color-text-strong);
-
-  code {
-    color: var(--color-text);
-  }
-
-  a,
-  .link {
-    color: var(--color-text);
-
-    &:hover {
-      color: var(--color-text-strong);
-    }
-  }
-}
-
 .muted {
   color: var(--color-text-muted);
 
@@ -341,14 +323,14 @@ button.plain {
 hr {
   border: 0;
   height: 2px;
-  background-color: var(--color-background-tertiary);
+  background-color: var(--color-background-secondary);
   border-radius: calc(1px * infinity);
   margin: var(--padding-xxl) 0;
 }
 
 blockquote {
   margin: 0;
-  background-color: var(--color-background-tertiary);
+  background-color: var(--color-background-secondary);
   border-radius: var(--radius-s);
   padding: var(--padding-l);
   display: flex;
@@ -487,5 +469,16 @@ $spacing-directions: (
     width: 1.5em;
     height: 1.5em;
     vertical-align: -0.15em;
+  }
+}
+
+.highlight {
+  background-color: var(--color-text);
+  color: var(--color-background-primary);
+  padding-inline: var(--padding-xs);
+
+  &::selection {
+    background-color: var(--color-background-primary);
+    color: var(--color-text);
   }
 }

@@ -1,15 +1,13 @@
 import type { Link } from '$lib/types/link'
-import { projectsAsNavigationElements } from './projects'
 
 export const navigation: NavigationElement[] = [
   {
-    label: 'Me',
+    label: 'Who am I?',
     href: '/',
   },
   {
     label: 'Projects',
     href: '/projects',
-    children: projectsAsNavigationElements,
   },
   { label: 'Resume', href: '/resume' },
   // { label: 'Photography', href: '/photography' },

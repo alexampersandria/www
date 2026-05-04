@@ -4,9 +4,14 @@ import { me } from '$lib/data/me'
 
 <div class="header flex gap-l align-center">
   <div class="info">
-    <div class="name highlight">
+    <div class="name">
       {me.name}
     </div>
+    {#if me.tagline}
+      <div class="tagline">
+        {me.tagline}
+      </div>
+    {/if}
     {#if me.birthday}
       <div class="birthday">
         b. {me.birthday}
