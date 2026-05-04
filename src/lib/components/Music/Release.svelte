@@ -90,7 +90,7 @@ let showTracklist = $derived.by(() => {
   display: flex;
   flex-direction: column;
   gap: var(--padding-xs);
-  color: var(--color-text-normal);
+  color: var(--color-text);
 
   &:has(*:target) {
     position: relative;
@@ -115,7 +115,7 @@ let showTracklist = $derived.by(() => {
           box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
         }
         20% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-normal);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text);
         }
         60% {
           box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
@@ -148,7 +148,7 @@ let showTracklist = $derived.by(() => {
       }
 
       .track-title {
-        color: var(--color-text-highlight);
+        color: var(--color-text-strong);
       }
 
       .track-duration {

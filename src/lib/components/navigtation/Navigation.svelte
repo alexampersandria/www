@@ -121,7 +121,7 @@ afterNavigate(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text-normal);
+      color: var(--color-text);
     }
   }
 
@@ -159,33 +159,10 @@ afterNavigate(() => {
     }
 
     pointer-events: none;
-
-    &:after {
-      content: '';
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(20, 20, 20, 0.75),
-        rgba(0, 0, 0, 0.92)
-      );
-      backdrop-filter: blur(16px) grayscale(0.8);
-      transition:
-        opacity var(--transition-duration) var(--better-ease-out),
-        backdrop-filter var(--transition-duration) var(--better-ease-out);
-      transition-delay: var(--transition-delay);
-      z-index: -1;
-    }
+    background-color: var(--color-background-primary);
 
     &:not(:has(.navigation-content.open)) {
-      &:after {
-        opacity: 0;
-        backdrop-filter: blur(0px) grayscale(0);
-      }
+      background-color: transparent;
     }
 
     .navigation-content {

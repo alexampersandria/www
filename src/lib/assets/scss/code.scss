@@ -1,0 +1,126 @@
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--text-muted);
+  font-family: 'Fira Code', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: var(--padding-m);
+  border-radius: var(--radius-s);
+  overflow: auto;
+  background-color: var(--color-background-secondary);
+  border: var(--border-width) solid var(--color-border);
+}
+
+/* Inline code */
+:not(pre) > code {
+  vertical-align: middle;
+  color: var(--color-inline-code);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-inline-code-background);
+  white-space: nowrap;
+
+  /* force empty inline code blocks to be rendered properly */
+  &::after {
+    content: '';
+    display: inline-block;
+  }
+}
+
+.token.comment {
+  color: var(--text-dimmed);
+}
+
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.namespace {
+  color: var(--text-muted);
+}
+
+.token.string {
+  color: var(--color-code-2);
+}
+
+.token.attr-value {
+  color: var(--color-code-2);
+}
+
+.token.punctuation,
+.token.operator {
+  color: var(--text-dimmed);
+}
+
+.token.variable,
+.token.constant {
+  color: var(--color-code-2);
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.regex,
+.token.inserted {
+  color: var(--color-code-2);
+}
+
+.token.keyword,
+.token.builtin {
+  color: var(--color-code-3);
+}
+
+.token.atrule,
+.token.attr-name,
+.token.property,
+.language-autohotkey .token.selector {
+  color: var(--text-muted);
+}
+
+.token.function,
+.token.deleted,
+.language-autohotkey .token.tag {
+  color: var(--color-code-1);
+}
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+  color: var(--color-code-2);
+}
+
+.preview {
+  background-color: var(--background-secondary);
+  padding: var(--padding-m);
+  border-radius: var(--radius-s);
+  overflow: auto;
+  border: var(--border-width) solid var(--border-color);
+
+  &:has(+ pre[class*='language-']) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.preview + pre[class*='language-'] {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+}

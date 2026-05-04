@@ -162,7 +162,7 @@ let cursorPosition = $derived.by(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text-normal);
+      color: var(--color-text);
     }
   }
 
@@ -174,7 +174,7 @@ let cursorPosition = $derived.by(() => {
   }
 
   .items {
-    border-left: 2px solid var(--color-background-accent);
+    border-left: 2px solid var(--color-background-tertiary);
     padding-left: var(--padding-m);
     font-size: var(--font-size-s);
     position: relative;
@@ -186,7 +186,7 @@ let cursorPosition = $derived.by(() => {
       left: calc(-1 * var(--cursor-width));
       width: var(--cursor-width);
       height: var(--cursor-height);
-      background-color: var(--color-text-normal);
+      background-color: var(--color-text);
       border-radius: calc(1px * infinity);
       transition: top var(--animation-length-s) var(--better-ease-out);
     }

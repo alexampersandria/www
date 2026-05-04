@@ -2,13 +2,21 @@
 @use 'variables';
 @use 'color';
 @use 'fadein';
+@use 'code';
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
 // Root & Global Styles
 
 :root {
   color-scheme: dark;
-  font-family: 'Inter', Helvetica, Arial, system-ui, sans-serif;
+  font-family:
+    'Geist Mono',
+    'Geist',
+    'Inter',
+    Helvetica,
+    Helvetica Neue,
+    system-ui,
+    sans-serif;
   line-height: 1.6875;
   font-weight: var(--font-weight-normal);
 
@@ -18,7 +26,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   background-color: var(--color-background-primary);
-  color: var(--color-text-normal);
+  color: var(--color-text);
 }
 
 *:disabled {
@@ -28,7 +36,7 @@
 
 *:focus-visible {
   outline: none;
-  color: var(--color-focus-text);
+  color: var(--color-text-focus);
   box-shadow:
     0 0 0 var(--focus-shadow-offset) var(--color-background-primary),
     0 0 0 calc(var(--focus-shadow-offset) + var(--focus-shadow-offset)) var(--color-focus) !important;
@@ -117,7 +125,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-text-highlight);
+  color: var(--color-text-strong);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--padding-m);
 
@@ -144,11 +152,11 @@ p {
 
 .mono,
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Geist Mono', monospace;
 }
 
 code {
-  color: var(--color-text-highlight);
+  color: var(--color-text-strong);
 }
 // Font Size Utilities
 .extra-small {
@@ -196,18 +204,18 @@ code {
 
 // Color Utilities
 .highlight {
-  color: var(--color-text-highlight);
+  color: var(--color-text-strong);
 
   code {
-    color: var(--color-text-normal);
+    color: var(--color-text);
   }
 
   a,
   .link {
-    color: var(--color-text-normal);
+    color: var(--color-text);
 
     &:hover {
-      color: var(--color-text-highlight);
+      color: var(--color-text-strong);
     }
   }
 }
@@ -216,15 +224,15 @@ code {
   color: var(--color-text-muted);
 
   code {
-    color: var(--color-text-highlight);
+    color: var(--color-text-strong);
   }
 
   a,
   .link {
-    color: var(--color-text-highlight);
+    color: var(--color-text-strong);
 
     &:hover {
-      color: var(--color-text-normal);
+      color: var(--color-text);
     }
   }
 }
@@ -232,7 +240,7 @@ code {
 // Links
 
 a {
-  color: var(--color-text-highlight);
+  color: var(--color-text-strong);
 
   text-decoration: underline;
   text-decoration-color: var(--color-underline);
@@ -244,12 +252,12 @@ a {
   }
 
   &:hover {
-    color: var(--color-text-highlight);
-    text-decoration-color: var(--color-text-normal);
+    color: var(--color-text-strong);
+    text-decoration-color: var(--color-text);
   }
 
   &.active {
-    color: var(--color-text-highlight);
+    color: var(--color-text-strong);
     font-weight: var(--font-weight-bold);
   }
 }
@@ -333,14 +341,14 @@ button.plain {
 hr {
   border: 0;
   height: 2px;
-  background-color: var(--color-background-accent);
+  background-color: var(--color-background-tertiary);
   border-radius: calc(1px * infinity);
   margin: var(--padding-xxl) 0;
 }
 
 blockquote {
   margin: 0;
-  background-color: var(--color-background-accent);
+  background-color: var(--color-background-tertiary);
   border-radius: var(--radius-s);
   padding: var(--padding-l);
   display: flex;

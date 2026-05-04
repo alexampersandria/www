@@ -39,9 +39,8 @@ import TimePeriod from '../TimePeriod.svelte'
     gap: var(--padding-xxs);
 
     .title {
-      font-size: var(--font-size-l);
       font-weight: var(--font-weight-bold);
-      color: var(--color-text-highlight);
+      color: var(--color-text-strong);
     }
 
     .links {

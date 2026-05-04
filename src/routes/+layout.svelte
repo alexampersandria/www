@@ -6,7 +6,6 @@ import Navigation from '$lib/components/navigtation/Navigation.svelte'
 import { page } from '$app/state'
 import { fade } from 'svelte/transition'
 import { fadein } from '$lib/actions/fadein.svelte'
-import Backdrop from '$lib/components/layout/Backdrop.svelte'
 import { generateTableOfContents } from '$lib/utils/toc'
 import { afterNavigate, goto } from '$app/navigation'
 import { redirectTo } from '$lib/utils/redirect'
@@ -16,7 +15,6 @@ import { ScrollState, watch } from 'runed'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
-let viewport = $state<HTMLElement>()
 
 let tableofcontents = $derived.by(() => {
   return main ? generateTableOfContents(main) : undefined
@@ -46,7 +44,7 @@ onMount(() => {
 })
 
 const scroll = new ScrollState({
-  element: () => viewport,
+  element: () => window,
 })
 
 let pagetitle = $derived.by(() => {
@@ -88,15 +86,13 @@ watch(
   <title>{pagetitle}</title>
 </svelte:head>
 
-<Backdrop />
-
 {#if mounted}
   <div class="root" in:fade={{ duration: 50 }}>
     <div class="navigation-wrapper">
       <Navigation />
     </div>
 
-    <div class="viewport" bind:this={viewport}>
+    <div class="viewport">
       {#key page.route.id}
         {@const animationDuration = 100}
         <div
@@ -124,14 +120,6 @@ watch(
 <style lang="scss">
 .root {
   .viewport {
-    max-height: 100vh;
-    overflow: auto;
-
-    // don't show scrollbars when navigating
-    &:not(:has(.route:only-child)) {
-      overflow: hidden;
-    }
-
     .content-wrapper {
       white-space: normal;
       padding-top: var(--navigation-top-clearance);
