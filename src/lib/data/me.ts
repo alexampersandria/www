@@ -19,7 +19,7 @@ export const resumeLinks = links.filter(link => allowedLinks.includes(link.label
 export const otherLinks = links.filter(link => !allowedLinks.includes(link.label))
 
 export const me: Me = {
-  photo: 'me.webp',
+  // photo: 'me.webp',
   name: 'Liara Alexandria Brüchmann',
   tagline: 'Developer, musician, photographer',
   birthday: '1998-07-22',

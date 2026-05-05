@@ -12,11 +12,18 @@ import { me } from '$lib/data/me'
         {me.tagline}
       </div>
     {/if}
-    {#if me.birthday}
-      <div class="birthday">
-        b. {me.birthday}
-      </div>
-    {/if}
+    <div class="details">
+      {#if me.birthday}
+        <div class="birthday">
+          b. {me.birthday}
+        </div>
+      {/if}
+      {#if me.pronouns}
+        <div class="pronouns">
+          {me.pronouns.join('/')}
+        </div>
+      {/if}
+    </div>
   </div>
 </div>
 
@@ -27,6 +34,11 @@ import { me } from '$lib/data/me'
 
   .name {
     font-weight: var(--font-weight-bold);
+  }
+
+  .details {
+    display: flex;
+    gap: var(--spacing-m);
   }
 }
 </style>

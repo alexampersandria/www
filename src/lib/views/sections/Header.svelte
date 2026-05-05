@@ -2,7 +2,9 @@
 import { me } from '$lib/data/me'
 import Link from '$lib/components/ui/Link.svelte'
 
-let { pronouns = false, 'all-links': allLinks = false } = $props()
+let { 'all-links': allLinks = false } = $props()
+
+const shownLinks = $derived(allLinks ? me.links : me.resumeLinks)
 </script>
 
 <div class="me">
@@ -14,30 +16,28 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
 
   <div class="right">
     <div class="header">
-      <div class="nostyle name">{me.name}</div>
-      {#if me.birthday}
-        <div class="birthday">b. {me.birthday}</div>
-      {/if}
-    </div>
-
-    {#if me.pronouns || me.email}
-      {@const shownLinks = allLinks ? me.links : me.resumeLinks}
-      <div class="details">
-        {#if me.pronouns && pronouns}
+      <div class="name">{me.name}</div>
+      <div class="line-two">
+        {#if me.birthday}
+          <div class="birthday">b. {me.birthday}</div>
+        {/if}
+        {#if me.pronouns}
           <div class="pronouns">{me.pronouns.join('/')}</div>
         {/if}
-        {#if me.email}
-          <a class="email" href="mailto:{me.email}">{me.email}</a>
-        {/if}
-        {#if me.phone}
-          <a class="phone" href="tel:{me.phone}">{me.phone}</a>
-        {/if}
-
-        {#each shownLinks as link}
-          <Link {...link} />
-        {/each}
       </div>
-    {/if}
+    </div>
+
+    <div class="details">
+      {#if me.email}
+        <a class="email" href="mailto:{me.email}">{me.email}</a>
+      {/if}
+      {#if me.phone}
+        <a class="phone" href="tel:{me.phone}">{me.phone}</a>
+      {/if}
+      {#each shownLinks as link}
+        <Link {...link} />
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -67,9 +67,14 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
     justify-content: center;
   }
 
-  .details {
+  .details,
+  .line-two {
     display: flex;
     gap: var(--spacing-m);
+  }
+
+  .name {
+    font-weight: var(--font-weight-bold);
   }
 }
 </style>
