@@ -1,21 +1,34 @@
-import type { Link } from '$lib/types/link'
-import { projectsAsNavigationElements } from './projects'
+import type { Link } from './links'
+
+export type NavigationElement = Link & {
+  children?: NavigationElement[]
+}
+
+export type NestedNavigationItem = NavigationElement & {
+  level?: number
+  children?: NestedNavigationItem[]
+}
+
+export type NestedNavigationElementProps = {
+  items: NestedNavigationItem[]
+  activeItem?: NestedNavigationItem | null
+}
+
+export type NestedNavigationElementItemProps = {
+  item: NestedNavigationItem
+  activeItem?: NestedNavigationItem | null
+}
 
 export const navigation: NavigationElement[] = [
   {
-    label: 'Me',
+    label: 'Who am I?',
     href: '/',
   },
   {
     label: 'Projects',
     href: '/projects',
-    children: projectsAsNavigationElements,
   },
   { label: 'Resume', href: '/resume' },
   // { label: 'Photography', href: '/photography' },
   { label: 'Music', href: '/music' },
 ]
-
-export type NavigationElement = Link & {
-  children?: NavigationElement[]
-}

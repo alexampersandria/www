@@ -1,6 +1,44 @@
 import { age } from '$lib/utils/age'
 import { experience } from '$lib/utils/experience'
-import type { Resume } from '../types/resume'
+
+export type Resume = {
+  background?: string
+  positions: Position[]
+  education: Education[]
+}
+
+export type CurrentPosition = {
+  company: Company
+  role: Role
+}
+
+export type Period = {
+  from: string
+  to: string | 'Present'
+}
+
+export type Position = {
+  company: Company
+  roles: Role[]
+}
+
+export type Company = {
+  name: string
+  href?: string
+}
+
+export type Role = {
+  title: string
+  period: Period
+  description?: string
+}
+
+export type Education = {
+  institution: string
+  degree: string
+  period: Period
+  completed?: boolean
+}
 
 export const resume: Resume = {
   background: `${age} year old full stack developer from Copenhagen with more than ${experience} years of experience, both as a developer and in a lead role.`,
@@ -12,7 +50,7 @@ export const resume: Resume = {
       },
       roles: [
         {
-          title: 'Frontend Developer',
+          title: 'Responsible for Frontend Development',
           period: { from: 'March 2026', to: 'Present' },
         },
       ],
@@ -40,7 +78,7 @@ export const resume: Resume = {
       },
       roles: [
         {
-          title: 'Full Stack Developer + Creative Lead',
+          title: 'Creative Lead + Full Stack Developer',
           period: {
             from: 'January 2021',
             to: 'February 2023',

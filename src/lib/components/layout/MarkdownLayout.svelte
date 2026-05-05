@@ -1,5 +1,4 @@
 <script lang="ts">
-import { BookDashed } from 'lucide-svelte'
 import type { Snippet } from 'svelte'
 import NewIssue from '../NewIssue.svelte'
 
@@ -14,10 +13,7 @@ let { children }: { children?: Snippet } = $props()
       {:else}
         <div class="no-content">
           <div class="text">
-            <h1 id="no-content">
-              <BookDashed />
-              No Content
-            </h1>
+            <h1 id="no-content">No Content</h1>
             <div class="message">
               This page contains no content <br />
               If you believe this to be an error <NewIssue />
@@ -33,7 +29,7 @@ let { children }: { children?: Snippet } = $props()
 .markdown-layout {
   :global(b),
   :global(strong) {
-    color: var(--color-text-highlight);
+    color: var(--color-text);
   }
 
   .no-content {
@@ -41,7 +37,7 @@ let { children }: { children?: Snippet } = $props()
       h1 {
         display: flex;
         align-items: center;
-        gap: var(--padding-s);
+        gap: var(--spacing-s);
       }
     }
   }

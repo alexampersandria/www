@@ -2,12 +2,30 @@
 import { projects } from '$lib/data/projects'
 import Link from '../Link.svelte'
 import TimePeriod from '../TimePeriod.svelte'
+
+let {
+  limit,
+}: {
+  limit?: number
+} = $props()
+
+const shownProjects = $derived.by(() => {
+  if (limit === undefined) return projects
+  else return projects.slice(0, limit)
+})
+
+const hasMore = $derived.by(() => {
+  return limit !== undefined && projects.length > limit
+})
 </script>
 
 <div class="projects">
-  {#each projects as project}
+  <div class="title flex">
+    <div class="highlight">Projects</div>
+  </div>
+  {#each shownProjects as project}
     <div class="project">
-      <div class="flex space-between">
+      <div class="project-info">
         <div class="title">{project.title}</div>
         {#if project.period}
           <TimePeriod from={project.period.from} to={project.period.to} />
@@ -16,37 +34,45 @@ import TimePeriod from '../TimePeriod.svelte'
 
       <div class="description">{project.description}</div>
       <div class="links">
-        <a class="view-project" href={`/projects/${project.id}`}>
-          Project details
-        </a>
         {#each project.links as link}
           <Link {...link} />
         {/each}
       </div>
     </div>
   {/each}
+  {#if hasMore}<a href="/projects">→ All projects</a>{/if}
 </div>
 
 <style lang="scss">
 .projects {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xl);
+  gap: var(--spacing-l);
 
   .project {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-xxs);
+    gap: var(--spacing-xxs);
 
-    .title {
-      font-size: var(--font-size-l);
-      font-weight: var(--font-weight-bold);
-      color: var(--color-text-highlight);
+    .project-info {
+      display: flex;
+      justify-content: space-between;
+      column-gap: var(--spacing-m);
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .title {
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text);
+      }
     }
 
     .links {
       display: flex;
-      gap: var(--padding-m);
+      gap: var(--spacing-m);
     }
   }
 }

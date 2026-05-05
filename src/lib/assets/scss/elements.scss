@@ -1,0 +1,47 @@
+:root {
+  --border-width: 1px;
+
+  --focus-shadow-width: 2px;
+  --focus-shadow-offset: var(--focus-shadow-width);
+  --state-shadow-width: var(--focus-shadow-width);
+
+  --blockquote-border-width: 2px;
+
+  --spinner-size: 1.5rem;
+  --spinner-animation-duration: 1.2s;
+
+  --logo-size: 1.5em;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px dashed var(--color-border);
+  margin: var(--spacing-xl) 0;
+}
+
+blockquote {
+  margin: 0;
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-s);
+  padding: var(--spacing-l);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+
+  p {
+    margin: 0;
+  }
+}
+
+// Transitions
+
+a,
+button,
+input,
+select,
+textarea {
+  &,
+  * {
+    transition: var(--interactive-transition);
+  }
+}

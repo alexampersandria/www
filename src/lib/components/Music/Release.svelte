@@ -1,14 +1,16 @@
 <script lang="ts">
-import type { Release } from '$lib/types/music'
 import { formatId } from '$lib/utils/id'
 import { formatReleaseType } from '$lib/utils/music'
 import { formatDate, formatSeconds } from '$lib/utils/time'
+import type { Release } from '$lib/data/music'
 import Link from '../Link.svelte'
 
 let {
   release,
+  tracklist = true,
 }: {
   release: Release
+  tracklist?: boolean
 } = $props()
 
 let totalDuration = $derived.by(() => {
@@ -19,6 +21,7 @@ let totalDuration = $derived.by(() => {
 })
 
 let showTracklist = $derived.by(() => {
+  if (!tracklist) return false
   return (
     release.type !== 'single' && release.tracks && release.tracks.length > 1
   )
@@ -32,19 +35,19 @@ let showTracklist = $derived.by(() => {
         {release.title}
       </h3>
 
-      <div class="release-date">
-        {formatDate(release.releaseDate)}
+      <div class="release-type highlight">
+        {formatReleaseType(release.type)}
       </div>
     </div>
 
     <div class="release-meta">
-      <div class="release-type">
-        {formatReleaseType(release.type)}
+      <div class="release-date">
+        {formatDate(release.releaseDate)}
       </div>
 
       {#if showTracklist && release.tracks}
         <div class="release-trackcount">
-          {release.tracks.length} items
+          {release.tracks.length} tracks
         </div>
       {/if}
 
@@ -58,9 +61,12 @@ let showTracklist = $derived.by(() => {
 
     {#if release.links && release.links.length > 0}
       <div class="release-links flex space-between gapx-l">
-        Buy / Listen
+        Listen @
         <div class="links">
-          {#each release.links as link}
+          {#each release.links as link, index}
+            {#if release.links.length > 1 && index === release.links.length - 1}
+              <div class="or">or</div>
+            {/if}
             <Link {...link} />
           {/each}
         </div>
@@ -89,8 +95,8 @@ let showTracklist = $derived.by(() => {
 .release {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xs);
-  color: var(--color-text-normal);
+  gap: var(--spacing-xs);
+  color: var(--color-text);
 
   &:has(*:target) {
     position: relative;
@@ -98,7 +104,7 @@ let showTracklist = $derived.by(() => {
     &:after {
       content: '';
       display: block;
-      --padding: var(--padding-s);
+      --padding: var(--spacing-s);
       --size: calc(100% + var(--padding) * 2);
       height: var(--size);
       width: var(--size);
@@ -115,7 +121,7 @@ let showTracklist = $derived.by(() => {
           box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
         }
         20% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-normal);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text);
         }
         60% {
           box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
@@ -127,28 +133,38 @@ let showTracklist = $derived.by(() => {
   }
 
   .release-meta {
+    --meta-gap: 1ch;
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--padding-m);
+    column-gap: var(--meta-gap);
+
+    > * {
+      &:not(:last-child) {
+        &:after {
+          content: '/';
+          padding-inline-start: var(--meta-gap);
+        }
+      }
+    }
   }
 
   .links {
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--padding-s);
+    column-gap: var(--spacing-s);
   }
 
   .tracklist {
     .track {
       display: flex;
-      column-gap: var(--padding-s);
+      column-gap: var(--spacing-s);
 
       .track-number {
         width: 2ch;
       }
 
       .track-title {
-        color: var(--color-text-highlight);
+        color: var(--color-text);
       }
 
       .track-duration {

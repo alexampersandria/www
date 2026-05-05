@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding-block: var(--spacing-xs);
+    padding-inline: var(--spacing-xs);
+    &:first-child {
+      padding-inline-start: 0;
+    }
+    &:last-child {
+      padding-inline-end: 0;
+    }
+    text-align: left;
+  }
+
+  th {
+    color: var(--color-text);
+    font-weight: var(--font-weight-bold);
+    border-bottom: var(--border-width) solid var(--color-text);
+  }
+
+  tr {
+    &:not(:last-child) {
+      td {
+        border-bottom: var(--border-width) dashed var(--color-border);
+      }
+    }
+  }
+}

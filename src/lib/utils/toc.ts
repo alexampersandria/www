@@ -1,4 +1,4 @@
-import type { NestedNavigationItem } from '$lib/types/navigation'
+import type { NestedNavigationItem } from '$lib/data/navigation'
 
 export type TableOfContentsItem = {
   id: string

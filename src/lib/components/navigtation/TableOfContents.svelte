@@ -1,11 +1,10 @@
 <script lang="ts">
-import type { NestedNavigationItem } from '$lib/types/navigation'
+import type { NestedNavigationItem } from '$lib/data/navigation'
 import {
   tableOfContentsItemToNavigationItem,
   type TableOfContents,
   type TableOfContentsItem,
 } from '$lib/utils/toc'
-import { ListTree } from 'lucide-svelte'
 import NestedNavigation from './NestedNavigation.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import type { ScrollState } from 'runed'
@@ -69,10 +68,10 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
     scrollMarginTopValue = parseFloat(scrollMarginTop.replace('px', '').trim())
   }
 
-  let scrollY = scroll.y
   let closest: TableOfContentsItem | null = null
   let closestDistance = Infinity
   let first: TableOfContentsItem | null = null
+  let last: TableOfContentsItem | null = null
 
   const checkItems = (items: TableOfContentsItem[]) => {
     if (items.length === 0) return
@@ -88,7 +87,7 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
       }
 
       let distance = Math.abs(
-        item.position.top - scrollY - scrollMarginTopValue,
+        item.position.top - scroll.y - scrollMarginTopValue,
       )
       if (distance < closestDistance) {
         closestDistance = distance
@@ -97,10 +96,16 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
       if (item.children) {
         checkItems(item.children)
       }
+
+      last = item
     }
   }
 
   checkItems(tableofcontents.items)
+
+  const scrolledToBottom = scroll.arrived.bottom
+  if (scrolledToBottom && last) return last
+
   return closest || first
 })
 
@@ -124,9 +129,7 @@ let cursorPosition = $derived.by(() => {
 {#if tocnav && totalElements > 1}
   <div class="table-of-contents" use:fadein>
     <div class="title">
-      <div class="icon">
-        <ListTree />
-      </div>
+      <div class="icon">↳</div>
       <div class="text">On this page</div>
     </div>
     <div class="items">
@@ -141,9 +144,9 @@ let cursorPosition = $derived.by(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--padding-xl);
-  padding-left: calc(var(--padding-xxl));
-  gap: var(--padding-m);
+  padding: var(--spacing-xxl) var(--spacing-xl);
+  padding-left: calc(var(--spacing-xxl));
+  gap: var(--spacing-s);
   position: fixed;
   z-index: 1998;
   top: 0;
@@ -151,7 +154,7 @@ let cursorPosition = $derived.by(() => {
   width: 100%;
 
   @media screen and (min-width: 920px) {
-    max-width: calc(var(--navigation-max-width) - var(--padding-xl));
+    max-width: calc(var(--navigation-max-width) - var(--spacing-xl));
   }
 
   @media screen and (max-width: 1319px) {
@@ -162,20 +165,24 @@ let cursorPosition = $derived.by(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text-normal);
+      color: var(--color-text);
     }
   }
 
   .title {
     display: flex;
     align-items: center;
-    gap: var(--padding-s);
+    gap: var(--spacing-s);
     font-size: var(--font-size-s);
+
+    .icon {
+      min-width: calc(2ch - 2px);
+    }
   }
 
   .items {
-    border-left: 2px solid var(--color-background-accent);
-    padding-left: var(--padding-m);
+    border-left: 2px solid var(--color-background-secondary);
+    padding-left: var(--spacing-m);
     font-size: var(--font-size-s);
     position: relative;
 
@@ -186,7 +193,7 @@ let cursorPosition = $derived.by(() => {
       left: calc(-1 * var(--cursor-width));
       width: var(--cursor-width);
       height: var(--cursor-height);
-      background-color: var(--color-text-normal);
+      background-color: var(--color-text);
       border-radius: calc(1px * infinity);
       transition: top var(--animation-length-s) var(--better-ease-out);
     }

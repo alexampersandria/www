@@ -1,6 +1,5 @@
 <script lang="ts">
-import type { Period } from '$lib/types/resume'
-import { ArrowRight } from 'lucide-svelte'
+import type { Period } from '$lib/data/resume'
 
 let { from, to }: Period = $props()
 </script>
@@ -9,9 +8,7 @@ let { from, to }: Period = $props()
   <div class="from">
     {from}
   </div>
-  <div class="arrow">
-    <ArrowRight />
-  </div>
+  <div class="arrow">→</div>
   <div class="to">
     {to}
   </div>
@@ -20,6 +17,8 @@ let { from, to }: Period = $props()
 <style lang="scss">
 .time-period {
   display: flex;
-  gap: var(--padding-s);
+  gap: var(--spacing-s);
+  align-items: center;
+  white-space: nowrap;
 }
 </style>

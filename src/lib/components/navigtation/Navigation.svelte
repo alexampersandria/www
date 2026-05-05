@@ -4,6 +4,7 @@ import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
 import Logo from '../Logo.svelte'
+import ThemePicker from '../ThemePicker.svelte'
 import NestedNavigation from './NestedNavigation.svelte'
 
 let open = $state(false)
@@ -54,8 +55,15 @@ afterNavigate(() => {
       {/each}
     </div>
 
-    <div class="copy">
-      &copy; {new Date().getFullYear()} Liara Alexandria Brüchmann
+    <div class="footer">
+      <div class="theme">
+        <ThemePicker />
+      </div>
+
+      <div class="copy">
+        &copy; {new Date().getFullYear()}
+        Liara Alexandria Brüchmann
+      </div>
     </div>
   </div>
 </div>
@@ -81,23 +89,34 @@ afterNavigate(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--padding-xl);
-  gap: var(--padding-m);
+  padding: var(--spacing-xl);
+  gap: var(--spacing-m);
   position: fixed;
   z-index: 1998;
   top: 0;
   left: 0;
   width: 100%;
 
-  .copy {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
     flex-shrink: 0;
-    color: var(--color-text-muted);
-    font-size: var(--font-size-xs);
+
+    .copy {
+      font-size: var(--font-size-s);
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-s);
+      justify-content: space-between;
+    }
   }
 
   a,
   :global(a),
-  .copy {
+  .copy,
+  .copy > * {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -121,20 +140,21 @@ afterNavigate(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text-normal);
+      color: var(--color-text);
     }
   }
 
   @media screen and (min-width: 920px) {
-    max-width: calc(var(--navigation-max-width) - var(--padding-xl));
+    max-width: calc(var(--navigation-max-width) - var(--spacing-xl));
     min-width: var(--navigation-min-width);
     padding-inline: 0;
-    padding-right: var(--padding-m);
-    left: var(--padding-xl);
+    padding-right: var(--spacing-m);
+    left: var(--spacing-xl);
     pointer-events: none;
 
     .menu,
-    .links {
+    .links,
+    .footer {
       pointer-events: initial;
     }
 
@@ -154,38 +174,16 @@ afterNavigate(() => {
     width: 100%;
 
     .menu,
-    .navigation-content.open {
+    .navigation-content.open,
+    .theme {
       pointer-events: initial;
     }
 
     pointer-events: none;
-
-    &:after {
-      content: '';
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(20, 20, 20, 0.75),
-        rgba(0, 0, 0, 0.92)
-      );
-      backdrop-filter: blur(16px) grayscale(0.8);
-      transition:
-        opacity var(--transition-duration) var(--better-ease-out),
-        backdrop-filter var(--transition-duration) var(--better-ease-out);
-      transition-delay: var(--transition-delay);
-      z-index: -1;
-    }
+    background-color: var(--color-background);
 
     &:not(:has(.navigation-content.open)) {
-      &:after {
-        opacity: 0;
-        backdrop-filter: blur(0px) grayscale(0);
-      }
+      background-color: transparent;
     }
 
     .navigation-content {
@@ -195,7 +193,7 @@ afterNavigate(() => {
       width: 100%;
 
       font-size: var(--font-size-l);
-      padding-top: var(--padding-m);
+      padding-top: var(--spacing-m);
 
       &:not(.open) {
         opacity: 0;
@@ -222,16 +220,14 @@ afterNavigate(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
     flex: 1 1 auto;
-    gap: var(--padding-m);
+    gap: var(--spacing-m);
 
     .links {
       flex-shrink: 1;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
-      padding-bottom: var(--padding-xl);
+      padding-bottom: var(--spacing-xl);
 
       :global(a) {
         white-space: nowrap;

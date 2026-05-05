@@ -1,6 +1,5 @@
-import type { Link } from '$lib/types/link'
-import type { Period } from '$lib/types/resume'
-import type { NavigationElement } from './navigation'
+import type { Link } from './links'
+import type { Period } from './resume'
 
 export type Project = {
   title: string
@@ -11,6 +10,21 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'sv-store',
+    description:
+      'A Svelte library for creating and managing persistent stores using localStorage or sessionStorage',
+    id: 'sv-store',
+    period: {
+      from: 'January 2026',
+      to: 'Present',
+    },
+    links: [
+      { label: 'Website', href: 'https://sv-store.liara.io' },
+      { label: 'GitHub', href: 'https://github.com/alexampersandria/sv-store' },
+      { label: 'NPM', href: 'https://www.npmjs.com/package/sv-store' },
+    ],
+  },
   {
     title: 'diary.computer',
     description:
@@ -26,21 +40,6 @@ export const projects: Project[] = [
         label: 'GitHub',
         href: 'https://github.com/alexampersandria/diary.computer',
       },
-    ],
-  },
-  {
-    title: 'sv-store',
-    description:
-      'A Svelte library for creating and managing persistent stores using localStorage or sessionStorage',
-    id: 'sv-store',
-    period: {
-      from: 'January 2026',
-      to: 'Present',
-    },
-    links: [
-      { label: 'Website', href: 'https://sv-store.liara.io' },
-      { label: 'GitHub', href: 'https://github.com/alexampersandria/sv-store' },
-      { label: 'NPM', href: 'https://www.npmjs.com/package/sv-store' },
     ],
   },
 ]
@@ -75,10 +74,3 @@ const _projectsMissingData: Project[] = [
     },
   },
 ]
-
-export const projectsAsNavigationElements: NavigationElement[] = projects.map(
-  project => ({
-    label: project.title,
-    href: `/projects/${project.id}`,
-  }),
-)

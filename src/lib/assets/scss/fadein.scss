@@ -30,6 +30,7 @@
     @for $i from 0 through 99 {
       &.fadein-#{$i} {
         animation-delay: calc($i * var(--fadein-delay));
+        transition-delay: calc($i * var(--fadein-delay));
       }
     }
 

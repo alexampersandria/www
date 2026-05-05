@@ -1,12 +1,12 @@
 <script lang="ts">
-import Me from '$lib/components/Me.svelte'
+import PhotoHeader from '$lib/components/PhotoHeader.svelte'
 import Resume from '$lib/components/views/Resume.svelte'
 </script>
 
 <div class="app-page">
   <div class="container resume">
     <div class="resume-head">
-      <Me />
+      <PhotoHeader />
     </div>
 
     <Resume />
@@ -17,6 +17,10 @@ import Resume from '$lib/components/views/Resume.svelte'
 .resume {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xl);
+  gap: var(--spacing-xl);
+
+  .resume-head {
+    padding-block-end: var(--spacing-s);
+  }
 }
 </style>

@@ -1,0 +1,78 @@
+:root {
+  --input-padding: var(--spacing-xs) var(--spacing-m);
+  --input-radius: var(--radius-xs);
+  --input-size: var(--font-size-s);
+
+  --button-padding: var(--input-padding);
+  --button-content-gap: var(--spacing-xs);
+  --button-radius: calc(infinity * 1px);
+  --button-size: var(--input-size);
+
+  --form-gap: var(--spacing-m);
+  --form-field-gap: var(--spacing-xs);
+  --form-field-inline-gap: var(--spacing-m);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+form,
+.form {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--form-gap);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-field-gap);
+  width: 100%;
+
+  &.inline {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--form-field-inline-gap);
+
+    label {
+      width: auto;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+  background: var(--color-button-background);
+  color: var(--color-button-text);
+  padding: var(--button-padding);
+  border: none;
+  border-radius: 0;
+  font-size: var(--button-size);
+
+  &:hover {
+    background: var(--color-button-hover-background);
+    color: var(--color-button-hover-text);
+  }
+
+  &.plain {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

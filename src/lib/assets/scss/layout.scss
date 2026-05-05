@@ -1,0 +1,75 @@
+:root {
+  @media screen and (min-width: 920px) {
+    --navigation-min-width: 14rem;
+    --navigation-top-clearance: 0px;
+  }
+
+  @media screen and (max-width: 919px) {
+    --navigation-min-width: 0px;
+    --navigation-top-clearance: 6rem;
+  }
+
+  --container-width: 80ch;
+  --container-width-small: 64ch;
+
+  --navigation-max-width: max(calc(50vw - var(--container-width) / 2), var(--navigation-min-width) + var(--spacing-xl));
+  --navigation-max-width-small-container: max(calc(50vw - var(--container-width-small) / 2), var(--navigation-min-width) + var(--spacing-xl));
+
+  --block-size-xxs: 16rem;
+  --block-size-xs: 24rem;
+  --block-size-s: 32rem;
+  --block-size-m: 42rem;
+  --block-size-l: 56rem;
+  --block-size-xl: 72rem;
+}
+
+@media screen and (max-width: 919px) {
+  #root {
+    --block-size-xxs: 100%;
+    --block-size-xs: 100%;
+    --block-size-s: 100%;
+    --block-size-m: 100%;
+    --block-size-l: 100%;
+    --block-size-xl: 100%;
+  }
+}
+
+.mobile-only {
+  @media screen and (min-width: 920px) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  @media screen and (max-width: 919px) {
+    display: none !important;
+  }
+}
+
+.app-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  padding-block: var(--spacing-xxl);
+  padding-bottom: max(calc(var(--spacing-xxl) * 2), 15vh);
+
+  @media screen and (max-width: 919px) {
+    padding-top: 0;
+  }
+
+  &.center {
+    height: calc(100svh - var(--spacing-xxs));
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 919px) {
+      height: auto;
+    }
+  }
+}
+
+.container {
+  max-width: var(--container-width);
+  margin-left: var(--navigation-max-width);
+  margin-right: var(--spacing-xl);
+}
