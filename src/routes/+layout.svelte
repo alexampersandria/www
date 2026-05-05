@@ -1,7 +1,6 @@
 <script lang="ts">
 import 'modern-normalize/modern-normalize.css'
 import '$lib/assets/main.scss'
-import favicon from '$lib/assets/favicon.svg'
 import Navigation from '$lib/components/navigtation/Navigation.svelte'
 import { page } from '$app/state'
 import { fade } from 'svelte/transition'
@@ -10,48 +9,58 @@ import { generateTableOfContents } from '$lib/utils/toc'
 import { afterNavigate, goto } from '$app/navigation'
 import { redirectTo } from '$lib/utils/redirect'
 import TableOfContents from '$lib/components/navigtation/TableOfContents.svelte'
-import { IsMounted, ScrollState } from 'runed'
+import { IsMounted, ScrollState, watch } from 'runed'
 import { useThemeStore } from '$lib/stores/theme.store.svelte'
 import { initStores } from '$lib/stores/index.svelte'
+import faviconPaper from '$lib/assets/favicons/paper.svg'
+import faviconMoon from '$lib/assets/favicons/moon.svg'
+import faviconLavender from '$lib/assets/favicons/lavender.svg'
+import faviconForest from '$lib/assets/favicons/forest.svg'
+import faviconCornflower from '$lib/assets/favicons/cornflower.svg'
+import faviconCampfire from '$lib/assets/favicons/campfire.svg'
 
 let { children } = $props()
 
 initStores()
-
 const themeStore = useThemeStore()
 
+const animationDuration = 100
 let main = $state<HTMLElement>()
-
 let tableofcontents = $derived(main ? generateTableOfContents(main) : undefined)
 
-afterNavigate(() => {
-  const redirect = redirectTo(page.url.pathname)
-  if (redirect) goto(redirect)
-})
-
 const isMounted = new IsMounted()
-
 const scroll = new ScrollState({
   element: () => window,
 })
 
 let pagetitle = $derived.by(() => {
-  let root = 'liara.io'
-  let path = page.url.pathname
+  const root = 'Liara'
+  const pagetitle = page.url.pathname
+    .split('/')
+    .filter(Boolean)
+    .at(-1)
+    ?.replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase())
+  return pagetitle ? `${pagetitle} / ${root}` : root
+})
 
-  if (path === '/') {
-    return root
-  }
+let favicon = $state(faviconPaper)
 
-  let firstSegment = path.split('/').filter(Boolean)[0]
-  let lastSegment = path.split('/').filter(Boolean).pop()
-  let segmentCount = path.split('/').filter(Boolean).length
+watch(
+  () => themeStore.theme,
+  theme => {
+    if (theme === 'paper') favicon = faviconPaper
+    else if (theme === 'moon') favicon = faviconMoon
+    else if (theme === 'lavender') favicon = faviconLavender
+    else if (theme === 'forest') favicon = faviconForest
+    else if (theme === 'cornflower') favicon = faviconCornflower
+    else if (theme === 'campfire') favicon = faviconCampfire
+  },
+)
 
-  const formatSegment = (segment: string) => segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
-
-  if (segmentCount === 1 && firstSegment) return `${formatSegment(firstSegment)} - ${root}`
-  else if (lastSegment) return `${formatSegment(lastSegment)} - ${root}`
-  else return root
+afterNavigate(() => {
+  const redirect = redirectTo(page.url.pathname)
+  if (redirect) goto(redirect)
 })
 </script>
 
@@ -61,7 +70,6 @@ let pagetitle = $derived.by(() => {
 </svelte:head>
 
 {#if isMounted}
-  {@const animationDuration = 100}
   <div class="root theme-{themeStore.theme}" in:fade={{ duration: 50 }}>
     <div class="navigation-wrapper">
       <Navigation />
@@ -71,10 +79,7 @@ let pagetitle = $derived.by(() => {
       {#key page.route.id}
         <div
           class="content-wrapper"
-          in:fade={{
-            duration: animationDuration,
-            delay: animationDuration,
-          }}
+          in:fade={{ duration: animationDuration, delay: animationDuration }}
           out:fade={{ duration: animationDuration }}>
           <main use:fadein bind:this={main}>
             {@render children()}
@@ -86,10 +91,7 @@ let pagetitle = $derived.by(() => {
     {#key page.route.id}
       <div
         class="tableofcontents-container"
-        in:fade={{
-          duration: animationDuration,
-          delay: animationDuration,
-        }}
+        in:fade={{ duration: animationDuration, delay: animationDuration }}
         out:fade={{ duration: animationDuration }}>
         <TableOfContents {tableofcontents} {scroll} />
       </div>
