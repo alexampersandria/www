@@ -15,7 +15,7 @@ const shownProjects = $derived.by(() => {
 })
 
 const hasMore = $derived.by(() => {
-  return projects.length > (limit ?? 0)
+  return limit !== undefined && projects.length > limit
 })
 </script>
 
