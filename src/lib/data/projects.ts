@@ -12,8 +12,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: 'sv-store',
-    description:
-      'A Svelte library for creating and managing persistent stores using localStorage or sessionStorage',
+    description: 'A Svelte library for creating and managing persistent stores using localStorage or sessionStorage',
     id: 'sv-store',
     period: {
       from: 'January 2026',
@@ -27,8 +26,7 @@ export const projects: Project[] = [
   },
   {
     title: 'diary.computer',
-    description:
-      'Mood tracker & micro-journaling platform written in Rust & Svelte',
+    description: 'Mood tracker & micro-journaling platform written in Rust & Svelte',
     id: 'diary.computer',
     period: {
       from: 'February 2024',

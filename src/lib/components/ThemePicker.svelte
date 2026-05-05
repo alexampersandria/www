@@ -1,9 +1,5 @@
 <script lang="ts">
-import {
-  themeList,
-  useThemeStore,
-  type Theme,
-} from '$lib/stores/theme.store.svelte'
+import { themeList, useThemeStore, type Theme } from '$lib/stores/theme.store.svelte'
 
 const themeStore = useThemeStore()
 const setTheme = (theme: Theme) => (themeStore.theme = theme)

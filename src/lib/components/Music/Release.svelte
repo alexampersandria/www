@@ -22,9 +22,7 @@ let totalDuration = $derived.by(() => {
 
 let showTracklist = $derived.by(() => {
   if (!tracklist) return false
-  return (
-    release.type !== 'single' && release.tracks && release.tracks.length > 1
-  )
+  return release.type !== 'single' && release.tracks && release.tracks.length > 1
 })
 </script>
 

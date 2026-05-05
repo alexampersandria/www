@@ -15,12 +15,8 @@ export type Me = {
 }
 
 const allowedLinks = ['GitHub', 'LinkedIn']
-export const resumeLinks = links.filter(link =>
-  allowedLinks.includes(link.label),
-)
-export const otherLinks = links.filter(
-  link => !allowedLinks.includes(link.label),
-)
+export const resumeLinks = links.filter(link => allowedLinks.includes(link.label))
+export const otherLinks = links.filter(link => !allowedLinks.includes(link.label))
 
 export const me: Me = {
   photo: 'me.webp',

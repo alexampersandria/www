@@ -11,14 +11,10 @@ const musicPageId = (release: Release) => {
 const buyLink = (release: Release) => {
   // prioritize bandcamp, then apple music, then just first link
   if (release.links) {
-    const bandcamp = release.links.find(link =>
-      link.label.toLowerCase().includes('bandcamp'),
-    )
+    const bandcamp = release.links.find(link => link.label.toLowerCase().includes('bandcamp'))
     if (bandcamp) return bandcamp
 
-    const appleMusic = release.links.find(link =>
-      link.label.toLowerCase().includes('apple music'),
-    )
+    const appleMusic = release.links.find(link => link.label.toLowerCase().includes('apple music'))
     if (appleMusic) return appleMusic
 
     return release.links[0]
@@ -44,8 +40,7 @@ const buyLink = (release: Release) => {
         {#each discography as release}
           {@const buy = buyLink(release)}
           <tr>
-            <td class="release-title"
-              ><a href={musicPageId(release)}>{release.title}</a></td>
+            <td class="release-title"><a href={musicPageId(release)}>{release.title}</a></td>
             <td class="release-date">{formatDate(release.releaseDate)}</td>
             <td class="track-count">
               {#if isMultiTrackType(release.type)}

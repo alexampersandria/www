@@ -19,9 +19,7 @@ export type TableOfContents = {
 const tocElements = 'h1, h2, h3, h4, h5, h6'
 const tocSelector = `${tocElements}`
 
-export const generateTableOfContents = (
-  root: HTMLElement | undefined,
-): TableOfContents => {
+export const generateTableOfContents = (root: HTMLElement | undefined): TableOfContents => {
   if (!root) {
     return { title: undefined, items: [] }
   }
@@ -72,15 +70,11 @@ export const generateTableOfContents = (
   return { title, items: toc }
 }
 
-export const tableOfContentsItemToNavigationItem = (
-  item: TableOfContentsItem,
-): NestedNavigationItem => {
+export const tableOfContentsItemToNavigationItem = (item: TableOfContentsItem): NestedNavigationItem => {
   return {
     label: item.title,
     href: `#${item.id}`,
     level: item.level,
-    children: item.children.map(child =>
-      tableOfContentsItemToNavigationItem(child),
-    ),
+    children: item.children.map(child => tableOfContentsItemToNavigationItem(child)),
   }
 }

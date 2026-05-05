@@ -60,9 +60,7 @@ let pagetitle = $derived.by(() => {
   let segmentCount = path.split('/').filter(Boolean).length
 
   if (segmentCount === 1 && firstSegment) {
-    let formattedSegment = firstSegment
-      .replace(/-/g, ' ')
-      .replace(/\b\w/g, c => c.toUpperCase())
+    let formattedSegment = firstSegment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
     return `${formattedSegment} - ${root}`
   } else if (tableofcontents?.title) {
     return `${tableofcontents.title} - ${root}`

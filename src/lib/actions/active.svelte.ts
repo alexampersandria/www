@@ -23,9 +23,7 @@ export const isActiveRoute = (route: string, options?: ActiveOptions) => {
       absoluteHref = `${page.url.origin}${route}`
     }
     const exactMatch = compareRoutes(absoluteHref, absoluteUrl)
-    const fuzzyMatch =
-      absoluteHref.startsWith(absoluteUrl) ||
-      absoluteUrl.startsWith(absoluteHref)
+    const fuzzyMatch = absoluteHref.startsWith(absoluteUrl) || absoluteUrl.startsWith(absoluteHref)
 
     if (options?.exact || route === '/' || page.url.pathname === '/') {
       return exactMatch

@@ -1,18 +1,11 @@
 <script lang="ts">
 import type { NestedNavigationItem } from '$lib/data/navigation'
-import {
-  tableOfContentsItemToNavigationItem,
-  type TableOfContents,
-  type TableOfContentsItem,
-} from '$lib/utils/toc'
+import { tableOfContentsItemToNavigationItem, type TableOfContents, type TableOfContentsItem } from '$lib/utils/toc'
 import NestedNavigation from './NestedNavigation.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import type { ScrollState } from 'runed'
 
-let {
-  tableofcontents,
-  scroll,
-}: { tableofcontents?: TableOfContents; scroll: ScrollState } = $props()
+let { tableofcontents, scroll }: { tableofcontents?: TableOfContents; scroll: ScrollState } = $props()
 
 let tocnav: NestedNavigationItem[] = $derived.by(() => {
   return (
@@ -47,22 +40,16 @@ let totalElements = $derived.by(() => {
 let active = $derived.by<TableOfContentsItem | null>(() => {
   if (!tableofcontents) return null
 
-  const scrollMarginTop = getComputedStyle(
-    document.documentElement,
-  ).getPropertyValue('--scroll-margin-top')
+  const scrollMarginTop = getComputedStyle(document.documentElement).getPropertyValue('--scroll-margin-top')
   let scrollMarginTopValue: number
   // convert css value to pixel number
   if (scrollMarginTop.includes('rem')) {
     const remValue = parseFloat(scrollMarginTop.replace('rem', '').trim())
-    const fontSize = parseFloat(
-      getComputedStyle(document.documentElement).fontSize,
-    )
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
     scrollMarginTopValue = remValue * fontSize
   } else if (scrollMarginTop.includes('em')) {
     const emValue = parseFloat(scrollMarginTop.replace('em', '').trim())
-    const fontSize = parseFloat(
-      getComputedStyle(document.documentElement).fontSize,
-    )
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
     scrollMarginTopValue = emValue * fontSize
   } else {
     scrollMarginTopValue = parseFloat(scrollMarginTop.replace('px', '').trim())
@@ -86,9 +73,7 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
         first = item
       }
 
-      let distance = Math.abs(
-        item.position.top - scroll.y - scrollMarginTopValue,
-      )
+      let distance = Math.abs(item.position.top - scroll.y - scrollMarginTopValue)
       if (distance < closestDistance) {
         closestDistance = distance
         closest = item

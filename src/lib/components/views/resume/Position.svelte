@@ -20,9 +20,7 @@ const positionId = $derived(formatId(position.company.name))
       <Company {...position.company} />
     </div>
     {#if !multirole}
-      <TimePeriod
-        from={position.roles[0].period.from}
-        to={position.roles[0].period.to} />
+      <TimePeriod from={position.roles[0].period.from} to={position.roles[0].period.to} />
     {:else}
       {@const startingRole = position.roles[position.roles.length - 1]}
       {@const latestRole = position.roles[0]}

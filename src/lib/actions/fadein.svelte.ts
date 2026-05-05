@@ -18,14 +18,10 @@ export const fadein = (
   let index = 0
   const elements = node.querySelectorAll<HTMLElement>('*:not(:empty), img')
   elements.forEach(el => {
-    if (
-      !el.classList.contains('fadein') &&
-      !el.classList.contains('fadein-root')
-    ) {
+    if (!el.classList.contains('fadein') && !el.classList.contains('fadein-root')) {
       if (!parentHasFadeinClass(el.parentNode)) {
         const hasDirectText = Array.from(el.childNodes).some(
-          node =>
-            node.nodeType === Node.TEXT_NODE && node.textContent?.trim().length,
+          node => node.nodeType === Node.TEXT_NODE && node.textContent?.trim().length,
         )
         const isImage = el.tagName.toLowerCase() === 'img'
         if (hasDirectText || isImage) {
