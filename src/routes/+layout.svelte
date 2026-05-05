@@ -9,44 +9,27 @@ import { fadein } from '$lib/actions/fadein.svelte'
 import { generateTableOfContents } from '$lib/utils/toc'
 import { afterNavigate, goto } from '$app/navigation'
 import { redirectTo } from '$lib/utils/redirect'
-import { onMount } from 'svelte'
 import TableOfContents from '$lib/components/navigtation/TableOfContents.svelte'
-import { ScrollState, watch } from 'runed'
+import { IsMounted, ScrollState } from 'runed'
 import { useThemeStore } from '$lib/stores/theme.store.svelte'
 import { initStores } from '$lib/stores/index.svelte'
 
 let { children } = $props()
-let main = $state<HTMLElement>()
 
 initStores()
+
 const themeStore = useThemeStore()
 
-let tableofcontents = $derived.by(() => {
-  return main ? generateTableOfContents(main) : undefined
-})
+let main = $state<HTMLElement>()
 
-let routeClass = $derived.by(() => {
-  if (page.route.id) {
-    let routeString = `${page.route.id.replace(/\//g, '-').replace(/^\-/, '')}`
-    if (routeString === '' || routeString === '-') {
-      routeString = 'root'
-    }
-    return `route-${routeString}`
-  }
-  return ''
-})
+let tableofcontents = $derived(main ? generateTableOfContents(main) : undefined)
 
 afterNavigate(() => {
   const redirect = redirectTo(page.url.pathname)
-  if (redirect) {
-    goto(redirect)
-  }
+  if (redirect) goto(redirect)
 })
 
-let mounted = $state(false)
-onMount(() => {
-  mounted = true
-})
+const isMounted = new IsMounted()
 
 const scroll = new ScrollState({
   element: () => window,
@@ -64,29 +47,12 @@ let pagetitle = $derived.by(() => {
   let lastSegment = path.split('/').filter(Boolean).pop()
   let segmentCount = path.split('/').filter(Boolean).length
 
-  if (segmentCount === 1 && firstSegment) {
-    let formattedSegment = firstSegment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
-    return `${formattedSegment} - ${root}`
-  } else if (tableofcontents?.title) {
-    return `${tableofcontents.title} - ${root}`
-  } else if (lastSegment) {
-    let formattedSegment = lastSegment.replace(/-/g, ' ')
-    return `${formattedSegment} - ${root}`
-  } else {
-    return root
-  }
-})
+  const formatSegment = (segment: string) => segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
 
-watch(
-  () => main,
-  () => {
-    console.log('main changed', main)
-    setTimeout(() => {
-      let toc = generateTableOfContents(main)
-      console.log('regenerated toc', toc)
-    })
-  },
-)
+  if (segmentCount === 1 && firstSegment) return `${formatSegment(firstSegment)} - ${root}`
+  else if (lastSegment) return `${formatSegment(lastSegment)} - ${root}`
+  else return root
+})
 </script>
 
 <svelte:head>
@@ -94,7 +60,8 @@ watch(
   <title>{pagetitle}</title>
 </svelte:head>
 
-{#if mounted}
+{#if isMounted}
+  {@const animationDuration = 100}
   <div class="root theme-{themeStore.theme}" in:fade={{ duration: 50 }}>
     <div class="navigation-wrapper">
       <Navigation />
@@ -102,26 +69,31 @@ watch(
 
     <div class="viewport">
       {#key page.route.id}
-        {@const animationDuration = 100}
         <div
-          class="route {routeClass}"
+          class="content-wrapper"
           in:fade={{
             duration: animationDuration,
             delay: animationDuration,
           }}
           out:fade={{ duration: animationDuration }}>
-          <div class="content-wrapper">
-            <main use:fadein bind:this={main}>
-              {@render children()}
-            </main>
-          </div>
+          <main use:fadein bind:this={main}>
+            {@render children()}
+          </main>
         </div>
       {/key}
     </div>
 
-    <div class="toc-wrapper">
-      <TableOfContents {tableofcontents} {scroll} />
-    </div>
+    {#key page.route.id}
+      <div
+        class="tableofcontents-container"
+        in:fade={{
+          duration: animationDuration,
+          delay: animationDuration,
+        }}
+        out:fade={{ duration: animationDuration }}>
+        <TableOfContents {tableofcontents} {scroll} />
+      </div>
+    {/key}
   </div>
 {/if}
 

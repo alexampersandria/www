@@ -1,6 +1,7 @@
 <script lang="ts">
 import { discography, isMultiTrackType, type Release } from '$lib/data/music'
 import { formatId } from '$lib/utils/id'
+import { formatReleaseType } from '$lib/utils/music'
 import { formatDate } from '$lib/utils/time'
 
 const musicPageId = (release: Release) => {
@@ -47,7 +48,7 @@ const buyLink = (release: Release) => {
                 {release.tracks?.length ?? 0}
               {:else}
                 {release.tracks?.length ?? 0}
-                ({release.type})
+                ({formatReleaseType(release.type)})
               {/if}
             </td>
             <td class="external-link">
