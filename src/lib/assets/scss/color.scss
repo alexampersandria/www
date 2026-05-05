@@ -1,4 +1,4 @@
-$themes: 'paper', 'moon', 'lilac', 'forest', 'campfire';
+$themes: 'paper', 'moon', 'lavender', 'forest', 'cornflower', 'campfire';
 
 :root {
   --theme-paper-text: oklch(0.1675 0 0);
@@ -17,13 +17,13 @@ $themes: 'paper', 'moon', 'lilac', 'forest', 'campfire';
   --theme-moon-selection: var(--theme-paper-selection);
   --theme-moon-focus: var(--theme-paper-focus);
 
-  --theme-lilac-text: var(--theme-paper-text);
-  --theme-lilac-text-muted: var(--theme-paper-text-muted);
-  --theme-lilac-background: oklch(0.75 0.065 300);
-  --theme-lilac-background-secondary: oklch(0.6825 0.065 300);
-  --theme-lilac-border: oklch(0.6 0.065 300);
-  --theme-lilac-selection: oklch(0.3 0.025 300 / 25%);
-  --theme-lilac-focus: oklch(0.3 0.015 300);
+  --theme-lavender-text: var(--theme-paper-text);
+  --theme-lavender-text-muted: var(--theme-paper-text-muted);
+  --theme-lavender-background: oklch(0.75 0.065 300);
+  --theme-lavender-background-secondary: oklch(0.6825 0.065 300);
+  --theme-lavender-border: oklch(0.6 0.065 300);
+  --theme-lavender-selection: oklch(0.3 0.025 300 / 25%);
+  --theme-lavender-focus: oklch(0.3 0.015 300);
 
   --theme-forest-text: oklch(0.9 0.0015 100);
   --theme-forest-text-muted: oklch(0.3 0.0015 100);
@@ -32,6 +32,14 @@ $themes: 'paper', 'moon', 'lilac', 'forest', 'campfire';
   --theme-forest-border: oklch(0.3 0.0075 130);
   --theme-forest-selection: oklch(0.3 0.0075 130 / 25%);
   --theme-forest-focus: oklch(0.3 0.0075 130);
+
+  --theme-cornflower-text: oklch(0.375 0.035 240);
+  --theme-cornflower-text-muted: oklch(0.9 0.035 240);
+  --theme-cornflower-background: oklch(0.75 0.065 240);
+  --theme-cornflower-background-secondary: oklch(0.8 0.06 240);
+  --theme-cornflower-border: oklch(0.6 0.065 240);
+  --theme-cornflower-selection: oklch(0.3 0.025 240 / 25%);
+  --theme-cornflower-focus: oklch(0.3 0.015 240);
 
   --theme-campfire-text: oklch(0.85 0.035 35);
   --theme-campfire-text-muted: oklch(0.75 0.075 35);

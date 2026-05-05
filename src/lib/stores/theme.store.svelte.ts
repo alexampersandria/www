@@ -1,8 +1,9 @@
 export const themeList = [
   'paper',
   'moon',
-  'lilac',
+  'lavender',
   'forest',
+  'cornflower',
   'campfire',
 ] as const
 export type Theme = (typeof themeList)[number]
