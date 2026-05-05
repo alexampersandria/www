@@ -56,7 +56,7 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
     object-fit: cover;
     box-shadow:
       0 0 0 2px var(--color-background),
-      0 0 0 4px var(--color-text);
+      0 0 0 4px var(--color-foreground);
     overflow: hidden;
   }
 

@@ -18,7 +18,7 @@ $themes: 'paper', 'moon', 'lavender', 'forest', 'cornflower', 'campfire';
   --theme-moon-focus: var(--theme-paper-focus);
 
   --theme-lavender-text: var(--theme-paper-text);
-  --theme-lavender-text-muted: var(--theme-paper-text-muted);
+  --theme-lavender-text-muted: oklch(0.45 0.05 300);
   --theme-lavender-background: oklch(0.75 0.065 300);
   --theme-lavender-background-secondary: oklch(0.6825 0.065 300);
   --theme-lavender-border: oklch(0.6 0.065 300);
@@ -26,7 +26,7 @@ $themes: 'paper', 'moon', 'lavender', 'forest', 'cornflower', 'campfire';
   --theme-lavender-focus: oklch(0.3 0.015 300);
 
   --theme-forest-text: oklch(0.9 0.0015 100);
-  --theme-forest-text-muted: oklch(0.3 0.0015 100);
+  --theme-forest-text-muted: oklch(0.25 0.0025 100);
   --theme-forest-background: oklch(0.45 0.025 130);
   --theme-forest-background-secondary: oklch(0.35 0.0075 130);
   --theme-forest-border: oklch(0.3 0.0075 130);
@@ -42,7 +42,7 @@ $themes: 'paper', 'moon', 'lavender', 'forest', 'cornflower', 'campfire';
   --theme-cornflower-focus: oklch(0.3 0.015 240);
 
   --theme-campfire-text: oklch(0.85 0.035 35);
-  --theme-campfire-text-muted: oklch(0.75 0.075 35);
+  --theme-campfire-text-muted: oklch(0.675 0.125 35);
   --theme-campfire-background: oklch(0.55 0.125 35);
   --theme-campfire-background-secondary: oklch(0.5 0.1125 35);
   --theme-campfire-border: oklch(0.4 0.1 35);
@@ -61,29 +61,29 @@ $themes: 'paper', 'moon', 'lavender', 'forest', 'cornflower', 'campfire';
     }
   }
 
-  --color-text: var(--theme-text);
-  --color-text-muted: var(--theme-text-muted);
+  --color-foreground: var(--theme-text);
+  --color-foreground-muted: var(--theme-text-muted);
 
-  --color-underline: var(--color-text);
+  --color-underline: var(--color-foreground);
 
   --color-background: var(--theme-background);
   --color-background-secondary: var(--theme-background-secondary);
 
   --color-border: var(--theme-border);
 
-  --color-link: var(--color-text);
-  --color-link-hover: var(--color-text);
+  --color-link: var(--color-foreground);
+  --color-link-hover: var(--color-foreground);
 
   --color-selection: var(--theme-selection);
-  --color-selection-text: var(--color-text);
+  --color-selection-text: var(--color-foreground);
 
   --color-focus: var(--theme-focus);
-  --color-text-focus: var(--color-text);
+  --color-foreground-focus: var(--color-foreground);
 
-  --color-button-background: var(--color-text);
+  --color-button-background: var(--color-foreground);
   --color-button-text: var(--color-background);
-  --color-button-hover-background: var(--color-text-muted);
+  --color-button-hover-background: var(--color-foreground-muted);
   --color-button-hover-text: var(--color-background);
 
-  --color-logo: var(--color-text);
+  --color-logo: var(--color-foreground);
 }

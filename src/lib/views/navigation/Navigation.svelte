@@ -108,7 +108,7 @@ afterNavigate(() => {
 
     .copy {
       font-size: var(--font-size-s);
-      color: var(--color-text-muted);
+      color: var(--color-foreground-muted);
     }
   }
 
@@ -138,7 +138,7 @@ afterNavigate(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text);
+      color: var(--color-foreground);
     }
   }
 

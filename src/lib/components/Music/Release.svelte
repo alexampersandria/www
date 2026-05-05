@@ -94,7 +94,7 @@ let showTracklist = $derived.by(() => {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  color: var(--color-text);
+  color: var(--color-foreground);
 
   &:has(*:target) {
     position: relative;
@@ -112,17 +112,17 @@ let showTracklist = $derived.by(() => {
       z-index: -1;
       border-radius: var(--radius-s);
 
-      box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
+      box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground-muted);
 
       @keyframes pulse {
         0% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground-muted);
         }
         20% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground);
         }
         60% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground-muted);
         }
       }
 
@@ -162,7 +162,7 @@ let showTracklist = $derived.by(() => {
       }
 
       .track-title {
-        color: var(--color-text);
+        color: var(--color-foreground);
       }
 
       .track-duration {

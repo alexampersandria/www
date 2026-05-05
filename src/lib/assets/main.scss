@@ -33,7 +33,7 @@
   scrollbar-gutter: stable;
 
   background-color: var(--color-background);
-  color: var(--color-text);
+  color: var(--color-foreground);
 
   &,
   * {
@@ -53,7 +53,7 @@
 
 *:focus-visible {
   outline: none;
-  color: var(--color-text-focus);
+  color: var(--color-foreground-focus);
   box-shadow:
     0 0 0 var(--focus-shadow-offset) var(--color-background),
     0 0 0 calc(var(--focus-shadow-offset) + var(--focus-shadow-offset)) var(--color-focus) !important;

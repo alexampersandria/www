@@ -53,7 +53,7 @@ let {
             background-color: var(--theme-#{$theme}-background);
             color: var(--theme-#{$theme}-background);
 
-            box-shadow: 0 0 0 2px var(--color-text);
+            box-shadow: 0 0 0 2px var(--color-foreground);
             z-index: 1;
           }
         }

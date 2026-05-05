@@ -61,7 +61,7 @@ const positionId = $derived(formatId(position.company.name))
 
     .company {
       font-weight: var(--font-weight-bold);
-      color: var(--color-text);
+      color: var(--color-foreground);
     }
   }
 
@@ -79,7 +79,7 @@ const positionId = $derived(formatId(position.company.name))
       border-left: 2px dashed var(--color-border);
 
       .role .title {
-        color: var(--color-text);
+        color: var(--color-foreground);
       }
     }
   }

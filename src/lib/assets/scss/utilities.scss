@@ -116,9 +116,14 @@ $spacing-directions: (
 }
 
 .highlight {
-  background-color: var(--color-text);
+  background-color: var(--color-foreground);
   color: var(--color-background);
   padding-inline: 1ch;
+
+  &.muted {
+    background-color: var(--color-foreground-muted);
+    color: var(--color-background);
+  }
 
   &::selection {
     color: var(--color-background);
