@@ -3,7 +3,7 @@ import { formatId } from '$lib/utils/id'
 import { formatReleaseType } from '$lib/utils/music'
 import { formatDate, formatSeconds } from '$lib/utils/time'
 import type { Release } from '$lib/data/music'
-import Link from '../Link.svelte'
+import Link from '../ui/Link.svelte'
 
 let {
   release,
@@ -33,7 +33,7 @@ let showTracklist = $derived.by(() => {
         {release.title}
       </h3>
 
-      <div class="release-type highlight">
+      <div class="release-type highlight muted">
         {formatReleaseType(release.type)}
       </div>
     </div>

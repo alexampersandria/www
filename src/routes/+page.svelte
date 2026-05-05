@@ -1,8 +1,8 @@
 <script>
-import Contact from '$lib/views/Contact.svelte'
-import Projects from '$lib/views/Projects.svelte'
-import Resume from '$lib/views/Resume.svelte'
-import Me from '$lib/views/Me.svelte'
+import Contact from '$lib/views/sections/Contact.svelte'
+import Projects from '$lib/views/sections/Projects.svelte'
+import Resume from '$lib/views/sections/Resume.svelte'
+import Me from '$lib/views/sections/Me.svelte'
 import DiscographyList from '$lib/views/music/DiscographyList.svelte'
 </script>
 

@@ -1,12 +1,12 @@
 <script lang="ts">
-import PhotoHeader from '$lib/views/PhotoHeader.svelte'
-import Resume from '$lib/views/Resume.svelte'
+import Header from '$lib/views/sections/Header.svelte'
+import Resume from '$lib/views/sections/Resume.svelte'
 </script>
 
 <div class="app-page">
   <div class="container resume">
     <div class="resume-head">
-      <PhotoHeader />
+      <Header />
     </div>
 
     <Resume />

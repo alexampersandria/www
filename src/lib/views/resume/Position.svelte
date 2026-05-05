@@ -1,6 +1,6 @@
 <script lang="ts">
-import Company from '$lib/components/Company.svelte'
-import TimePeriod from '$lib/components/TimePeriod.svelte'
+import Company from '$lib/components/resume/Company.svelte'
+import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
 import { formatId } from '$lib/utils/id'
 import type { Position } from '$lib/data/resume'
 

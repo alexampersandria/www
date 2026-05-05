@@ -1,7 +1,7 @@
 <script lang="ts">
 import { projects } from '$lib/data/projects'
-import Link from '$lib/components/Link.svelte'
-import TimePeriod from '$lib/components/TimePeriod.svelte'
+import Link from '$lib/components/ui/Link.svelte'
+import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
 
 let {
   limit,

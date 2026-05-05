@@ -1,5 +1,5 @@
 <script lang="ts">
-import TimePeriod from '$lib/components/TimePeriod.svelte'
+import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
 import type { Education } from '$lib/data/resume'
 import { formatId } from '$lib/utils/id'
 

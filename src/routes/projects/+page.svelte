@@ -1,5 +1,5 @@
 <script>
-import Projects from '$lib/views/Projects.svelte'
+import Projects from '$lib/views/sections/Projects.svelte'
 </script>
 
 <div class="app-page">
