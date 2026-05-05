@@ -27,7 +27,7 @@
     animation: fadein var(--fadein-length) var(--better-ease-out);
     animation-fill-mode: backwards;
 
-    @for $i from 0 through 99 {
+    @for $i from 0 through 128 {
       &.fadein-#{$i} {
         animation-delay: calc($i * var(--fadein-delay));
         transition-delay: calc($i * var(--fadein-delay));

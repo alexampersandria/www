@@ -71,11 +71,5 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
     display: flex;
     gap: var(--spacing-m);
   }
-
-  .header {
-    h2 {
-      margin: 0;
-    }
-  }
 }
 </style>

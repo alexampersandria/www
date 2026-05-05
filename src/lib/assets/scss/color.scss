@@ -9,12 +9,12 @@ $themes: 'paper', 'moon', 'lavender', 'forest', 'cornflower', 'campfire';
   --theme-paper-selection: oklch(0.65 0.08 300 / 25%);
   --theme-paper-focus: oklch(0.65 0.09 300);
 
-  --theme-moon-text: var(--theme-paper-background);
-  --theme-moon-text-muted: var(--theme-paper-background-secondary);
+  --theme-moon-text: oklch(0.9 0.003 300);
+  --theme-moon-text-muted: oklch(0.6 0.003 300);
   --theme-moon-background: oklch(0.195 0 0);
-  --theme-moon-background-secondary: oklch(0.25 0 0);
+  --theme-moon-background-secondary: oklch(0.3 0 0);
   --theme-moon-border: oklch(0.4 0.004 300);
-  --theme-moon-selection: var(--theme-paper-selection);
+  --theme-moon-selection: oklch(0.85 0.005 100 / 25%);
   --theme-moon-focus: var(--theme-paper-focus);
 
   --theme-lavender-text: var(--theme-paper-text);

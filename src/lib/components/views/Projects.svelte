@@ -66,7 +66,6 @@ const hasMore = $derived.by(() => {
 
       .title {
         font-weight: var(--font-weight-bold);
-        color: var(--color-text);
       }
     }
 

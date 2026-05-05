@@ -27,11 +27,6 @@ let { children }: { children?: Snippet } = $props()
 
 <style lang="scss">
 .markdown-layout {
-  :global(b),
-  :global(strong) {
-    color: var(--color-text);
-  }
-
   .no-content {
     .text {
       h1 {

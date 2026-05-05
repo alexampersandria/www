@@ -11,7 +11,7 @@ export type FadeinOptions = {
 export const fadein = (
   node: HTMLElement,
   options: FadeinOptions = {
-    maxIndex: 99,
+    maxIndex: 128,
   },
 ) => {
   node.classList.add('fadein-root')
