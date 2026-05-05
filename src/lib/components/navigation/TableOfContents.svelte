@@ -156,24 +156,25 @@ let cursorPosition = $derived.by(() => {
     }
   }
 
+  --items-indent: var(--spacing-m);
+  --cursor-height: 1.477rem;
+  --cursor-width: 2px;
+
   .title {
     display: flex;
     align-items: center;
-    gap: var(--spacing-s);
 
     .icon {
-      min-width: calc(2ch - 2px);
+      width: calc(var(--items-indent) + var(--cursor-width));
     }
   }
 
   .items {
-    border-left: 2px solid var(--color-background-secondary);
-    padding-left: var(--spacing-m);
+    border-left: var(--cursor-width) solid var(--color-background-secondary);
+    padding-left: var(--items-indent);
     position: relative;
 
     .cursor {
-      --cursor-height: 1.477rem;
-      --cursor-width: 2px;
       position: absolute;
       left: calc(-1 * var(--cursor-width));
       width: var(--cursor-width);

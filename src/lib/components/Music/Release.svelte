@@ -131,7 +131,7 @@ let showTracklist = $derived.by(() => {
   }
 
   .release-meta {
-    --meta-gap: 1ch;
+    --meta-gap: var(--spacing-s);
     display: flex;
     flex-wrap: wrap;
     column-gap: var(--meta-gap);
@@ -158,7 +158,7 @@ let showTracklist = $derived.by(() => {
       column-gap: var(--spacing-s);
 
       .track-number {
-        width: 2ch;
+        width: var(--spacing-m);
       }
 
       .track-title {

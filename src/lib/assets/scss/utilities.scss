@@ -118,7 +118,7 @@ $spacing-directions: (
 .highlight {
   background-color: var(--color-foreground);
   color: var(--color-background);
-  padding-inline: 1ch;
+  padding-inline: var(--spacing-s);
 
   &.muted {
     background-color: var(--color-foreground-muted);
