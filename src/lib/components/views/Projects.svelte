@@ -2,13 +2,28 @@
 import { projects } from '$lib/data/projects'
 import Link from '../Link.svelte'
 import TimePeriod from '../TimePeriod.svelte'
+
+let {
+  limit,
+}: {
+  limit?: number
+} = $props()
+
+const shownProjects = $derived.by(() => {
+  if (limit === undefined) return projects
+  else return projects.slice(0, limit)
+})
+
+const hasMore = $derived.by(() => {
+  return projects.length > (limit ?? 0)
+})
 </script>
 
 <div class="projects">
   <div class="title flex">
     <div class="highlight">Projects</div>
   </div>
-  {#each projects as project}
+  {#each shownProjects as project}
     <div class="project">
       <div class="project-info">
         <div class="title">{project.title}</div>
@@ -25,6 +40,7 @@ import TimePeriod from '../TimePeriod.svelte'
       </div>
     </div>
   {/each}
+  {#if hasMore}<a href="/projects">→ All projects</a>{/if}
 </div>
 
 <style lang="scss">

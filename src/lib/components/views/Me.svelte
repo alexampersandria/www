@@ -19,3 +19,14 @@ import { me } from '$lib/data/me'
     {/if}
   </div>
 </div>
+
+<style lang="scss">
+.info {
+  display: flex;
+  flex-direction: column;
+
+  .name {
+    font-weight: var(--font-weight-bold);
+  }
+}
+</style>

@@ -144,7 +144,7 @@ let cursorPosition = $derived.by(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--spacing-xl);
+  padding: var(--spacing-xxl) var(--spacing-xl);
   padding-left: calc(var(--spacing-xxl));
   gap: var(--spacing-s);
   position: fixed;
@@ -174,6 +174,10 @@ let cursorPosition = $derived.by(() => {
     align-items: center;
     gap: var(--spacing-s);
     font-size: var(--font-size-s);
+
+    .icon {
+      min-width: calc(2ch - 2px);
+    }
   }
 
   .items {

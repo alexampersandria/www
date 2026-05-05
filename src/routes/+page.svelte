@@ -11,7 +11,7 @@ import DiscographyList from '$lib/components/music/DiscographyList.svelte'
     <div class="home">
       <Me />
       <Resume background={false} education={false} />
-      <Projects />
+      <Projects limit={2} />
       <DiscographyList />
       <Contact />
     </div>

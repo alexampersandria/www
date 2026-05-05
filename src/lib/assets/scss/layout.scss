@@ -9,8 +9,8 @@
     --navigation-top-clearance: 6rem;
   }
 
-  --container-width: calc(8ch * 10);
-  --container-width-small: calc(8ch * 8);
+  --container-width: 80ch;
+  --container-width-small: 64ch;
 
   --navigation-max-width: max(calc(50vw - var(--container-width) / 2), var(--navigation-min-width) + var(--spacing-xl));
   --navigation-max-width-small-container: max(calc(50vw - var(--container-width-small) / 2), var(--navigation-min-width) + var(--spacing-xl));
@@ -72,22 +72,4 @@
   max-width: var(--container-width);
   margin-left: var(--navigation-max-width);
   margin-right: var(--spacing-xl);
-
-  &.min {
-    max-width: var(--container-width-small);
-    margin-left: var(--navigation-max-width-small-container);
-  }
-
-  /**
-   * Might overflow if navigation min width is too large
-   * only use max if not super important information, e.g. images (NO TEXT)
-   */
-  &.max {
-    max-width: max(calc(100% - var(--navigation-min-width) * 2), var(--container-width));
-    margin-inline: var(--navigation-min-width);
-
-    &.shrink {
-      margin-inline: max(var(--navigation-min-width), var(--spacing-xl));
-    }
-  }
 }

@@ -6,6 +6,8 @@
 
 I have been producing and releasing music under the project Brüch since 2020
 
+---
+
 ## Discography
 
 <Discography />

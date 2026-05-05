@@ -36,7 +36,7 @@ h5,
 h6 {
   color: var(--color-text);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-m);
+  margin-block: 0.5em;
 
   white-space: normal;
   word-break: break-word;
@@ -57,6 +57,10 @@ p {
   white-space: normal;
   word-break: break-word;
   hyphens: auto;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .mono,

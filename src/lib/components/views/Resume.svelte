@@ -41,7 +41,7 @@ let {
   {#if resume.positions.length > 0 && positions}
     <div class="section positions">
       <div id="positions" class="section-title">
-        <div class="highlight">Past</div>
+        <div class="highlight">Previous</div>
       </div>
       <div class="section-content">
         {#each resume.positions as position}
