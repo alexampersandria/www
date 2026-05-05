@@ -55,6 +55,11 @@ const scroll = new ScrollState({
 let pagetitle = $derived.by(() => {
   let root = 'liara.io'
   let path = page.url.pathname
+
+  if (path === '/') {
+    return root
+  }
+
   let firstSegment = path.split('/').filter(Boolean)[0]
   let lastSegment = path.split('/').filter(Boolean).pop()
   let segmentCount = path.split('/').filter(Boolean).length
