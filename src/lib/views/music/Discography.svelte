@@ -1,6 +1,6 @@
 <script lang="ts">
 import { discography } from '$lib/data/music'
-import Release from './Release.svelte'
+import Release from '$lib/components/music/Release.svelte'
 
 let {
   tracklist = true,

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { me } from '$lib/data/me'
-import Link from './Link.svelte'
+import Link from '$lib/components/Link.svelte'
 
 let { pronouns = false, 'all-links': allLinks = false } = $props()
 </script>

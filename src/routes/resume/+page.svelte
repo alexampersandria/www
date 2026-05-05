@@ -1,6 +1,6 @@
 <script lang="ts">
-import PhotoHeader from '$lib/components/PhotoHeader.svelte'
-import Resume from '$lib/components/views/Resume.svelte'
+import PhotoHeader from '$lib/views/PhotoHeader.svelte'
+import Resume from '$lib/views/Resume.svelte'
 </script>
 
 <div class="app-page">

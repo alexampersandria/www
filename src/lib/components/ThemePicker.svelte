@@ -1,20 +1,23 @@
 <script lang="ts">
-import { themeList, useThemeStore, type Theme } from '$lib/stores/theme.store.svelte'
+import { themeList, type Theme } from '$lib/stores/theme.store.svelte'
 
-const themeStore = useThemeStore()
-const setTheme = (theme: Theme) => (themeStore.theme = theme)
+let {
+  theme = $bindable(),
+}: {
+  theme?: Theme
+} = $props()
 </script>
 
 <div class="theme-picker">
   <div class="themes">
-    {#each themeList as theme}
-      {@const active = themeStore.theme === theme}
+    {#each themeList as themeItem}
+      {@const active = themeItem === theme}
       <button
-        class="theme-button theme-{theme}"
+        class="theme-button theme-{themeItem}"
         class:active
-        onclick={() => setTheme(theme)}
-        title={theme}
-        aria-label={`Set theme to ${theme}`}>
+        onclick={() => (theme = themeItem)}
+        title={themeItem}
+        aria-label={`Set theme to ${themeItem}`}>
       </button>
     {/each}
   </div>
