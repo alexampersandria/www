@@ -59,7 +59,7 @@ let {
   {#if resume.education.length > 0 && education}
     <div class="section education">
       <div class="section-title">
-        <div id="education" class="highlight">Education</div>
+        <h2 id="education" class="nostyle highlight">Education</h2>
       </div>
       <div class="section-content">
         {#each resume.education as institution}
