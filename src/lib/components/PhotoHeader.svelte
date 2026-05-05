@@ -14,7 +14,7 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
 
   <div class="right">
     <div class="header">
-      <h2 class="nostyle name">{me.name}</h2>
+      <div class="nostyle name">{me.name}</div>
       {#if me.birthday}
         <div class="birthday">b. {me.birthday}</div>
       {/if}

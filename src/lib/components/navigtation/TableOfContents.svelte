@@ -103,7 +103,7 @@ let active = $derived.by<TableOfContentsItem | null>(() => {
 
   checkItems(tableofcontents.items)
 
-  const scrolledToBottom = scroll.arrived.bottom
+  const scrolledToBottom = scroll.arrived.bottom && scroll.y > 0
   if (scrolledToBottom && last) return last
 
   return closest || first
@@ -153,6 +153,8 @@ let cursorPosition = $derived.by(() => {
   right: 0;
   width: 100%;
 
+  font-size: var(--font-size-s);
+
   @media screen and (min-width: 920px) {
     max-width: calc(var(--navigation-max-width) - var(--spacing-xl));
   }
@@ -173,7 +175,6 @@ let cursorPosition = $derived.by(() => {
     display: flex;
     align-items: center;
     gap: var(--spacing-s);
-    font-size: var(--font-size-s);
 
     .icon {
       min-width: calc(2ch - 2px);
@@ -183,7 +184,6 @@ let cursorPosition = $derived.by(() => {
   .items {
     border-left: 2px solid var(--color-background-secondary);
     padding-left: var(--spacing-m);
-    font-size: var(--font-size-s);
     position: relative;
 
     .cursor {

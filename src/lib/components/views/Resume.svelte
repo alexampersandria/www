@@ -18,8 +18,8 @@ let {
 <div class="resume">
   {#if resume.background && background}
     <div class="section background">
-      <div id="background" class="section-title">
-        <div class="highlight">Background</div>
+      <div class="section-title">
+        <h2 id="background" class="nostyle highlight">Background</h2>
       </div>
       <div class="section-content">
         {resume.background}
@@ -29,8 +29,8 @@ let {
 
   {#if currentPosition && positions}
     <div class="section positions">
-      <div id="positions" class="section-title">
-        <div class="highlight">Currently working @</div>
+      <div class="section-title">
+        <h2 id="current" class="nostyle highlight">Currently working @</h2>
       </div>
       <div class="section-content">
         <Position position={currentPosition} />
@@ -40,8 +40,8 @@ let {
 
   {#if resume.positions.length > 0 && positions}
     <div class="section positions">
-      <div id="positions" class="section-title">
-        <div class="highlight">Previous</div>
+      <div class="section-title">
+        <h2 id="previous" class="nostyle highlight">Previous</h2>
       </div>
       <div class="section-content">
         {#each resume.positions as position}
@@ -58,8 +58,8 @@ let {
 
   {#if resume.education.length > 0 && education}
     <div class="section education">
-      <div id="education" class="section-title">
-        <div class="highlight">Education</div>
+      <div class="section-title">
+        <div id="education" class="highlight">Education</div>
       </div>
       <div class="section-content">
         {#each resume.education as institution}

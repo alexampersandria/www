@@ -28,7 +28,7 @@ const buyLink = (release: Release) => {
 
 <div class="discography-list">
   <div class="title flex">
-    <div class="highlight">Music</div>
+    <h2 id="music" class="nostyle highlight">Music</h2>
   </div>
   <div class="releases">
     <table class="release">

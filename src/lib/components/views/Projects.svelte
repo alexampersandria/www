@@ -21,12 +21,12 @@ const hasMore = $derived.by(() => {
 
 <div class="projects">
   <div class="title flex">
-    <div class="highlight">Projects</div>
+    <h2 id="projects" class="nostyle highlight">Projects</h2>
   </div>
   {#each shownProjects as project}
     <div class="project">
       <div class="project-info">
-        <div class="title">{project.title}</div>
+        <h3 id={project.id} class="nostyle title">{project.title}</h3>
         {#if project.period}
           <TimePeriod from={project.period.from} to={project.period.to} />
         {/if}
