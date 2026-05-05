@@ -10,7 +10,7 @@ import TimePeriod from '../TimePeriod.svelte'
   </div>
   {#each projects as project}
     <div class="project">
-      <div class="flex space-between">
+      <div class="project-info">
         <div class="title">{project.title}</div>
         {#if project.period}
           <TimePeriod from={project.period.from} to={project.period.to} />
@@ -31,21 +31,32 @@ import TimePeriod from '../TimePeriod.svelte'
 .projects {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-m);
+  gap: var(--spacing-l);
 
   .project {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-xxs);
+    gap: var(--spacing-xxs);
 
-    .title {
-      font-weight: var(--font-weight-bold);
-      color: var(--color-text-strong);
+    .project-info {
+      display: flex;
+      justify-content: space-between;
+      column-gap: var(--spacing-m);
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .title {
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text-strong);
+      }
     }
 
     .links {
       display: flex;
-      gap: var(--padding-m);
+      gap: var(--spacing-m);
     }
   }
 }

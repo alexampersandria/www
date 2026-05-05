@@ -1,4 +1,7 @@
-import type { Redirect } from '$lib/types/redirect'
+export type Redirect = {
+  from: string
+  to: string
+}
 
 export const redirects: Redirect[] = [
   {

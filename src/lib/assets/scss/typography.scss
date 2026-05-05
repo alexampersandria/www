@@ -1,0 +1,187 @@
+:root {
+  --font-size-xs: 0.75rem;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+
+  --font-weight-normal: 425;
+  --font-weight-bold: 675;
+
+  --h1-size: var(--font-size-xl);
+  --h2-size: var(--font-size-l);
+  --h3-size: var(--font-size-l);
+  --h4-size: var(--font-size-m);
+  --h5-size: var(--font-size-m);
+  --h6-size: var(--font-size-s);
+
+  --code-size: var(--font-size-s);
+
+  --underline-height: 1px;
+  --underline-offset: 3px;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: var(--h#{$i}-size);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-strong);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-m);
+
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &.nostyle {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+  }
+}
+
+p {
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.mono,
+code {
+  font-family: 'Geist Mono', monospace;
+}
+
+code {
+  color: var(--color-text-strong);
+}
+
+// Font Size Utilities
+
+.extra-small {
+  font-size: var(--font-size-xs);
+}
+
+.small {
+  font-size: var(--font-size-s);
+}
+
+.medium {
+  font-size: var(--font-size-m);
+}
+
+.large {
+  font-size: var(--font-size-l);
+}
+
+.extra-large {
+  font-size: var(--font-size-xl);
+}
+
+.extra-extra-large {
+  font-size: var(--font-size-xxl);
+}
+
+// Text Style Utilities
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.centered {
+  text-align: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--color-text-muted);
+
+  code {
+    color: var(--color-text-strong);
+  }
+
+  a,
+  .link {
+    color: var(--color-text-strong);
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+}
+
+// Links
+
+a {
+  color: var(--color-text-strong);
+
+  text-decoration: underline;
+  text-decoration-color: var(--color-underline);
+  text-underline-offset: var(--underline-offset);
+  text-decoration-thickness: var(--underline-height);
+
+  &:has(img) {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: var(--color-text-strong);
+    text-decoration-color: var(--color-text);
+  }
+
+  &.active {
+    color: var(--color-text-strong);
+    font-weight: var(--font-weight-bold);
+  }
+
+  // external links
+  &[href^='http'] {
+    &:after {
+      content: '↗';
+      font-size: var(--font-size-xs);
+      vertical-align: top;
+    }
+  }
+}
+
+// Lists
+
+ul,
+ol,
+dl {
+  margin: var(--spacing-xxs) 0;
+  padding-inline-start: var(--spacing-m);
+
+  &.plain {
+    list-style: none;
+    padding-inline-start: 0;
+  }
+}
+
+// Images
+
+img {
+  max-width: 100%;
+  height: auto;
+}

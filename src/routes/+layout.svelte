@@ -1,6 +1,6 @@
 <script lang="ts">
 import 'modern-normalize/modern-normalize.css'
-import '$lib/assets/scss/main.scss'
+import '$lib/assets/main.scss'
 import favicon from '$lib/assets/favicon.svg'
 import Navigation from '$lib/components/navigtation/Navigation.svelte'
 import { page } from '$app/state'

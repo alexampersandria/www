@@ -81,8 +81,8 @@ afterNavigate(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--padding-xl);
-  gap: var(--padding-m);
+  padding: var(--spacing-xl);
+  gap: var(--spacing-m);
   position: fixed;
   z-index: 1998;
   top: 0;
@@ -126,11 +126,11 @@ afterNavigate(() => {
   }
 
   @media screen and (min-width: 920px) {
-    max-width: calc(var(--navigation-max-width) - var(--padding-xl));
+    max-width: calc(var(--navigation-max-width) - var(--spacing-xl));
     min-width: var(--navigation-min-width);
     padding-inline: 0;
-    padding-right: var(--padding-m);
-    left: var(--padding-xl);
+    padding-right: var(--spacing-m);
+    left: var(--spacing-xl);
     pointer-events: none;
 
     .menu,
@@ -172,7 +172,7 @@ afterNavigate(() => {
       width: 100%;
 
       font-size: var(--font-size-l);
-      padding-top: var(--padding-m);
+      padding-top: var(--spacing-m);
 
       &:not(.open) {
         opacity: 0;
@@ -201,14 +201,14 @@ afterNavigate(() => {
     justify-content: space-between;
     overflow: hidden;
     flex: 1 1 auto;
-    gap: var(--padding-m);
+    gap: var(--spacing-m);
 
     .links {
       flex-shrink: 1;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding-bottom: var(--padding-xl);
+      padding-bottom: var(--spacing-xl);
 
       :global(a) {
         white-space: nowrap;

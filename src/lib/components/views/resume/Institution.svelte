@@ -1,6 +1,6 @@
 <script lang="ts">
 import TimePeriod from '$lib/components/TimePeriod.svelte'
-import type { Education } from '$lib/types/resume'
+import type { Education } from '$lib/data/resume'
 import { formatId } from '$lib/utils/id'
 
 let {
@@ -22,7 +22,7 @@ const institutionId = $derived(formatId(institution.institution))
   <div class="flex space-between">
     <div class="degree">{institution.degree}</div>
     {#if !institution.completed}
-      <div class="incomplete">*Incomplete</div>
+      <div class="incomplete muted">*Incomplete</div>
     {/if}
   </div>
 </div>

@@ -20,7 +20,7 @@ pre[class*='language-'] {
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: var(--padding-m);
+  padding: var(--spacing-m);
   border-radius: var(--radius-s);
   overflow: auto;
   background-color: var(--color-background-secondary);
@@ -43,14 +43,14 @@ pre[class*='language-'] {
 }
 
 .token.comment {
-  color: var(--text-dimmed);
+  color: var(--color-text-muted);
 }
 
 .token.prolog,
 .token.doctype,
 .token.cdata,
 .token.namespace {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .token.string {
@@ -63,7 +63,7 @@ pre[class*='language-'] {
 
 .token.punctuation,
 .token.operator {
-  color: var(--text-dimmed);
+  color: var(--color-text-muted);
 }
 
 .token.variable,
@@ -90,7 +90,7 @@ pre[class*='language-'] {
 .token.attr-name,
 .token.property,
 .language-autohotkey .token.selector {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .token.function,
@@ -107,10 +107,10 @@ pre[class*='language-'] {
 
 .preview {
   background-color: var(--background-secondary);
-  padding: var(--padding-m);
+  padding: var(--spacing-m);
   border-radius: var(--radius-s);
   overflow: auto;
-  border: var(--border-width) solid var(--border-color);
+  border: var(--border-width) solid var(--color-border);
 
   &:has(+ pre[class*='language-']) {
     border-bottom-left-radius: 0;

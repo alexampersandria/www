@@ -44,7 +44,7 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
 <style lang="scss">
 .me {
   display: flex;
-  gap: var(--padding-l);
+  gap: var(--spacing-l);
   justify-content: flex-start;
   align-items: stretch;
 
@@ -69,7 +69,7 @@ let { pronouns = false, 'all-links': allLinks = false } = $props()
 
   .details {
     display: flex;
-    gap: var(--padding-m);
+    gap: var(--spacing-m);
   }
 
   .header {

@@ -1,4 +1,28 @@
-import type { Release } from '$lib/types/music'
+import type { Link } from './links'
+
+export type ReleaseType = 'album' | 'single' | 'ep' | 'remix'
+
+export const isMultiTrackType = (type: ReleaseType): boolean => {
+  return type === 'album' || type === 'ep'
+}
+
+export type Track = {
+  title: string
+  artist: string
+  featuring?: string[]
+  // duration in seconds
+  duration?: number
+}
+
+export type Release = {
+  type: ReleaseType
+  title: string
+  artist: string
+  releaseDate: string
+  cover?: string
+  tracks?: Track[]
+  links?: Link[]
+}
 
 export const discography: Release[] = [
   {

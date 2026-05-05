@@ -1,5 +1,5 @@
 import { resume } from '$lib/data/resume'
-import type { CurrentPosition } from '$lib/types/resume'
+import type { CurrentPosition } from '$lib/data/resume'
 
 export const currentPosition = resume.positions.find(position =>
   position.roles.some(role => role.period.to === 'Present'),

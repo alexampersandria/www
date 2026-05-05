@@ -1,0 +1,59 @@
+// Imports
+@use 'scss/spacing';
+@use 'scss/animation';
+@use 'scss/color';
+@use 'scss/fadein';
+@use 'scss/code';
+@use 'scss/layout';
+@use 'scss/typography';
+@use 'scss/forms';
+@use 'scss/elements';
+@use 'scss/table';
+@use 'scss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
+
+:root {
+  color-scheme: dark;
+  font-family:
+    'Geist Mono',
+    'Geist',
+    'Inter',
+    Helvetica,
+    Helvetica Neue,
+    system-ui,
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.6875;
+  font-weight: var(--font-weight-normal);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--color-background-primary);
+  color: var(--color-text);
+}
+
+*:disabled {
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+*:focus-visible {
+  outline: none;
+  color: var(--color-text-focus);
+  box-shadow:
+    0 0 0 var(--focus-shadow-offset) var(--color-background-primary),
+    0 0 0 calc(var(--focus-shadow-offset) + var(--focus-shadow-offset)) var(--color-focus) !important;
+}
+
+*:target {
+  scroll-margin-top: var(--scroll-margin-top);
+}
+
+::selection {
+  background-color: var(--color-selection);
+  color: var(--color-selection-text);
+}

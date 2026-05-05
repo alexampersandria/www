@@ -7,7 +7,7 @@ let links = $derived.by(() => {
 })
 </script>
 
-<div class="contact flex column gapy-m">
+<div class="contact flex column gapy-l">
   <div class="title flex">
     <div class="highlight">Contact</div>
   </div>

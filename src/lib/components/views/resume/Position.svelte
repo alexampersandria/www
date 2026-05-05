@@ -2,7 +2,7 @@
 import Company from '$lib/components/Company.svelte'
 import TimePeriod from '$lib/components/TimePeriod.svelte'
 import { formatId } from '$lib/utils/id'
-import type { Position } from '$lib/types/resume'
+import type { Position } from '$lib/data/resume'
 
 let {
   position,
@@ -15,7 +15,7 @@ const positionId = $derived(formatId(position.company.name))
 </script>
 
 <div class="position" class:multirole>
-  <div class="flex space-between">
+  <div class="company-info">
     <div id={positionId} class="company">
       <Company {...position.company} />
     </div>
@@ -51,22 +51,33 @@ const positionId = $derived(formatId(position.company.name))
 
 <style lang="scss">
 .position {
-  .company {
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-strong);
+  .company-info {
+    display: flex;
+    justify-content: space-between;
+    column-gap: var(--spacing-m);
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .company {
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-strong);
+    }
   }
 
   &.multirole {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-s);
+    gap: var(--spacing-s);
 
     .roles {
       display: flex;
       flex-direction: column;
-      gap: var(--padding-s);
+      gap: var(--spacing-s);
 
-      padding-left: var(--padding-m);
+      padding-left: var(--spacing-m);
       border-left: 2px dashed var(--color-background-tertiary);
 
       .role .title {

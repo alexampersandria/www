@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { Release } from '$lib/types/music'
 import { formatId } from '$lib/utils/id'
 import { formatReleaseType } from '$lib/utils/music'
 import { formatDate, formatSeconds } from '$lib/utils/time'
+import type { Release } from '$lib/data/music'
 import Link from '../Link.svelte'
 
 let {
@@ -61,9 +61,12 @@ let showTracklist = $derived.by(() => {
 
     {#if release.links && release.links.length > 0}
       <div class="release-links flex space-between gapx-l">
-        Buy / Listen
+        Listen @
         <div class="links">
-          {#each release.links as link}
+          {#each release.links as link, index}
+            {#if release.links.length > 1 && index === release.links.length - 1}
+              <div class="or">or</div>
+            {/if}
             <Link {...link} />
           {/each}
         </div>
@@ -92,7 +95,7 @@ let showTracklist = $derived.by(() => {
 .release {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xs);
+  gap: var(--spacing-xs);
   color: var(--color-text);
 
   &:has(*:target) {
@@ -101,7 +104,7 @@ let showTracklist = $derived.by(() => {
     &:after {
       content: '';
       display: block;
-      --padding: var(--padding-s);
+      --padding: var(--spacing-s);
       --size: calc(100% + var(--padding) * 2);
       height: var(--size);
       width: var(--size);
@@ -130,21 +133,31 @@ let showTracklist = $derived.by(() => {
   }
 
   .release-meta {
+    --meta-gap: 1ch;
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--padding-m);
+    column-gap: var(--meta-gap);
+
+    > * {
+      &:not(:last-child) {
+        &:after {
+          content: '/';
+          padding-inline-start: var(--meta-gap);
+        }
+      }
+    }
   }
 
   .links {
     display: flex;
     flex-wrap: wrap;
-    column-gap: var(--padding-s);
+    column-gap: var(--spacing-s);
   }
 
   .tracklist {
     .track {
       display: flex;
-      column-gap: var(--padding-s);
+      column-gap: var(--spacing-s);
 
       .track-number {
         width: 2ch;

@@ -19,6 +19,6 @@ let {
 .discography {
   display: flex;
   flex-direction: column;
-  gap: var(--padding-xl);
+  gap: var(--spacing-l);
 }
 </style>

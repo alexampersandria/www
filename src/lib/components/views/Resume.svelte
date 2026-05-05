@@ -30,7 +30,7 @@ let {
   {#if currentPosition && positions}
     <div class="section positions">
       <div id="positions" class="section-title">
-        <div class="highlight">Present</div>
+        <div class="highlight">Currently working @</div>
       </div>
       <div class="section-content">
         <Position position={currentPosition} />
@@ -58,7 +58,9 @@ let {
 
   {#if resume.education.length > 0 && education}
     <div class="section education">
-      <div id="education" class="section-title">Education</div>
+      <div id="education" class="section-title">
+        <div class="highlight">Education</div>
+      </div>
       <div class="section-content">
         {#each resume.education as institution}
           <Institution {institution} />
@@ -70,14 +72,13 @@ let {
 
 <style lang="scss">
 .resume {
-  &,
+  display: contents;
+
   .section {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-m);
-  }
+    gap: var(--spacing-l);
 
-  .section {
     .section-title {
       display: flex;
     }
@@ -85,7 +86,7 @@ let {
     .section-content {
       display: flex;
       flex-direction: column;
-      gap: var(--padding-m);
+      gap: var(--spacing-m);
     }
   }
 
