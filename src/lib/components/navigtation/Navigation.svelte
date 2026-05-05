@@ -106,17 +106,12 @@ afterNavigate(() => {
     .copy {
       font-size: var(--font-size-s);
       color: var(--color-text-muted);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-s);
-      justify-content: space-between;
     }
   }
 
   a,
   :global(a),
-  .copy,
-  .copy > * {
+  .copy {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
