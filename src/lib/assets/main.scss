@@ -1,9 +1,7 @@
-// Imports
 @use 'scss/spacing';
 @use 'scss/animation';
 @use 'scss/color';
 @use 'scss/fadein';
-@use 'scss/code';
 @use 'scss/layout';
 @use 'scss/typography';
 @use 'scss/forms';
@@ -32,8 +30,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: var(--color-background-primary);
+  background-color: var(--color-background);
   color: var(--color-text);
+
+  &,
+  * {
+    transition:
+      background-color 0.5s,
+      box-shadow 0.25s,
+      border-color 0.15s,
+      text-decoration-color 0.15s,
+      color 0.15s;
+  }
 }
 
 *:disabled {
@@ -45,7 +53,7 @@
   outline: none;
   color: var(--color-text-focus);
   box-shadow:
-    0 0 0 var(--focus-shadow-offset) var(--color-background-primary),
+    0 0 0 var(--focus-shadow-offset) var(--color-background),
     0 0 0 calc(var(--focus-shadow-offset) + var(--focus-shadow-offset)) var(--color-focus) !important;
 }
 

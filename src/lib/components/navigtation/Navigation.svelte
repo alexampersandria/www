@@ -4,6 +4,7 @@ import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
 import Logo from '../Logo.svelte'
+import ThemePicker from '../ThemePicker.svelte'
 import NestedNavigation from './NestedNavigation.svelte'
 
 let open = $state(false)
@@ -54,8 +55,15 @@ afterNavigate(() => {
       {/each}
     </div>
 
-    <div class="copy">
-      &copy; {new Date().getFullYear()} Liara Alexandria Brüchmann
+    <div class="footer">
+      <div class="theme">
+        <ThemePicker />
+      </div>
+
+      <div class="copy">
+        &copy; {new Date().getFullYear()}
+        Liara Alexandria Brüchmann
+      </div>
     </div>
   </div>
 </div>
@@ -89,15 +97,26 @@ afterNavigate(() => {
   left: 0;
   width: 100%;
 
-  .copy {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
     flex-shrink: 0;
-    color: var(--color-text-muted);
-    font-size: var(--font-size-xs);
+
+    .copy {
+      font-size: var(--font-size-s);
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-s);
+      justify-content: space-between;
+    }
   }
 
   a,
   :global(a),
-  .copy {
+  .copy,
+  .copy > * {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -134,7 +153,8 @@ afterNavigate(() => {
     pointer-events: none;
 
     .menu,
-    .links {
+    .links,
+    .footer {
       pointer-events: initial;
     }
 
@@ -154,12 +174,13 @@ afterNavigate(() => {
     width: 100%;
 
     .menu,
-    .navigation-content.open {
+    .navigation-content.open,
+    .theme {
       pointer-events: initial;
     }
 
     pointer-events: none;
-    background-color: var(--color-background-primary);
+    background-color: var(--color-background);
 
     &:not(:has(.navigation-content.open)) {
       background-color: transparent;
@@ -199,7 +220,6 @@ afterNavigate(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
     flex: 1 1 auto;
     gap: var(--spacing-m);
 
@@ -207,7 +227,6 @@ afterNavigate(() => {
       flex-shrink: 1;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
       padding-bottom: var(--spacing-xl);
 
       :global(a) {

@@ -50,7 +50,7 @@ import TimePeriod from '../TimePeriod.svelte'
 
       .title {
         font-weight: var(--font-weight-bold);
-        color: var(--color-text-strong);
+        color: var(--color-text);
       }
     }
 

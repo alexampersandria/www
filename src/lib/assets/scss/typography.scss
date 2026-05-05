@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-text-strong);
+  color: var(--color-text);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-m);
 
@@ -65,7 +65,7 @@ code {
 }
 
 code {
-  color: var(--color-text-strong);
+  color: var(--color-text);
 }
 
 // Font Size Utilities
@@ -118,12 +118,12 @@ code {
   color: var(--color-text-muted);
 
   code {
-    color: var(--color-text-strong);
+    color: var(--color-text);
   }
 
   a,
   .link {
-    color: var(--color-text-strong);
+    color: var(--color-text);
 
     &:hover {
       color: var(--color-text);
@@ -134,7 +134,7 @@ code {
 // Links
 
 a {
-  color: var(--color-text-strong);
+  color: var(--color-text);
 
   text-decoration: underline;
   text-decoration-color: var(--color-underline);
@@ -146,12 +146,12 @@ a {
   }
 
   &:hover {
-    color: var(--color-text-strong);
+    color: var(--color-text);
     text-decoration-color: var(--color-text);
   }
 
   &.active {
-    color: var(--color-text-strong);
+    color: var(--color-text);
     font-weight: var(--font-weight-bold);
   }
 

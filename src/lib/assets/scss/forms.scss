@@ -48,14 +48,29 @@ form,
   }
 }
 
-button.plain {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
+button {
   cursor: pointer;
+  background: var(--color-button-background);
+  color: var(--color-button-text);
+  padding: var(--button-padding);
+  border: none;
+  border-radius: 0;
+  font-size: var(--button-size);
+
+  &:hover {
+    background: var(--color-button-hover-background);
+    color: var(--color-button-hover-text);
+  }
+
+  &.plain {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
 
   &:disabled {
     cursor: not-allowed;

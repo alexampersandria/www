@@ -164,7 +164,7 @@ let showTracklist = $derived.by(() => {
       }
 
       .track-title {
-        color: var(--color-text-strong);
+        color: var(--color-text);
       }
 
       .track-duration {

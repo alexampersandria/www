@@ -12,9 +12,14 @@ import { redirectTo } from '$lib/utils/redirect'
 import { onMount } from 'svelte'
 import TableOfContents from '$lib/components/navigtation/TableOfContents.svelte'
 import { ScrollState, watch } from 'runed'
+import { useThemeStore } from '$lib/stores/theme.store.svelte'
+import { initStores } from '$lib/stores/index.svelte'
 
 let { children } = $props()
 let main = $state<HTMLElement>()
+
+initStores()
+const themeStore = useThemeStore()
 
 let tableofcontents = $derived.by(() => {
   return main ? generateTableOfContents(main) : undefined
@@ -87,7 +92,7 @@ watch(
 </svelte:head>
 
 {#if mounted}
-  <div class="root" in:fade={{ duration: 50 }}>
+  <div class="root theme-{themeStore.theme}" in:fade={{ duration: 50 }}>
     <div class="navigation-wrapper">
       <Navigation />
     </div>

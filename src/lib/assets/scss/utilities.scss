@@ -117,11 +117,10 @@ $spacing-directions: (
 
 .highlight {
   background-color: var(--color-text);
-  color: var(--color-background-primary);
+  color: var(--color-background);
   padding-inline: 1ch;
 
   &::selection {
-    background-color: var(--color-background-primary);
-    color: var(--color-text);
+    color: var(--color-background);
   }
 }

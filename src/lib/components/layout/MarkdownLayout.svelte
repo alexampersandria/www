@@ -29,7 +29,7 @@ let { children }: { children?: Snippet } = $props()
 .markdown-layout {
   :global(b),
   :global(strong) {
-    color: var(--color-text-strong);
+    color: var(--color-text);
   }
 
   .no-content {
