@@ -9,6 +9,16 @@
   --animation-length-xl: 600ms;
   --animation-length-xxl: 1200ms;
 
+  @media (prefers-reduced-motion: reduce) {
+    --animation-length-xxs: 0ms;
+    --animation-length-xs: 0ms;
+    --animation-length-s: 0ms;
+    --animation-length-m: 0ms;
+    --animation-length-l: 0ms;
+    --animation-length-xl: 0ms;
+    --animation-length-xxl: 0ms;
+  }
+
   --click-transform: scale(0.97);
 
   --interactive-transition: color var(--animation-length-s) var(--better-ease-out), background-color var(--animation-length-s) var(--better-ease-out), border-color var(--animation-length-s) var(--better-ease-out), box-shadow var(--animation-length-s) var(--better-ease-out), transform var(--animation-length-s) var(--better-ease-out), font-weight var(--animation-length-s) var(--better-ease-out), opacity var(--animation-length-s) var(--better-ease-out), text-decoration-color var(--animation-length-s) var(--better-ease-out);

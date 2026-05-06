@@ -35,15 +35,12 @@
   background-color: var(--color-background);
   color: var(--color-foreground);
 
-  &,
-  * {
-    transition:
-      background-color 0.5s,
-      box-shadow 0.25s,
-      border-color 0.15s,
-      text-decoration-color 0.15s,
-      color 0.15s;
-  }
+  transition:
+    background-color 0.5s,
+    box-shadow 0.25s,
+    border-color 0.15s,
+    text-decoration-color 0.15s,
+    color 0.15s;
 }
 
 *:disabled {

@@ -70,7 +70,8 @@ const shownLinks = $derived(allLinks ? me.links : me.resumeLinks)
   .details,
   .line-two {
     display: flex;
-    gap: var(--spacing-m);
+    column-gap: var(--spacing-m);
+    flex-wrap: wrap;
   }
 
   .name {
