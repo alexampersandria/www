@@ -30,7 +30,11 @@
     @for $i from 0 through 128 {
       &.fadein-#{$i} {
         animation-delay: calc($i * var(--fadein-delay));
-        transition-delay: calc($i * var(--fadein-delay));
+
+        /** fadein color/theme change on desktop only */
+        @media screen and (min-width: 920px) {
+          transition-delay: calc($i * var(--fadein-delay));
+        }
       }
     }
 
