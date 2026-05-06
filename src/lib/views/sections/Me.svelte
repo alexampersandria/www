@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { me } from '$lib/shared/data/me'
 </script>
 

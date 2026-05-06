@@ -1,4 +1,4 @@
-import { me } from '../data/me'
+import { me } from '$lib/shared/data/me'
 
 const birthdayDate = new Date(me.birthday ?? '')
 export const age = (() => {

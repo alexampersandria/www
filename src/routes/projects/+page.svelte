@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Projects from '$lib/views/sections/Projects.svelte'
 </script>
 

@@ -5,7 +5,7 @@ import {
   type TableOfContents,
   type TableOfContentsItem,
 } from '$lib/shared/utils/toc'
-import NestedNavigation from './NestedNavigation.svelte'
+import NestedNavigation from '$lib/components/navigation/NestedNavigation.svelte'
 import { fadein } from '$lib/shared/actions/fadein.svelte'
 import type { ScrollState } from 'runed'
 

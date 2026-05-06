@@ -3,7 +3,7 @@ import { formatId } from '$lib/shared/utils/id'
 import { formatReleaseType } from '$lib/shared/utils/music'
 import { formatDate, formatSeconds } from '$lib/shared/utils/time'
 import type { Release } from '$lib/shared/data/music'
-import Link from '../ui/Link.svelte'
+import Link from '$lib/components/ui/Link.svelte'
 
 let {
   release,

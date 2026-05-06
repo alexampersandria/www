@@ -45,4 +45,30 @@ export default [
       'svelte/no-navigation-without-resolve': 'off',
     },
   },
+  {
+    files: ['src/**/*.{ts,js,svelte}'],
+    ignores: ['src/lib/.paraglide/**'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['./*', '!./$*', '../*'],
+              message: 'use non-relative imports',
+            },
+          ],
+        },
+      ],
+      'svelte/block-lang': [
+        'error',
+        {
+          enforceScriptPresent: false,
+          enforceStylePresent: false,
+          script: ['ts'], // enforce TS
+          style: ['scss'], // enforce scss
+        },
+      ],
+    },
+  },
 ]

@@ -1,4 +1,4 @@
-import type { Link } from './links'
+import type { Link } from '$lib/shared/data/links'
 
 export type ReleaseType = 'album' | 'single' | 'ep' | 'remix'
 
