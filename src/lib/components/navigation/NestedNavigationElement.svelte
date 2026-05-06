@@ -1,7 +1,7 @@
 <script lang="ts">
 import NestedNavigationElement from './NestedNavigationElement.svelte'
-import type { NestedNavigationElementItemProps } from '$lib/data/navigation'
-import { active as activeAction } from '$lib/actions/active.svelte'
+import type { NestedNavigationElementItemProps } from '$lib/shared/data/navigation'
+import { active as activeAction } from '$lib/shared/actions/active.svelte'
 
 let { item, activeItem }: NestedNavigationElementItemProps = $props()
 

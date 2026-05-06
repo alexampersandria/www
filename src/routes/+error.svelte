@@ -1,6 +1,6 @@
 <script lang="ts">
 import { page } from '$app/state'
-import { fadein } from '$lib/actions/fadein.svelte'
+import { fadein } from '$lib/shared/actions/fadein.svelte'
 import { onMount } from 'svelte'
 
 let show = $state<boolean>(false)

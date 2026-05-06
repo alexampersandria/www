@@ -1,5 +1,5 @@
 <script lang="ts">
-import { me } from '$lib/data/me'
+import { me } from '$lib/shared/data/me'
 import Link from '$lib/components/ui/Link.svelte'
 
 let { 'all-links': allLinks = false } = $props()

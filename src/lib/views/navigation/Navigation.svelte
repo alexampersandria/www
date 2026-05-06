@@ -1,8 +1,8 @@
 <script lang="ts">
 import { afterNavigate } from '$app/navigation'
-import { isActiveRoute } from '$lib/actions/active.svelte'
-import { fadein } from '$lib/actions/fadein.svelte'
-import { navigation } from '$lib/data/navigation'
+import { isActiveRoute } from '$lib/shared/actions/active.svelte'
+import { fadein } from '$lib/shared/actions/fadein.svelte'
+import { navigation } from '$lib/shared/data/navigation'
 import Logo from '$lib/components/ui/Logo.svelte'
 import ThemePicker from '$lib/views/ThemePicker.svelte'
 import NestedNavigation from '$lib/components/navigation/NestedNavigation.svelte'

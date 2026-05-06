@@ -1,5 +1,5 @@
-import { age } from '$lib/utils/age'
-import { experience } from '$lib/utils/experience'
+import { age } from '$lib/shared/utils/age'
+import { experience } from '$lib/shared/utils/experience'
 
 export type Resume = {
   background?: string

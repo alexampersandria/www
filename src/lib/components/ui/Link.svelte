@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Link } from '$lib/data/links'
+import type { Link } from '$lib/shared/data/links'
 
 let { href, label, target }: Link = $props()
 

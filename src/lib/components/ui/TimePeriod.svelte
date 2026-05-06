@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Period } from '$lib/data/resume'
+import type { Period } from '$lib/shared/data/resume'
 
 let { from, to }: Period = $props()
 </script>

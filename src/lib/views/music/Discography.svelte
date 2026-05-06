@@ -1,5 +1,5 @@
 <script lang="ts">
-import { discography } from '$lib/data/music'
+import { discography } from '$lib/shared/data/music'
 import Release from '$lib/components/music/Release.svelte'
 
 let {

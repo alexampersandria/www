@@ -1,4 +1,4 @@
-import { redirects } from '$lib/data/redirects'
+import { redirects } from '$lib/shared/data/redirects'
 
 export const redirectTo = (from: string) => {
   const foundRedirect = redirects.find(redirect => {

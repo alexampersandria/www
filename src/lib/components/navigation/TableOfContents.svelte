@@ -1,8 +1,12 @@
 <script lang="ts">
-import type { NestedNavigationItem } from '$lib/data/navigation'
-import { tableOfContentsItemToNavigationItem, type TableOfContents, type TableOfContentsItem } from '$lib/utils/toc'
+import type { NestedNavigationItem } from '$lib/shared/data/navigation'
+import {
+  tableOfContentsItemToNavigationItem,
+  type TableOfContents,
+  type TableOfContentsItem,
+} from '$lib/shared/utils/toc'
 import NestedNavigation from './NestedNavigation.svelte'
-import { fadein } from '$lib/actions/fadein.svelte'
+import { fadein } from '$lib/shared/actions/fadein.svelte'
 import type { ScrollState } from 'runed'
 
 let { tableofcontents, scroll }: { tableofcontents?: TableOfContents; scroll: ScrollState } = $props()

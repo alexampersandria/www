@@ -1,5 +1,5 @@
 <script>
-import { me } from '$lib/data/me'
+import { me } from '$lib/shared/data/me'
 import Link from '$lib/components/ui/Link.svelte'
 
 let links = $derived.by(() => {

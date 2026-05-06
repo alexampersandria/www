@@ -1,5 +1,5 @@
 <script lang="ts">
-import { projects } from '$lib/data/projects'
+import { projects } from '$lib/shared/data/projects'
 import Link from '$lib/components/ui/Link.svelte'
 import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
 

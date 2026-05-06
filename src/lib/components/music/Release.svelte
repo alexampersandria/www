@@ -1,8 +1,8 @@
 <script lang="ts">
-import { formatId } from '$lib/utils/id'
-import { formatReleaseType } from '$lib/utils/music'
-import { formatDate, formatSeconds } from '$lib/utils/time'
-import type { Release } from '$lib/data/music'
+import { formatId } from '$lib/shared/utils/id'
+import { formatReleaseType } from '$lib/shared/utils/music'
+import { formatDate, formatSeconds } from '$lib/shared/utils/time'
+import type { Release } from '$lib/shared/data/music'
 import Link from '../ui/Link.svelte'
 
 let {
