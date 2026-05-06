@@ -1,5 +1,5 @@
-import type { Link } from './links'
-import { links } from './links'
+import type { Link } from '$lib/shared/data/links'
+import { links } from '$lib/shared/data/links'
 
 export type Me = {
   photo?: string

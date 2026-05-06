@@ -1,8 +1,8 @@
 <script lang="ts">
-import { discography, isMultiTrackType, type Release } from '$lib/data/music'
-import { formatId } from '$lib/utils/id'
-import { formatReleaseType } from '$lib/utils/music'
-import { formatDate } from '$lib/utils/time'
+import { discography, isMultiTrackType, type Release } from '$lib/shared/data/music'
+import { formatId } from '$lib/shared/utils/id'
+import { formatReleaseType } from '$lib/shared/utils/music'
+import { formatDate } from '$lib/shared/utils/time'
 
 const musicPageId = (release: Release) => {
   const id = formatId(release.title)

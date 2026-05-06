@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Contact from '$lib/views/sections/Contact.svelte'
 import Projects from '$lib/views/sections/Projects.svelte'
 import Resume from '$lib/views/sections/Resume.svelte'

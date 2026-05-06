@@ -24,7 +24,7 @@ let {
 </div>
 
 <style lang="scss">
-@import '$lib/assets/scss/color.scss';
+@import '$lib/shared/assets/scss/color.scss';
 
 .theme-picker {
   .themes {

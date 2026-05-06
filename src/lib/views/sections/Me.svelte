@@ -1,5 +1,5 @@
-<script>
-import { me } from '$lib/data/me'
+<script lang="ts">
+import { me } from '$lib/shared/data/me'
 </script>
 
 <div class="header flex gap-l align-center">

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Company } from '$lib/data/resume'
+import type { Company } from '$lib/shared/data/resume'
 
 let { name, href }: Company = $props()
 </script>

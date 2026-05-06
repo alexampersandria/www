@@ -1,4 +1,4 @@
-import { sleep } from './sleep'
+import { sleep } from '$lib/shared/utils/sleep'
 
 export const DEFAULT_TAKEATLEAST_DURATION = 250
 

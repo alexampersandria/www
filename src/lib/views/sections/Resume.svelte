@@ -1,6 +1,6 @@
 <script lang="ts">
-import { resume } from '$lib/data/resume'
-import { currentPosition } from '$lib/utils/currentjob'
+import { resume } from '$lib/shared/data/resume'
+import { currentPosition } from '$lib/shared/utils/currentjob'
 import Institution from '$lib/views/resume/Institution.svelte'
 import Position from '$lib/views/resume/Position.svelte'
 

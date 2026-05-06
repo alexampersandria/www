@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Snippet } from 'svelte'
-import IssueLink from '../ui/IssueLink.svelte'
+import IssueLink from '$lib/components/ui/IssueLink.svelte'
 
 let { children }: { children?: Snippet } = $props()
 </script>

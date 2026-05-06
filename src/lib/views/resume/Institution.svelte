@@ -1,7 +1,7 @@
 <script lang="ts">
 import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
-import type { Education } from '$lib/data/resume'
-import { formatId } from '$lib/utils/id'
+import type { Education } from '$lib/shared/data/resume'
+import { formatId } from '$lib/shared/utils/id'
 
 let {
   institution,

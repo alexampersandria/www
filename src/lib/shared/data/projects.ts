@@ -1,5 +1,5 @@
-import type { Link } from './links'
-import type { Period } from './resume'
+import type { Link } from '$lib/shared/data/links'
+import type { Period } from '$lib/shared/data/resume'
 
 export type Project = {
   title: string
