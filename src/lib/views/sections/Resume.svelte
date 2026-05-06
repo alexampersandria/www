@@ -1,8 +1,8 @@
 <script lang="ts">
 import { resume } from '$lib/data/resume'
 import { currentPosition } from '$lib/utils/currentjob'
-import Institution from './resume/Institution.svelte'
-import Position from './resume/Position.svelte'
+import Institution from '$lib/views/resume/Institution.svelte'
+import Position from '$lib/views/resume/Position.svelte'
 
 let {
   background = true,

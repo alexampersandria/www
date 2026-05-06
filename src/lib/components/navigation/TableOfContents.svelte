@@ -40,20 +40,8 @@ let totalElements = $derived.by(() => {
 let active = $derived.by<TableOfContentsItem | null>(() => {
   if (!tableofcontents) return null
 
-  const scrollMarginTop = getComputedStyle(document.documentElement).getPropertyValue('--scroll-margin-top')
-  let scrollMarginTopValue: number
-  // convert css value to pixel number
-  if (scrollMarginTop.includes('rem')) {
-    const remValue = parseFloat(scrollMarginTop.replace('rem', '').trim())
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
-    scrollMarginTopValue = remValue * fontSize
-  } else if (scrollMarginTop.includes('em')) {
-    const emValue = parseFloat(scrollMarginTop.replace('em', '').trim())
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
-    scrollMarginTopValue = emValue * fontSize
-  } else {
-    scrollMarginTopValue = parseFloat(scrollMarginTop.replace('px', '').trim())
-  }
+  // approximation
+  let scrollMarginTopValue = 48
 
   let closest: TableOfContentsItem | null = null
   let closestDistance = Infinity
@@ -129,8 +117,8 @@ let cursorPosition = $derived.by(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--spacing-xxl) var(--spacing-xl);
-  padding-left: calc(var(--spacing-xxl));
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  padding-left: calc(var(--spacing-2xl));
   gap: var(--spacing-s);
   position: fixed;
   z-index: 1998;
@@ -152,33 +140,34 @@ let cursorPosition = $derived.by(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text);
+      color: var(--color-foreground);
     }
   }
+
+  --items-indent: var(--spacing-m);
+  --cursor-height: 1.477rem;
+  --cursor-width: 2px;
 
   .title {
     display: flex;
     align-items: center;
-    gap: var(--spacing-s);
 
     .icon {
-      min-width: calc(2ch - 2px);
+      width: calc(var(--items-indent) + var(--cursor-width));
     }
   }
 
   .items {
-    border-left: 2px solid var(--color-background-secondary);
-    padding-left: var(--spacing-m);
+    border-left: var(--cursor-width) solid var(--color-background-secondary);
+    padding-left: var(--items-indent);
     position: relative;
 
     .cursor {
-      --cursor-height: 1.477rem;
-      --cursor-width: 2px;
       position: absolute;
       left: calc(-1 * var(--cursor-width));
       width: var(--cursor-width);
       height: var(--cursor-height);
-      background-color: var(--color-text);
+      background-color: var(--color-foreground);
       border-radius: calc(1px * infinity);
       transition: top var(--animation-length-s) var(--better-ease-out);
     }

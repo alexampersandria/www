@@ -1,6 +1,6 @@
 <script>
 import { me } from '$lib/data/me'
-import Link from '../Link.svelte'
+import Link from '$lib/components/ui/Link.svelte'
 
 let links = $derived.by(() => {
   return me.links

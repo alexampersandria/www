@@ -1,5 +1,5 @@
 <script lang="ts">
-import TimePeriod from '$lib/components/TimePeriod.svelte'
+import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
 import type { Education } from '$lib/data/resume'
 import { formatId } from '$lib/utils/id'
 
@@ -31,7 +31,7 @@ const institutionId = $derived(formatId(institution.institution))
 .institution {
   .institution-name {
     font-weight: var(--font-weight-bold);
-    color: var(--color-text);
+    color: var(--color-foreground);
   }
 }
 </style>

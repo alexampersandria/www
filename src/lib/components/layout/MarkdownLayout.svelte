@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { Snippet } from 'svelte'
-import NewIssue from '../NewIssue.svelte'
+import IssueLink from '../ui/IssueLink.svelte'
 
 let { children }: { children?: Snippet } = $props()
 </script>
@@ -16,7 +16,7 @@ let { children }: { children?: Snippet } = $props()
             <h1 id="no-content">No Content</h1>
             <div class="message">
               This page contains no content <br />
-              If you believe this to be an error <NewIssue />
+              If you believe this to be an error <IssueLink />
             </div>
           </div>
         </div>

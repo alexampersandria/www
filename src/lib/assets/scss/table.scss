@@ -4,8 +4,8 @@ table {
 
   th,
   td {
-    padding-block: var(--spacing-xs);
-    padding-inline: var(--spacing-xs);
+    padding-block: var(--spacing-s);
+    padding-inline: var(--spacing-s);
     &:first-child {
       padding-inline-start: 0;
     }
@@ -16,9 +16,9 @@ table {
   }
 
   th {
-    color: var(--color-text);
+    color: var(--color-foreground);
     font-weight: var(--font-weight-bold);
-    border-bottom: var(--border-width) solid var(--color-text);
+    border-bottom: var(--border-width) solid var(--color-foreground);
   }
 
   tr {

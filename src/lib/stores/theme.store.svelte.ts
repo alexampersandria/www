@@ -2,7 +2,7 @@ export const themeList = ['paper', 'moon', 'lavender', 'forest', 'cornflower', '
 export type Theme = (typeof themeList)[number]
 
 export type ThemeModel = {
-  theme?: Theme
+  theme: Theme
 }
 
 const isValidTheme = (value: unknown): value is Theme => themeList.includes(value as Theme)

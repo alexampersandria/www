@@ -1,9 +1,9 @@
 <script>
-import Contact from '$lib/components/views/Contact.svelte'
-import Projects from '$lib/components/views/Projects.svelte'
-import Resume from '$lib/components/views/Resume.svelte'
-import Me from '$lib/components/views/Me.svelte'
-import DiscographyList from '$lib/components/music/DiscographyList.svelte'
+import Contact from '$lib/views/sections/Contact.svelte'
+import Projects from '$lib/views/sections/Projects.svelte'
+import Resume from '$lib/views/sections/Resume.svelte'
+import Me from '$lib/views/sections/Me.svelte'
+import DiscographyList from '$lib/views/music/DiscographyList.svelte'
 </script>
 
 <div class="app-page">
@@ -22,6 +22,6 @@ import DiscographyList from '$lib/components/music/DiscographyList.svelte'
 .home {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing-xxl));
+  gap: calc(var(--spacing-xl));
 }
 </style>

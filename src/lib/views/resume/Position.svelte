@@ -1,6 +1,6 @@
 <script lang="ts">
-import Company from '$lib/components/Company.svelte'
-import TimePeriod from '$lib/components/TimePeriod.svelte'
+import Company from '$lib/components/resume/Company.svelte'
+import TimePeriod from '$lib/components/ui/TimePeriod.svelte'
 import { formatId } from '$lib/utils/id'
 import type { Position } from '$lib/data/resume'
 
@@ -61,7 +61,7 @@ const positionId = $derived(formatId(position.company.name))
 
     .company {
       font-weight: var(--font-weight-bold);
-      color: var(--color-text);
+      color: var(--color-foreground);
     }
   }
 
@@ -79,7 +79,7 @@ const positionId = $derived(formatId(position.company.name))
       border-left: 2px dashed var(--color-border);
 
       .role .title {
-        color: var(--color-text);
+        color: var(--color-foreground);
       }
     }
   }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Discography from '$lib/components/Music/Discography.svelte';
+  import Discography from '$lib/views/music/Discography.svelte';
 </script>
 
 # Brüch

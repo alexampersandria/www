@@ -39,13 +39,12 @@
 // Spacing Utilities
 
 $spacing-sizes: (
-  'xxs': var(--spacing-xxs),
-  'xs': var(--spacing-xs),
   's': var(--spacing-s),
   'm': var(--spacing-m),
   'l': var(--spacing-l),
   'xl': var(--spacing-xl),
-  'xxl': var(--spacing-xxl),
+  '2xl': var(--spacing-2xl),
+  '3xl': var(--spacing-3xl),
 );
 
 $spacing-directions: (
@@ -116,9 +115,14 @@ $spacing-directions: (
 }
 
 .highlight {
-  background-color: var(--color-text);
+  background-color: var(--color-foreground);
   color: var(--color-background);
-  padding-inline: 1ch;
+  padding-inline: var(--spacing-s);
+
+  &.muted {
+    background-color: var(--color-foreground-muted);
+    color: var(--color-background);
+  }
 
   &::selection {
     color: var(--color-background);

@@ -1,20 +1,23 @@
 <script lang="ts">
-import { themeList, useThemeStore, type Theme } from '$lib/stores/theme.store.svelte'
+import { themeList, type Theme } from '$lib/stores/theme.store.svelte'
 
-const themeStore = useThemeStore()
-const setTheme = (theme: Theme) => (themeStore.theme = theme)
+let {
+  theme = $bindable(),
+}: {
+  theme?: Theme
+} = $props()
 </script>
 
 <div class="theme-picker">
   <div class="themes">
-    {#each themeList as theme}
-      {@const active = themeStore.theme === theme}
+    {#each themeList as themeItem}
+      {@const active = themeItem === theme}
       <button
-        class="theme-button theme-{theme}"
+        class="theme-button theme-{themeItem}"
         class:active
-        onclick={() => setTheme(theme)}
-        title={theme}
-        aria-label={`Set theme to ${theme}`}>
+        onclick={() => (theme = themeItem)}
+        title={themeItem}
+        aria-label={`Set theme to ${themeItem}`}>
       </button>
     {/each}
   </div>
@@ -27,12 +30,12 @@ const setTheme = (theme: Theme) => (themeStore.theme = theme)
   .themes {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-s);
 
     .theme-button {
       position: relative;
       height: 1.25em;
-      aspect-ratio: 1.675 / 1;
+      width: 2rch;
       display: block;
       padding: 0;
 
@@ -50,7 +53,7 @@ const setTheme = (theme: Theme) => (themeStore.theme = theme)
             background-color: var(--theme-#{$theme}-background);
             color: var(--theme-#{$theme}-background);
 
-            box-shadow: 0 0 0 2px var(--color-text);
+            box-shadow: 0 0 0 2px var(--color-foreground);
             z-index: 1;
           }
         }

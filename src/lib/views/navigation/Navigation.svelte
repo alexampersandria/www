@@ -3,9 +3,12 @@ import { afterNavigate } from '$app/navigation'
 import { isActiveRoute } from '$lib/actions/active.svelte'
 import { fadein } from '$lib/actions/fadein.svelte'
 import { navigation } from '$lib/data/navigation'
-import Logo from '../Logo.svelte'
-import ThemePicker from '../ThemePicker.svelte'
-import NestedNavigation from './NestedNavigation.svelte'
+import Logo from '$lib/components/ui/Logo.svelte'
+import ThemePicker from '$lib/views/ThemePicker.svelte'
+import NestedNavigation from '$lib/components/navigation/NestedNavigation.svelte'
+import { useThemeStore } from '$lib/stores/theme.store.svelte'
+
+const themeStore = useThemeStore()
 
 let open = $state(false)
 let toggleMenu = () => {
@@ -57,7 +60,7 @@ afterNavigate(() => {
 
     <div class="footer">
       <div class="theme">
-        <ThemePicker />
+        <ThemePicker bind:theme={themeStore.theme} />
       </div>
 
       <div class="copy">
@@ -105,7 +108,7 @@ afterNavigate(() => {
 
     .copy {
       font-size: var(--font-size-s);
-      color: var(--color-text-muted);
+      color: var(--color-foreground-muted);
     }
   }
 
@@ -135,7 +138,7 @@ afterNavigate(() => {
     text-decoration: none;
 
     &:not(.active, :hover) {
-      color: var(--color-text);
+      color: var(--color-foreground);
     }
   }
 

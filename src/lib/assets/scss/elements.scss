@@ -21,7 +21,7 @@ hr {
 
 blockquote {
   margin: 0;
-  padding-left: calc(2ch - var(--blockquote-border-width));
+  padding-left: calc(var(--spacing-m) - var(--blockquote-border-width));
   border-left: var(--blockquote-border-width) solid var(--color-border);
   display: flex;
   flex-direction: column;

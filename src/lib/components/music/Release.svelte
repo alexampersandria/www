@@ -3,7 +3,7 @@ import { formatId } from '$lib/utils/id'
 import { formatReleaseType } from '$lib/utils/music'
 import { formatDate, formatSeconds } from '$lib/utils/time'
 import type { Release } from '$lib/data/music'
-import Link from '../Link.svelte'
+import Link from '../ui/Link.svelte'
 
 let {
   release,
@@ -33,7 +33,7 @@ let showTracklist = $derived.by(() => {
         {release.title}
       </h3>
 
-      <div class="release-type highlight">
+      <div class="release-type highlight muted">
         {formatReleaseType(release.type)}
       </div>
     </div>
@@ -93,8 +93,8 @@ let showTracklist = $derived.by(() => {
 .release {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
-  color: var(--color-text);
+  gap: var(--spacing-s);
+  color: var(--color-foreground);
 
   &:has(*:target) {
     position: relative;
@@ -112,17 +112,17 @@ let showTracklist = $derived.by(() => {
       z-index: -1;
       border-radius: var(--radius-s);
 
-      box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
+      box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground-muted);
 
       @keyframes pulse {
         0% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground-muted);
         }
         20% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground);
         }
         60% {
-          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-text-muted);
+          box-shadow: 0 0 0 var(--focus-shadow-offset) var(--color-foreground-muted);
         }
       }
 
@@ -131,7 +131,7 @@ let showTracklist = $derived.by(() => {
   }
 
   .release-meta {
-    --meta-gap: 1ch;
+    --meta-gap: var(--spacing-s);
     display: flex;
     flex-wrap: wrap;
     column-gap: var(--meta-gap);
@@ -158,11 +158,11 @@ let showTracklist = $derived.by(() => {
       column-gap: var(--spacing-s);
 
       .track-number {
-        width: 2ch;
+        width: var(--spacing-m);
       }
 
       .track-title {
-        color: var(--color-text);
+        color: var(--color-foreground);
       }
 
       .track-duration {
