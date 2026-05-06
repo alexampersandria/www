@@ -30,12 +30,12 @@ let {
   .themes {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-s);
 
     .theme-button {
       position: relative;
       height: 1.25em;
-      aspect-ratio: 1.675 / 1;
+      width: 2rch;
       display: block;
       padding: 0;
 

@@ -50,8 +50,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-m);
-  padding-block: var(--spacing-xxl);
-  padding-bottom: max(calc(var(--spacing-xxl) * 2), 15vh);
+  padding-block: var(--spacing-2xl);
+  padding-bottom: max(calc(var(--spacing-2xl) * 2), 15vh);
 
   @media screen and (max-width: 919px) {
     padding-top: 0;

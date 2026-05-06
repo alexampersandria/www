@@ -1,15 +1,15 @@
 :root {
-  --input-padding: var(--spacing-xs) var(--spacing-m);
+  --input-padding: var(--spacing-s) var(--spacing-m);
   --input-radius: var(--radius-xs);
   --input-size: var(--font-size-s);
 
   --button-padding: var(--input-padding);
-  --button-content-gap: var(--spacing-xs);
+  --button-content-gap: var(--spacing-s);
   --button-radius: calc(infinity * 1px);
   --button-size: var(--input-size);
 
   --form-gap: var(--spacing-m);
-  --form-field-gap: var(--spacing-xs);
+  --form-field-gap: var(--spacing-s);
   --form-field-inline-gap: var(--spacing-m);
 }
 

@@ -93,7 +93,7 @@ let showTracklist = $derived.by(() => {
 .release {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-s);
   color: var(--color-foreground);
 
   &:has(*:target) {
