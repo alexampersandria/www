@@ -2,6 +2,12 @@
   --fadein-length: var(--animation-length-m);
   --fadein-delay-root: var(--animation-length-xxs);
   --fadein-delay: var(--fadein-delay-root);
+  --fadein-blur: 4px;
+
+  /** disable blur on mobile for better performance */
+  @media screen and (max-width: 919px) {
+    --fadein-blur: 0;
+  }
 
   &:has(.fadein-8) {
     --fadein-delay: calc(var(--fadein-delay-root) / 2);
@@ -38,29 +44,11 @@
       }
     }
 
-    &.long-fadein {
-      animation: long-fadein var(--animation-length-xl) cubic-bezier(0.09, 0.47, 0, 0.94);
-      animation-fill-mode: backwards;
-    }
-
     @keyframes fadein {
       0% {
         opacity: 0;
         transform: translateY(0.2rem);
-        filter: blur(4px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-    }
-
-    @keyframes long-fadein {
-      0% {
-        opacity: 0;
-        transform: translateY(-6rem);
-        filter: blur(8px);
+        filter: blur(var(--fadein-blur));
       }
       100% {
         opacity: 1;
