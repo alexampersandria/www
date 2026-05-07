@@ -52,6 +52,7 @@
   gap: var(--spacing-m);
   padding-block: calc(var(--spacing-xl) + var(--spacing-m) + 1em);
   padding-bottom: max(calc(var(--spacing-2xl) * 2), 15vh);
+  padding-inline: var(--spacing-xl);
 
   @media screen and (max-width: 919px) {
     padding-top: 0;
