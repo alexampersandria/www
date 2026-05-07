@@ -121,7 +121,8 @@ let cursorPosition = $derived.by(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: var(--spacing-2xl) var(--spacing-xl);
+  padding-block: calc(var(--spacing-xl) + var(--spacing-m) + 1em);
+  padding-inline: var(--spacing-xl);
   padding-left: calc(var(--spacing-2xl));
   gap: var(--spacing-s);
   position: fixed;
