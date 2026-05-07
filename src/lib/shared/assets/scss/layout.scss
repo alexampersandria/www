@@ -70,6 +70,5 @@
 
 .container {
   max-width: var(--container-width);
-  margin-left: var(--navigation-max-width);
-  margin-right: var(--spacing-xl);
+  margin-inline: auto;
 }
