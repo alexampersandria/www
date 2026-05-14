@@ -143,10 +143,6 @@ let cursorPosition = $derived.by(() => {
 
   :global(a) {
     text-decoration: none;
-
-    &:not(.active, :hover) {
-      color: var(--color-foreground);
-    }
   }
 
   --items-indent: var(--spacing-m);

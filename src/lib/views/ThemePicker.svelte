@@ -44,11 +44,6 @@ let {
           background-color: var(--theme-#{$theme}-background-secondary);
           color: var(--theme-#{$theme}-text);
 
-          &:hover {
-            background-color: var(--theme-#{$theme}-background);
-            color: var(--theme-#{$theme}-text-muted);
-          }
-
           &.active {
             background-color: var(--theme-#{$theme}-background);
             color: var(--theme-#{$theme}-background);

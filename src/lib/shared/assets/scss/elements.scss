@@ -39,8 +39,5 @@ button,
 input,
 select,
 textarea {
-  &,
-  * {
-    transition: var(--interactive-transition);
-  }
+  line-height: inherit;
 }

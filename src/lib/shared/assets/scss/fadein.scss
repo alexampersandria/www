@@ -33,6 +33,15 @@
     animation: fadein var(--fadein-length) var(--better-ease-out);
     animation-fill-mode: backwards;
 
+    @media screen and (min-width: 920px) {
+      transition:
+        background-color 0.5s,
+        box-shadow 0.25s,
+        border-color 0.15s,
+        text-decoration-color 0.15s,
+        color 0.15s;
+    }
+
     @for $i from 0 through 128 {
       &.fadein-#{$i} {
         animation-delay: calc($i * var(--fadein-delay));

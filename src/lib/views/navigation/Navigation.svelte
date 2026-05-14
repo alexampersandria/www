@@ -136,10 +136,6 @@ afterNavigate(() => {
   a,
   :global(a) {
     text-decoration: none;
-
-    &:not(.active, :hover) {
-      color: var(--color-foreground);
-    }
   }
 
   @media screen and (min-width: 920px) {

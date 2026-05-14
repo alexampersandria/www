@@ -124,20 +124,12 @@ code {
   code {
     color: var(--color-foreground);
   }
-
-  a,
-  .link {
-    color: var(--color-foreground);
-
-    &:hover {
-      color: var(--color-foreground);
-    }
-  }
 }
 
 // Links
 
-a {
+a,
+.link {
   color: var(--color-foreground);
 
   text-decoration: underline;
@@ -147,11 +139,6 @@ a {
 
   &:has(img) {
     text-decoration: none;
-  }
-
-  &:hover {
-    color: var(--color-foreground);
-    text-decoration-color: var(--color-foreground);
   }
 
   &.active {

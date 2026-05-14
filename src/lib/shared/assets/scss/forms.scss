@@ -1,7 +1,7 @@
 :root {
-  --input-padding: var(--spacing-s) var(--spacing-m);
+  --input-padding: 0 var(--spacing-s);
   --input-radius: var(--radius-xs);
-  --input-size: var(--font-size-s);
+  --input-size: var(--font-size-m);
 
   --button-padding: var(--input-padding);
   --button-content-gap: var(--spacing-s);
@@ -56,11 +56,7 @@ button {
   border: none;
   border-radius: 0;
   font-size: var(--button-size);
-
-  &:hover {
-    background: var(--color-button-hover-background);
-    color: var(--color-button-hover-text);
-  }
+  text-decoration: underline;
 
   &.plain {
     background: none;
@@ -70,9 +66,14 @@ button {
     font: inherit;
     color: inherit;
     cursor: pointer;
+    text-decoration: none;
   }
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  &::selection {
+    color: var(--color-button-text);
   }
 }
