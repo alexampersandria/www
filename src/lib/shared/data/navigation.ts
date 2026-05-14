@@ -31,4 +31,5 @@ export const navigation: NavigationElement[] = [
   { label: 'Resume', href: '/resume' },
   // { label: 'Photography', href: '/photography' },
   { label: 'Music', href: '/music' },
+  { label: 'Blog', href: '/blog' },
 ]
