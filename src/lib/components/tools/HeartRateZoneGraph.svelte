@@ -1,7 +1,14 @@
 <script lang="ts">
+import type { HeartRateZone } from '$lib/shared/utils/hr'
 import { useHeartRateStore } from '$lib/stores/hr.store.svelte'
 
 const model = useHeartRateStore()
+
+const formatMin = (zone: HeartRateZone): string => `${zone.min}`
+const formatMax = (zone: HeartRateZone): string => {
+  if (zone.zone === 5) return `${zone.max}+`
+  return `${zone.max}`
+}
 </script>
 
 {#if model.zones}
@@ -11,13 +18,10 @@ const model = useHeartRateStore()
         <div class="zone zone-{index + 1}">
           <div class="thresholds">
             <div class="threshold min">
-              {zone.min}
+              {formatMin(zone)}
             </div>
             <div class="threshold max">
-              {zone.max}
-              {#if index === model.zones.length - 1}
-                +
-              {/if}
+              {formatMax(zone)}
             </div>
           </div>
           <div class="bar"></div>

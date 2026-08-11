@@ -72,6 +72,23 @@ code {
   color: var(--color-foreground);
 }
 
+pre:has(code) {
+  background-color: var(--color-background-secondary);
+  padding: var(--spacing-m);
+  border-radius: var(--radius-s);
+  overflow-x: auto;
+
+  .token {
+    &.operator,
+    &.punctuation,
+    &.keyword,
+    &.string,
+    &.number {
+      color: var(--color-foreground-muted);
+    }
+  }
+}
+
 // Font Size Utilities
 
 .extra-small {

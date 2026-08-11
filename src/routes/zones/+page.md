@@ -15,9 +15,11 @@ You need to know your resting and maximum heart rates to establish your heart ra
 
 <HeartRateZoneCalculator />
 
+---
+
 ## Method
 
-Estimate your heart rate zones based on your resting and maximum heart rates. These calculations are based on the [Karvonen method](https://en.wikipedia.org/wiki/Heart_rate#Karvonen_method), with adjustments based on [Seiler-Viken, S.A., Mentzoni, F., Seiler, S. et al. Contextualizing the Norwegian standardized intensity zone framework in an international sample of endurance practitioners.](https://rdcu.be/fy0MW). The source code can be found on [GitHub](https://github.com/alexampersandria/www/tree/main/src/lib/shared/utils/hr.ts).
+Estimate your heart rate zones based on your resting and maximum heart rates. These calculations are based on the [Karvonen method](https://en.wikipedia.org/wiki/Heart_rate#Karvonen_method), with adjustments based on [Seiler-Viken, S.A., Mentzoni, F., Seiler, S. et al. Contextualizing the Norwegian standardized intensity zone framework in an international sample of endurance practitioners.](https://rdcu.be/fy0MW).
 
 ### Resting Heart Rate
 
@@ -36,3 +38,30 @@ The zones in this calculator are skewed slightly higher than most other calculat
 ### Lactate Threshold (LT1 + LT2)
 
 If you want **perfectly accurate** heart rate zones, you should perform a lactate threshold test to determine your LT1 and LT2 and derive your zones from there.
+
+## Code explained
+
+The zone boundaries and offsets are defined as the following:
+
+```ts
+const boundaries = [0.5, 0.6, 0.7125, 0.825, 0.95, 1.0]
+const offsets = [0, 1, 1, 1, 0, 0]
+```
+
+where the boundary is percentage of heart rate reserve, calculated as
+
+```ts
+const heartRateReserve = maxHeartRate - restingHeartRate
+
+const zoneBoundary = (zone: number): number => {
+  const percentage = boundaries[zone]
+  const baseBoundary = restingHeartRate + heartRateReserve * percentage
+  return Math.ceil(baseBoundary + offsets[zone])
+}
+```
+
+This is different from the Karvonen method where the boundaries are evenly spaced from 50% to 100% of heart rate reserve. The goal with the offset is to push the boundaries slightly higher than what your actual zone boundary is so that if you drift 1 bpm off you are not counted as being out of zone.
+
+---
+
+The full source code can be found on [GitHub](https://github.com/alexampersandria/www/tree/main/src/lib/shared/utils/hr.ts).
