@@ -22,8 +22,8 @@ export type HeartRateCalculationOptions = {
   maxHeartRate: number
 }
 
-const HEART_RATE_ZONE_BOUNDARIES = [0.5, 0.6, 0.7125, 0.825, 0.95, 1.0] as const
-const HEART_RATE_ZONE_OFFSETS = [0, 1, 1, 1, 0, 0]
+const HEART_RATE_ZONE_BOUNDARIES = [0, 0.5, 0.72, 0.8, 0.925, 1.0] as const
+const HEART_RATE_ZONE_OFFSETS = [0, -1, 2, 1, 1, 0]
 
 export const calculateHeartRateZones = (options: HeartRateCalculationOptions): HeartRateZones => {
   const { restingHeartRate, maxHeartRate } = options
