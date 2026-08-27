@@ -40,8 +40,8 @@ export type HeartRateCalculationOptions = {
 //
 // final version is a slightly adjusted version of the blended zone boundaries
 
-const HEART_RATE_ZONE_BOUNDARIES = [0, 0.55, 0.75, 0.825, 0.92, 1] as const
-const HEART_RATE_ZONE_OFFSETS = [0, -2, 1, -1, 0, 0]
+const HEART_RATE_ZONE_BOUNDARIES = [0, 0.565, 0.75, 0.825, 0.92, 1] as const
+const HEART_RATE_ZONE_OFFSETS = [0, -1, 1, -1, 1, 0]
 
 export const calculateHeartRateZones = (options: HeartRateCalculationOptions): HeartRateZones => {
   const { restingHeartRate, maxHeartRate } = options
