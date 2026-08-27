@@ -19,7 +19,7 @@ You need to know your resting and maximum heart rates to establish your heart ra
 
 ## Method
 
-Estimate your heart rate zones based on your resting and maximum heart rates. These calculations are based on the [Karvonen method](https://en.wikipedia.org/wiki/Heart_rate#Karvonen_method), with adjustments based on [Seiler-Viken, S.A., Mentzoni, F., Seiler, S. et al. Contextualizing the Norwegian standardized intensity zone framework in an international sample of endurance practitioners.](https://rdcu.be/fy0MW).
+Estimate your heart rate zones based on your resting and maximum heart rates. These calculations are based on the [Karvonen method](https://en.wikipedia.org/wiki/Heart_rate#Karvonen_method), blended with the Norwegian intensity-zone boundaries described in [Seiler-Viken, S.A., Mentzoni, F., Seiler, S. et al. Contextualizing the Norwegian standardized intensity zone framework in an international sample of endurance practitioners.](https://rdcu.be/fy0MW), then adjusted slightly for practical use.
 
 ### Resting Heart Rate
 
@@ -33,7 +33,7 @@ A lot of tools that help to estimate your heart rate zones use your age and esti
 
 Your heart rate zones do not actually have a hard cutoff at a certain heart rate, but rather have more gradual transitions between zones, so being ± a few bpm for example does not neccesarily mean you aren't in your target zone, but you can still use these as a reference point.
 
-The zones in this calculator are skewed slightly higher than most other calculators for this reason, and therefore not a true "Karvonen calculator", but hopefully more representative of your actual heart rate zones.
+The zones in this calculator are not a pure Karvonen implementation. They use blended boundaries and small BPM offsets to make zone transitions less jittery when your heart rate drifts by 1 bpm.
 
 ### Lactate Threshold (LT1 + LT2)
 
@@ -44,8 +44,8 @@ If you want **perfectly accurate** heart rate zones, you should perform a lactat
 The zone boundaries and offsets are defined as the following:
 
 ```ts
-const boundaries = [0, 0.5, 0.72, 0.8, 0.925, 1.0]
-const offsets = [0, -1, 2, 1, 1, 0]
+const boundaries = [0, 0.6, 0.75, 0.825, 0.92, 1.0]
+const offsets = [0, -1, 1, -1, 0, 0]
 ```
 
 where the boundary is percentage of heart rate reserve, calculated as
@@ -60,7 +60,7 @@ const zoneBoundary = (zone: number): number => {
 }
 ```
 
-This is different from the Karvonen method where the boundaries are evenly spaced from 50% to 100% of heart rate reserve. The goal with the offset is to push the boundaries slightly higher than what your actual zone boundary is so that if you drift 1 bpm off you are not counted as being out of zone.
+This is different from pure Karvonen zones (50/60/70/80/90/100% of heart rate reserve). Here, the boundaries are blended toward the Norwegian model and then nudged with small offsets to reduce over-sensitive zone switching at boundary edges.
 
 ---
 
