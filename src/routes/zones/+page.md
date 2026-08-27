@@ -44,8 +44,8 @@ If you want **perfectly accurate** heart rate zones, you should perform a lactat
 The zone boundaries and offsets are defined as the following:
 
 ```ts
-const boundaries = [0, 0.6, 0.75, 0.825, 0.92, 1.0]
-const offsets = [0, -1, 1, -1, 0, 0]
+const boundaries = [0, 0.55, 0.75, 0.825, 0.92, 1.0]
+const offsets = [0, -2, 1, -1, 0, 0]
 ```
 
 where the boundary is percentage of heart rate reserve, calculated as
