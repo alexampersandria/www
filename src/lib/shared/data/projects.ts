@@ -40,6 +40,12 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    title: 'zones',
+    id: 'zones',
+    description: 'Heart Rate Zone Calculator',
+    links: [{ label: 'Calculator', href: '/zones' }],
+  },
 ]
 
 /**
