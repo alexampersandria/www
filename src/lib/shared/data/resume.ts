@@ -50,7 +50,7 @@ export const resume: Resume = {
       },
       roles: [
         {
-          title: 'Responsible for Frontend Development',
+          title: 'Frontend Developer',
           period: { from: 'March 2026', to: 'Present' },
         },
       ],
