@@ -46,6 +46,12 @@ export const projects: Project[] = [
     description: 'Heart Rate Zone Calculator',
     links: [{ label: 'Calculator', href: '/zones' }],
   },
+  {
+    title: 'fixie-pattern',
+    id: 'fixie-pattern',
+    description: 'Pattern measurement tool',
+    links: [{ label: 'Calculator', href: '/fixie-pattern' }],
+  },
 ]
 
 /**

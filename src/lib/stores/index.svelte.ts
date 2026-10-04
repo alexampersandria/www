@@ -1,6 +1,7 @@
 import { registerStore } from 'sv-store'
 import { useThemeStore } from '$lib/stores/theme.store.svelte'
 import { useHeartRateStore } from '$lib/stores/hr.store.svelte'
+import { useFixiePatternStore } from '$lib/stores/fixie-pattern.store.svelte'
 
 export const initStores = () => {
   registerStore('theme', useThemeStore(), {
@@ -8,5 +9,8 @@ export const initStores = () => {
   })
   registerStore('hr', useHeartRateStore(), {
     tabSynchronization: true,
+  })
+  registerStore('fixie-pattern', useFixiePatternStore(), {
+    tabSynchronization: false,
   })
 }
