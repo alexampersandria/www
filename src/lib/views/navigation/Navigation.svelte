@@ -138,7 +138,7 @@ afterNavigate(() => {
     text-decoration: none;
   }
 
-  @media screen and (min-width: 920px) {
+  @media screen and (min-width: 1020px) {
     max-width: calc(var(--navigation-max-width) - var(--spacing-xl));
     min-width: var(--navigation-min-width);
     padding-inline: 0;
@@ -159,7 +159,7 @@ afterNavigate(() => {
     }
   }
 
-  @media screen and (max-width: 919px) {
+  @media screen and (max-width: 1019px) {
     &:not(:has(.open)) {
       // wait for root out:fade duration
       --transition-delay: 100ms;
